@@ -30,7 +30,6 @@
     color: rgba(255, 255, 255, 0.15);
 }
 
-/* Slides con fondos levemente distintos para distinguirlos sin imagen */
 .banner-slide.slide-1 { background-color: #1e1b1c; }
 .banner-slide.slide-2 { background-color: #231e1f; }
 .banner-slide.slide-3 { background-color: #1a1819; }
@@ -104,6 +103,9 @@
     align-items: center;
     gap: 14px;
     margin-bottom: 24px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .carrusel-header::before, .carrusel-header::after,
@@ -126,7 +128,6 @@
     gap: 8px;
 }
 
-/* Acento de color antes del título */
 .carrusel-titulo::before,
 .productos-titulo::before {
     content: '';
@@ -175,12 +176,21 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* Track containers: overflow-x corta el carrusel horizontal,
+   padding+margin negativos dan espacio vertical para el hover sin clipear */
 .carrusel-track-container,
 .productos-track-container {
     overflow: hidden;
     flex: 1;
+    padding-top: 16px;
+    margin-top: -16px;
+    padding-bottom: 10px;
+    margin-bottom: -10px;
 }
 
 
@@ -188,7 +198,7 @@
    CARRUSEL DE FIGURAS
    ============================================================ */
 .carrusel-section {
-    padding: var(--padding-seccion);
+    padding: 36px 60px;
     background-color: var(--color-fondo-alt);
 }
 
@@ -214,7 +224,7 @@
     aspect-ratio: 1;
     max-width: 160px;
     border-radius: 50%;
-    background-color: #ebebeb;
+    background-color: #e8e8e8;
     border: 2px solid transparent;
     display: flex;
     align-items: center;
@@ -227,9 +237,9 @@
 
 .carrusel-item:hover .carrusel-circulo {
     border-color: var(--color-primario);
-    transform: translateY(-5px) scale(1.06);
-    box-shadow: 0 10px 24px rgba(220, 20, 60, 0.18);
-    background-color: #e0e0e0;
+    transform: translateY(-6px) scale(1.07);
+    box-shadow: 0 12px 28px rgba(220, 20, 60, 0.2);
+    background-color: #ddd;
 }
 
 .carrusel-item span {
@@ -247,13 +257,13 @@
    SECCIÓN DE PRODUCTOS (compartida: Lo Más Nuevo + Destacados)
    ============================================================ */
 .productos-section {
-    padding: var(--padding-seccion);
-    background-color: #ffffff;
+    padding: 36px 60px;
+    background-color: var(--color-fondo-alt);
 }
 
-/* Lo Más Nuevo alterna con fondo gris para separación visual */
+/* Lo Más Nuevo con fondo blanco para separación visual clara */
 .lo-mas-nuevo-section {
-    background-color: var(--color-fondo-alt);
+    var(--color-fondo-alt);
 }
 
 .productos-track {
@@ -273,30 +283,29 @@
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    transition: box-shadow var(--trans-normal), transform var(--trans-normal), border-color var(--trans-rapida);
     cursor: pointer;
+    transition: box-shadow var(--trans-normal), transform var(--trans-normal), border-color var(--trans-rapida);
 }
 
 .producto-card:hover {
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.11);
-    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
+    transform: translateY(-7px);
     border-color: #d0d0d0;
 }
 
 .producto-imagen {
     width: 100%;
     aspect-ratio: 1;
-    background-color: #ebebeb;
+    background-color: #e8e8e8;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: clamp(36px, 6vw, 54px);
     color: #bbb;
     transition: background-color var(--trans-rapida);
-    overflow: hidden;
 }
 
-.producto-card:hover .producto-imagen { background-color: #e0e0e0; }
+.producto-card:hover .producto-imagen { background-color: #ddd; }
 
 .producto-info {
     padding: 14px;
@@ -323,10 +332,7 @@
 
 .producto-card:hover .producto-nombre { color: var(--color-primario); }
 
-.producto-categoria {
-    font-size: 12px;
-    color: #999;
-}
+.producto-categoria { font-size: 12px; color: #999; }
 
 .producto-vendedor {
     font-size: 12px;
@@ -367,7 +373,7 @@
 
 .btn-ver:active { transform: scale(0.97); }
 
-/* ── Botón Comprar Ahora (relleno) ── */
+/* ── Botón Agregar al carrito (relleno) ── */
 .btn-comprar {
     padding: 9px;
     border: none;

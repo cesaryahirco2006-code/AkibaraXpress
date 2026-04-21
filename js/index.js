@@ -87,3 +87,13 @@ function initNavegacionProductos() {
 }
 
 document.addEventListener('DOMContentLoaded', initNavegacionProductos);
+
+
+/* ── 3. AGREGAR AL CARRITO — delegación para cubrir clones del carrusel ── */
+document.addEventListener('click', e => {
+    const btn = e.target.closest('.producto-card .btn-comprar');
+    if (btn) {
+        e.stopPropagation();
+        agregarAlCarrito();
+    }
+});

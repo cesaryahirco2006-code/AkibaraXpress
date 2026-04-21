@@ -49,7 +49,19 @@ function mostrarToast() {
     toastTimeout = setTimeout(() => toast?.classList.remove('visible'), 3000);
 }
 
-btnAgregar?.addEventListener('click', mostrarToast);
+btnAgregar?.addEventListener('click', () => {
+    mostrarToast();
+    agregarAlCarrito();
+});
+
+/* Delegación para las tarjetas de productos relacionados (incluye clones) */
+document.addEventListener('click', e => {
+    const btn = e.target.closest('.pd-relacionados .btn-comprar');
+    if (btn) {
+        e.stopPropagation();
+        agregarAlCarrito();
+    }
+});
 
 
 /* ── 4. WISHLIST — Toggle de corazón ── */

@@ -3,6 +3,30 @@
    ============================================================ */
 
 /**
+ * Incrementa el contador del carrito y dispara la animación del ícono.
+ * Se usa desde index.js y producto.js.
+ */
+function agregarAlCarrito() {
+    const badge      = document.getElementById('carritoBadge');
+    const carritoIcon = document.querySelector('.carrito i');
+
+    if (badge) {
+        badge.textContent = (parseInt(badge.textContent) || 0) + 1;
+        badge.classList.remove('pop');
+        void badge.offsetWidth; // reflow para reiniciar animación
+        badge.classList.add('pop');
+        setTimeout(() => badge.classList.remove('pop'), 300);
+    }
+
+    if (carritoIcon) {
+        carritoIcon.classList.remove('animando');
+        void carritoIcon.offsetWidth;
+        carritoIcon.classList.add('animando');
+        setTimeout(() => carritoIcon.classList.remove('animando'), 500);
+    }
+}
+
+/**
  * Fábrica de carrusel infinito reutilizable.
  * Clona los items al inicio y al final para lograr el efecto infinito.
  *

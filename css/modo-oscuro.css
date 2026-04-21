@@ -38,15 +38,9 @@ body.modo-oscuro {
     color: #e0e0e0;
 }
 
-/* ── Secciones principales ── */
-body.modo-oscuro .carrusel-section {
-    background-color: rgb(24, 22, 23);
-}
-
-body.modo-oscuro .productos-section {
-    background-color: rgb(30, 28, 29);
-}
-
+/* ── Secciones principales — mismo fondo para coherencia ── */
+body.modo-oscuro .carrusel-section,
+body.modo-oscuro .productos-section,
 body.modo-oscuro .lo-mas-nuevo-section {
     background-color: rgb(24, 22, 23);
 }

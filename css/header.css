@@ -118,7 +118,27 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform var(--trans-rapida);
+    pointer-events: none;
 }
+
+/* ── Animación del ícono al agregar al carrito ── */
+@keyframes cartBounce {
+    0%   { transform: scale(1)    rotate(0deg); }
+    25%  { transform: scale(1.45) rotate(-15deg); }
+    50%  { transform: scale(1.25) rotate(12deg); }
+    75%  { transform: scale(1.12) rotate(-6deg); }
+    100% { transform: scale(1)    rotate(0deg); }
+}
+
+@keyframes badgePop {
+    0%   { transform: scale(1);   }
+    50%  { transform: scale(1.65); }
+    100% { transform: scale(1);   }
+}
+
+.carrito i.animando { animation: cartBounce 0.5s ease forwards; }
+.carrito-badge.pop  { animation: badgePop 0.3s ease forwards; }
 
 /* ── Botón hamburguesa ── */
 .hamburguesa {
