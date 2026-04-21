@@ -60,19 +60,14 @@
             <div class="nav-centro">
                 <div class="nav-item"><span>Figuras</span><i class="fa-solid fa-chevron-down"></i></div>
                 <div class="separador-nav"></div>
-
                 <div class="nav-item"><span>Mangas</span><i class="fa-solid fa-chevron-down"></i></div>
                 <div class="separador-nav"></div>
-
                 <div class="nav-item"><span>Series</span><i class="fa-solid fa-chevron-down"></i></div>
                 <div class="separador-nav"></div>
-
                 <div class="nav-item"><span>TCG</span><i class="fa-solid fa-chevron-down"></i></div>
                 <div class="separador-nav"></div>
-
                 <div class="nav-item"><span>Apparel</span><i class="fa-solid fa-chevron-down"></i></div>
                 <div class="separador-nav"></div>
-
                 <div class="nav-item mas-item" id="mas-btn">
                     <span>Más</span>
                     <i class="fa-solid fa-chevron-down"></i>
@@ -85,7 +80,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="nav-item destacado">
                 <span>FIFA World Cup 26</span>
             </div>
@@ -94,31 +88,39 @@
 
     <!-- ========== BANNER / SLIDER ========== -->
     <div class="banner-container">
+        <button class="banner-btn banner-btn-izq" id="btnBannerIzq" aria-label="Slide anterior">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
         <div class="banner-track" id="bannerTrack">
-            <div class="banner-slide"><i class="fa-regular fa-image"></i></div>
-            <div class="banner-slide"><i class="fa-regular fa-image"></i></div>
-            <div class="banner-slide"><i class="fa-regular fa-image"></i></div>
-            <div class="banner-slide"><i class="fa-regular fa-image"></i></div>
-            <div class="banner-slide"><i class="fa-regular fa-image"></i></div>
+            <div class="banner-slide slide-1"><i class="fa-regular fa-image"></i></div>
+            <div class="banner-slide slide-2"><i class="fa-regular fa-image"></i></div>
+            <div class="banner-slide slide-3"><i class="fa-regular fa-image"></i></div>
+            <div class="banner-slide slide-4"><i class="fa-regular fa-image"></i></div>
+            <div class="banner-slide slide-5"><i class="fa-regular fa-image"></i></div>
         </div>
 
         <div class="banner-dots" id="bannerDots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+            <button class="dot active" aria-label="Slide 1"></button>
+            <button class="dot" aria-label="Slide 2"></button>
+            <button class="dot" aria-label="Slide 3"></button>
+            <button class="dot" aria-label="Slide 4"></button>
+            <button class="dot" aria-label="Slide 5"></button>
         </div>
+
+        <button class="banner-btn banner-btn-der" id="btnBannerDer" aria-label="Slide siguiente">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
     </div>
 
-    <!-- ========== CARRUSEL: FIGURAS ========== -->
+    <!-- ========== CARRUSEL: FIGURAS DE ANIME ========== -->
     <section class="carrusel-section">
         <div class="carrusel-header">
             <span class="carrusel-titulo">Figuras de Anime</span>
         </div>
 
         <div class="carrusel-wrapper">
-            <button class="carrusel-btn izquierda" id="btnIzq" aria-label="Anterior">
+            <button class="carrusel-btn" id="btnIzq" aria-label="Anterior">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
 
@@ -135,7 +137,133 @@
                 </div>
             </div>
 
-            <button class="carrusel-btn derecha" id="btnDer" aria-label="Siguiente">
+            <button class="carrusel-btn" id="btnDer" aria-label="Siguiente">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- ========== CARRUSEL: LO MÁS NUEVO ========== -->
+    <section class="productos-section lo-mas-nuevo-section">
+        <div class="productos-header">
+            <span class="productos-titulo">Lo Más Nuevo</span>
+        </div>
+
+        <div class="productos-wrapper">
+            <button class="carrusel-btn" id="btnIzqNuevo" aria-label="Anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="productos-track-container">
+                <div class="productos-track" id="nuevoTrack">
+                    <div class="producto-card">
+                        <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
+                        <div class="producto-info">
+                            <span class="producto-precio">$999.00</span>
+                            <span class="producto-nombre">Nombre del Producto</span>
+                            <span class="producto-categoria">Categoría</span>
+                            <span class="producto-vendedor">Vendedor</span>
+                            <div class="producto-botones">
+                                <button class="btn-ver">Ver Producto</button>
+                                <button class="btn-comprar">Comprar Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-card">
+                        <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
+                        <div class="producto-info">
+                            <span class="producto-precio">$999.00</span>
+                            <span class="producto-nombre">Nombre del Producto</span>
+                            <span class="producto-categoria">Categoría</span>
+                            <span class="producto-vendedor">Vendedor</span>
+                            <div class="producto-botones">
+                                <button class="btn-ver">Ver Producto</button>
+                                <button class="btn-comprar">Comprar Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-card">
+                        <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
+                        <div class="producto-info">
+                            <span class="producto-precio">$999.00</span>
+                            <span class="producto-nombre">Nombre del Producto</span>
+                            <span class="producto-categoria">Categoría</span>
+                            <span class="producto-vendedor">Vendedor</span>
+                            <div class="producto-botones">
+                                <button class="btn-ver">Ver Producto</button>
+                                <button class="btn-comprar">Comprar Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-card">
+                        <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
+                        <div class="producto-info">
+                            <span class="producto-precio">$999.00</span>
+                            <span class="producto-nombre">Nombre del Producto</span>
+                            <span class="producto-categoria">Categoría</span>
+                            <span class="producto-vendedor">Vendedor</span>
+                            <div class="producto-botones">
+                                <button class="btn-ver">Ver Producto</button>
+                                <button class="btn-comprar">Comprar Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-card">
+                        <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
+                        <div class="producto-info">
+                            <span class="producto-precio">$999.00</span>
+                            <span class="producto-nombre">Nombre del Producto</span>
+                            <span class="producto-categoria">Categoría</span>
+                            <span class="producto-vendedor">Vendedor</span>
+                            <div class="producto-botones">
+                                <button class="btn-ver">Ver Producto</button>
+                                <button class="btn-comprar">Comprar Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-card">
+                        <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
+                        <div class="producto-info">
+                            <span class="producto-precio">$999.00</span>
+                            <span class="producto-nombre">Nombre del Producto</span>
+                            <span class="producto-categoria">Categoría</span>
+                            <span class="producto-vendedor">Vendedor</span>
+                            <div class="producto-botones">
+                                <button class="btn-ver">Ver Producto</button>
+                                <button class="btn-comprar">Comprar Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-card">
+                        <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
+                        <div class="producto-info">
+                            <span class="producto-precio">$999.00</span>
+                            <span class="producto-nombre">Nombre del Producto</span>
+                            <span class="producto-categoria">Categoría</span>
+                            <span class="producto-vendedor">Vendedor</span>
+                            <div class="producto-botones">
+                                <button class="btn-ver">Ver Producto</button>
+                                <button class="btn-comprar">Comprar Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-card">
+                        <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
+                        <div class="producto-info">
+                            <span class="producto-precio">$999.00</span>
+                            <span class="producto-nombre">Nombre del Producto</span>
+                            <span class="producto-categoria">Categoría</span>
+                            <span class="producto-vendedor">Vendedor</span>
+                            <div class="producto-botones">
+                                <button class="btn-ver">Ver Producto</button>
+                                <button class="btn-comprar">Comprar Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carrusel-btn" id="btnDerNuevo" aria-label="Siguiente">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
         </div>
@@ -154,7 +282,6 @@
 
             <div class="productos-track-container">
                 <div class="productos-track" id="productosTrack">
-
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -168,7 +295,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -182,7 +308,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -196,7 +321,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -210,7 +334,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -224,7 +347,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -238,7 +360,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -252,7 +373,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -266,7 +386,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 

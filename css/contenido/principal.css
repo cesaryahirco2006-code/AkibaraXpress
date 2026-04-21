@@ -1,5 +1,5 @@
 /* ============================================================
-   contenido/principal.css — Banner, Carrusel Figuras y Productos
+   contenido/principal.css — Banner, Carruseles y Productos
    ============================================================ */
 
 /* ============================================================
@@ -8,9 +8,9 @@
 .banner-container {
     position: relative;
     width: 100%;
-    height: clamp(140px, 25vw, 320px);
+    height: clamp(160px, 28vw, 360px);
     overflow: hidden;
-    background-color: #504949;
+    background-color: #1e1b1c;
     z-index: 1;
 }
 
@@ -26,62 +26,150 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(40px, 8vw, 80px);
-    color: rgba(255, 255, 255, 0.35);
+    font-size: clamp(48px, 9vw, 90px);
+    color: rgba(255, 255, 255, 0.15);
 }
 
-/* ── Puntos del banner ── */
+/* Slides con fondos levemente distintos para distinguirlos sin imagen */
+.banner-slide.slide-1 { background-color: #1e1b1c; }
+.banner-slide.slide-2 { background-color: #231e1f; }
+.banner-slide.slide-3 { background-color: #1a1819; }
+.banner-slide.slide-4 { background-color: #252122; }
+.banner-slide.slide-5 { background-color: #201d1e; }
+
+/* ── Flechas del banner ── */
+.banner-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--trans-rapida), background-color var(--trans-rapida), transform var(--trans-rapida);
+    backdrop-filter: blur(4px);
+}
+
+.banner-container:hover .banner-btn { opacity: 1; }
+
+.banner-btn:hover {
+    background-color: var(--color-primario);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.banner-btn-izq { left: 20px; }
+.banner-btn-der { right: 20px; }
+
+/* ── Dots del banner (pills animadas) ── */
 .banner-dots {
     position: absolute;
-    bottom: 15px;
+    bottom: 16px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 6px;
+    align-items: center;
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.35);
     border: none;
     cursor: pointer;
     padding: 0;
-    transition: background-color var(--trans-normal), transform var(--trans-rapida);
+    transition: background-color var(--trans-normal), width var(--trans-normal);
 }
 
-.dot.active { background-color: white; }
+.dot:hover { background-color: rgba(255, 255, 255, 0.65); }
+.dot.active { background-color: white; width: 24px; }
 
 
 /* ============================================================
-   SHARED — Encabezado de sección con líneas decorativas
+   ENCABEZADO DE SECCIÓN (compartido)
    ============================================================ */
 .carrusel-header,
 .productos-header {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
+    gap: 14px;
+    margin-bottom: 24px;
 }
 
 .carrusel-header::before, .carrusel-header::after,
 .productos-header::before, .productos-header::after {
     content: '';
     flex: 1;
-    height: 2px;
-    background-color: #ddd;
+    height: 1px;
+    background-color: var(--color-borde);
 }
 
 .carrusel-titulo,
 .productos-titulo {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 17px;
+    font-weight: 800;
     white-space: nowrap;
-    color: #222;
+    color: #111;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* ── Layout wrapper: botón | pista | botón ── */
+/* Acento de color antes del título */
+.carrusel-titulo::before,
+.productos-titulo::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: var(--color-primario);
+    flex-shrink: 0;
+}
+
+
+/* ============================================================
+   BOTÓN DE NAVEGACIÓN (compartido carruseles)
+   ============================================================ */
+.carrusel-btn {
+    background-color: var(--color-primario);
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 13px;
+    color: white;
+    flex-shrink: 0;
+    transition: transform var(--trans-rapida), box-shadow var(--trans-rapida), background-color var(--trans-rapida);
+}
+
+.carrusel-btn:hover {
+    transform: scale(1.18);
+    box-shadow: 0 4px 14px rgba(220, 20, 60, 0.4);
+    background-color: var(--color-primario-dark);
+}
+
+.carrusel-btn:active { transform: scale(0.95); }
+
+
+/* ============================================================
+   WRAPPER (compartido)
+   ============================================================ */
 .carrusel-wrapper,
 .productos-wrapper {
     display: flex;
@@ -94,25 +182,6 @@
     overflow: hidden;
     flex: 1;
 }
-
-/* ── Botón de navegación circular (compartido) ── */
-.carrusel-btn {
-    background-color: var(--color-primario);
-    border: none;
-    border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 14px;
-    color: white;
-    flex-shrink: 0;
-    transition: transform var(--trans-rapida);
-}
-
-.carrusel-btn:hover { transform: scale(1.25); }
 
 
 /* ============================================================
@@ -130,7 +199,6 @@
     will-change: transform;
 }
 
-/* 5 items visibles en desktop */
 .carrusel-item {
     display: flex;
     flex-direction: column;
@@ -146,37 +214,45 @@
     aspect-ratio: 1;
     max-width: 160px;
     border-radius: 50%;
-    background-color: #f0f0f0;
-    border: 2px solid var(--color-borde);
+    background-color: #ebebeb;
+    border: 2px solid transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: clamp(32px, 5vw, 50px);
     color: #bbb;
     overflow: hidden;
-    transition: border-color var(--trans-normal), transform var(--trans-rapida);
+    transition: border-color var(--trans-normal), transform var(--trans-normal), box-shadow var(--trans-normal), background-color var(--trans-rapida);
 }
 
 .carrusel-item:hover .carrusel-circulo {
     border-color: var(--color-primario);
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.06);
+    box-shadow: 0 10px 24px rgba(220, 20, 60, 0.18);
+    background-color: #e0e0e0;
 }
 
 .carrusel-item span {
     font-size: 13px;
-    color: #444;
+    color: #555;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
+    transition: color var(--trans-rapida);
 }
 
-.carrusel-item span:hover { color: var(--color-primario); }
+.carrusel-item:hover span { color: var(--color-primario); }
 
 
 /* ============================================================
-   CARRUSEL DE PRODUCTOS
+   SECCIÓN DE PRODUCTOS (compartida: Lo Más Nuevo + Destacados)
    ============================================================ */
 .productos-section {
     padding: var(--padding-seccion);
+    background-color: #ffffff;
+}
+
+/* Lo Más Nuevo alterna con fondo gris para separación visual */
+.lo-mas-nuevo-section {
     background-color: var(--color-fondo-alt);
 }
 
@@ -197,24 +273,30 @@
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    transition: box-shadow var(--trans-normal), transform var(--trans-rapida);
+    transition: box-shadow var(--trans-normal), transform var(--trans-normal), border-color var(--trans-rapida);
+    cursor: pointer;
 }
 
 .producto-card:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.11);
+    transform: translateY(-6px);
+    border-color: #d0d0d0;
 }
 
 .producto-imagen {
     width: 100%;
     aspect-ratio: 1;
-    background-color: #f0f0f0;
+    background-color: #ebebeb;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: clamp(36px, 6vw, 54px);
     color: #bbb;
+    transition: background-color var(--trans-rapida);
+    overflow: hidden;
 }
+
+.producto-card:hover .producto-imagen { background-color: #e0e0e0; }
 
 .producto-info {
     padding: 14px;
@@ -225,8 +307,8 @@
 }
 
 .producto-precio {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 19px;
+    font-weight: 800;
     color: var(--color-primario);
     letter-spacing: -0.02em;
 }
@@ -236,20 +318,23 @@
     font-weight: 600;
     color: #111;
     line-height: 1.35;
+    transition: color var(--trans-rapida);
 }
 
-.producto-nombre:hover { color: var(--color-primario); }
+.producto-card:hover .producto-nombre { color: var(--color-primario); }
 
-.producto-categoria,
-.producto-vendedor {
+.producto-categoria {
     font-size: 12px;
     color: #999;
 }
 
 .producto-vendedor {
+    font-size: 12px;
+    color: #999;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
+    transition: color var(--trans-rapida);
 }
 
 .producto-vendedor:hover { color: var(--color-primario); }
@@ -259,33 +344,44 @@
     flex-direction: column;
     gap: 7px;
     margin-top: auto;
-    padding-top: 10px;
+    padding-top: 12px;
 }
 
-/* ── Botón secundario (contorno) ── */
+/* ── Botón Ver Producto (contorno) ── */
 .btn-ver {
-    padding: 8px;
+    padding: 9px;
     border: 1.5px solid var(--color-primario);
-    background-color: white;
+    background-color: transparent;
     color: var(--color-primario);
     border-radius: var(--radio-btn);
     font-size: 13px;
-    font-weight: 600;
-    transition: background-color var(--trans-rapida);
+    font-weight: 700;
+    transition: background-color var(--trans-rapida), color var(--trans-rapida), transform var(--trans-rapida);
 }
 
-.btn-ver:hover { background-color: var(--color-primario-light); }
+.btn-ver:hover {
+    background-color: var(--color-primario);
+    color: white;
+    transform: translateY(-1px);
+}
 
-/* ── Botón primario (relleno) ── */
+.btn-ver:active { transform: scale(0.97); }
+
+/* ── Botón Comprar Ahora (relleno) ── */
 .btn-comprar {
-    padding: 8px;
+    padding: 9px;
     border: none;
     background-color: var(--color-primario);
     color: white;
     border-radius: var(--radio-btn);
     font-size: 13px;
-    font-weight: 600;
-    transition: background-color var(--trans-rapida);
+    font-weight: 700;
+    transition: background-color var(--trans-rapida), transform var(--trans-rapida);
 }
 
-.btn-comprar:hover { background-color: var(--color-primario-dark); }
+.btn-comprar:hover {
+    background-color: var(--color-primario-dark);
+    transform: translateY(-1px);
+}
+
+.btn-comprar:active { transform: scale(0.97); }

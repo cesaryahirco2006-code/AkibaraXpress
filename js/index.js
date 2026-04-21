@@ -15,6 +15,16 @@ crearCarrusel({
     autoplayMs:   3000,
 });
 
+// Carrusel Lo Más Nuevo
+crearCarrusel({
+    trackId:      'nuevoTrack',
+    btnIzqId:     'btnIzqNuevo',
+    btnDerId:     'btnDerNuevo',
+    itemSelector: '.producto-card',
+    gap:          20,
+    autoplayMs:   3500,
+});
+
 // Carrusel de Productos Destacados
 crearCarrusel({
     trackId:      'productosTrack',
@@ -28,12 +38,6 @@ crearCarrusel({
 
 /* ── 2. NAVEGACIÓN A DETALLE DE PRODUCTO ── */
 
-/**
- * Redirige a producto.html pasando los datos del producto por URL.
- * @param {string} nombre    - Nombre del producto.
- * @param {string} categoria - Categoría del producto.
- * @param {string} [precio]  - Precio (opcional).
- */
 function irADetalle(nombre, categoria, precio) {
     const params = new URLSearchParams();
     params.set('nombre',    nombre);
@@ -42,20 +46,10 @@ function irADetalle(nombre, categoria, precio) {
     window.location.href = `producto.html?${params.toString()}`;
 }
 
-/**
- * Agrega listeners de navegación a cada tarjeta de producto
- * y a cada item del carrusel de figuras.
- */
-function initNavegacionProductos() {
-
-    // ── Tarjetas de productos destacados ──
-    document.querySelectorAll('#productosTrack .producto-card').forEach(card => {
-        card.style.cursor = 'pointer';
-
+function bindNavegacionCards(trackId) {
+    document.querySelectorAll(`#${trackId} .producto-card`).forEach(card => {
         card.addEventListener('click', function (e) {
-            // Si se hizo click en un botón, dejar que él maneje el evento
             if (e.target.closest('.btn-ver, .btn-comprar')) return;
-
             irADetalle(
                 this.querySelector('.producto-nombre')?.textContent   || 'Producto',
                 this.querySelector('.producto-categoria')?.textContent || 'General',
@@ -63,10 +57,9 @@ function initNavegacionProductos() {
             );
         });
 
-        // Botón "Ver Producto" también navega al detalle
         const btnVer = card.querySelector('.btn-ver');
         if (btnVer) {
-            btnVer.addEventListener('click', function (e) {
+            btnVer.addEventListener('click', e => {
                 e.stopPropagation();
                 irADetalle(
                     card.querySelector('.producto-nombre')?.textContent   || 'Producto',
@@ -76,11 +69,14 @@ function initNavegacionProductos() {
             });
         }
     });
+}
 
-    // ── Items del carrusel de figuras ──
+function initNavegacionProductos() {
+    bindNavegacionCards('nuevoTrack');
+    bindNavegacionCards('productosTrack');
+
+    // Items del carrusel de figuras
     document.querySelectorAll('#carruselTrack .carrusel-item').forEach(item => {
-        item.style.cursor = 'pointer';
-
         item.addEventListener('click', function () {
             irADetalle(
                 this.querySelector('span')?.textContent || 'Figura',
@@ -90,5 +86,4 @@ function initNavegacionProductos() {
     });
 }
 
-// Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', initNavegacionProductos);
