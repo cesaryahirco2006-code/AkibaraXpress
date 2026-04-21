@@ -631,6 +631,11 @@ body.modo-oscuro .breadcrumb-bar {
     border-bottom-color: #333;
 }
 
+/* Añade esto si no existe ya en style.css */
+body.modo-oscuro {
+    background-color: rgb(34, 32, 33);
+}
+
 body.modo-oscuro .breadcrumb-item a {
     color: #aaa;
 }
