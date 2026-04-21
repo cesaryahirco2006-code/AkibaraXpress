@@ -4,13 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AkibaraXpress</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- ── Estilos modulares ── -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/subheader.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/accesibilidad.css">
+    <link rel="stylesheet" href="css/modo-oscuro.css">
+    <link rel="stylesheet" href="css/contenido/principal.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+
+    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+
+    <!-- Barra de carga -->
     <div id="barra-carga">
         <div id="barra-carga-fill"></div>
     </div>
+
     <!-- ========== HEADER ========== -->
     <header>
         <div class="Logo">
@@ -18,12 +32,12 @@
                 <img src="Imagenes/logo.webp" alt="Logo AkibaraXpress">
             </a>
         </div>
- 
+
         <div class="container">
             <input type="text" placeholder="Buscar productos...">
             <button aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
- 
+
         <div class="user-section">
             <div class="user-info">
                 <span class="saludo">Hola,</span>
@@ -34,35 +48,31 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
         </div>
- 
+
         <button class="hamburguesa" id="btnHamburguesa" aria-label="Abrir menú">
-        <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars"></i>
         </button>
- 
     </header>
- 
+
     <!-- ========== NAVEGACIÓN ========== -->
     <nav class="subheader">
         <div class="nav-items">
- 
-            <!-- Categorías centradas -->
             <div class="nav-centro">
                 <div class="nav-item"><span>Figuras</span><i class="fa-solid fa-chevron-down"></i></div>
                 <div class="separador-nav"></div>
- 
+
                 <div class="nav-item"><span>Mangas</span><i class="fa-solid fa-chevron-down"></i></div>
                 <div class="separador-nav"></div>
- 
+
                 <div class="nav-item"><span>Series</span><i class="fa-solid fa-chevron-down"></i></div>
                 <div class="separador-nav"></div>
- 
+
                 <div class="nav-item"><span>TCG</span><i class="fa-solid fa-chevron-down"></i></div>
                 <div class="separador-nav"></div>
- 
+
                 <div class="nav-item"><span>Apparel</span><i class="fa-solid fa-chevron-down"></i></div>
                 <div class="separador-nav"></div>
- 
-                <!-- Dropdown "Más" -->
+
                 <div class="nav-item mas-item" id="mas-btn">
                     <span>Más</span>
                     <i class="fa-solid fa-chevron-down"></i>
@@ -75,15 +85,13 @@
                     </div>
                 </div>
             </div>
- 
-            <!-- Botón destacado a la derecha -->
+
             <div class="nav-item destacado">
                 <span>FIFA World Cup 26</span>
             </div>
- 
         </div>
     </nav>
- 
+
     <!-- ========== BANNER / SLIDER ========== -->
     <div class="banner-container">
         <div class="banner-track" id="bannerTrack">
@@ -93,8 +101,7 @@
             <div class="banner-slide"><i class="fa-regular fa-image"></i></div>
             <div class="banner-slide"><i class="fa-regular fa-image"></i></div>
         </div>
- 
-        <!-- Puntos de navegación del banner -->
+
         <div class="banner-dots" id="bannerDots">
             <span class="dot active"></span>
             <span class="dot"></span>
@@ -103,18 +110,18 @@
             <span class="dot"></span>
         </div>
     </div>
- 
+
     <!-- ========== CARRUSEL: FIGURAS ========== -->
     <section class="carrusel-section">
         <div class="carrusel-header">
             <span class="carrusel-titulo">Figuras de Anime</span>
         </div>
- 
+
         <div class="carrusel-wrapper">
             <button class="carrusel-btn izquierda" id="btnIzq" aria-label="Anterior">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
- 
+
             <div class="carrusel-track-container">
                 <div class="carrusel-track" id="carruselTrack">
                     <div class="carrusel-item"><div class="carrusel-circulo"><i class="fa-regular fa-image"></i></div><span>Figura 1</span></div>
@@ -127,28 +134,27 @@
                     <div class="carrusel-item"><div class="carrusel-circulo"><i class="fa-regular fa-image"></i></div><span>Figura 8</span></div>
                 </div>
             </div>
- 
+
             <button class="carrusel-btn derecha" id="btnDer" aria-label="Siguiente">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
         </div>
     </section>
- 
+
     <!-- ========== CARRUSEL: PRODUCTOS DESTACADOS ========== -->
     <section class="productos-section">
         <div class="productos-header">
             <span class="productos-titulo">Productos Destacados</span>
         </div>
- 
+
         <div class="productos-wrapper">
             <button class="carrusel-btn" id="btnIzqProd" aria-label="Anterior">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
- 
+
             <div class="productos-track-container">
                 <div class="productos-track" id="productosTrack">
- 
-                    <!-- Tarjeta de producto (repetir según datos dinámicos en el futuro) -->
+
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -162,7 +168,7 @@
                             </div>
                         </div>
                     </div>
- 
+
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -176,7 +182,7 @@
                             </div>
                         </div>
                     </div>
- 
+
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -190,7 +196,7 @@
                             </div>
                         </div>
                     </div>
- 
+
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -204,7 +210,7 @@
                             </div>
                         </div>
                     </div>
- 
+
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -218,7 +224,7 @@
                             </div>
                         </div>
                     </div>
- 
+
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -232,7 +238,7 @@
                             </div>
                         </div>
                     </div>
- 
+
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -246,7 +252,7 @@
                             </div>
                         </div>
                     </div>
- 
+
                     <div class="producto-card">
                         <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                         <div class="producto-info">
@@ -260,30 +266,25 @@
                             </div>
                         </div>
                     </div>
- 
+
                 </div>
             </div>
- 
+
             <button class="carrusel-btn" id="btnDerProd" aria-label="Siguiente">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
         </div>
     </section>
- 
+
     <!-- ========== PIE DE PÁGINA ========== -->
-<footer>
- 
+    <footer>
         <div class="footer-principal">
- 
-            <!-- Columna 1: Quienes Somos -->
             <div class="footer-col">
                 <h4 class="footer-titulo-col">Quienes Somos?</h4>
                 <p class="footer-subtitulo">Gracias por tu interes en nosotros!</p>
                 <p class="footer-descripcion">Akibara Xpress fue fundado en 2014, y empezamos haciendo entregas a domicilio, hemos ido creciendo y todos los dias entrenamos para ser los mejores. Nos gusta mucho el anime y somos saiyajines!</p>
                 <a href="#" class="footer-leer-mas">Leer mas</a>
             </div>
- 
-            <!-- Columna 2: Links generales -->
             <div class="footer-col">
                 <h4 class="footer-titulo-col">Akibara Xpress</h4>
                 <ul>
@@ -303,8 +304,6 @@
                     <li><a href="#">Eliminacion de cuenta</a></li>
                 </ul>
             </div>
- 
-            <!-- Columna 3: Newsletter -->
             <div class="footer-col">
                 <h4 class="footer-titulo-col">Newsletter</h4>
                 <p class="footer-descripcion">Suscribete con nosotros y recibe promociones, informacion de preventas y mucho mas!</p>
@@ -313,8 +312,6 @@
                     <button>Suscribir</button>
                 </div>
             </div>
- 
-            <!-- Columna 4: Ubicaciones en Mexico -->
             <div class="footer-col">
                 <h4 class="footer-titulo-col">Mexico</h4>
                 <ul>
@@ -329,10 +326,8 @@
                     <li><a href="#">Mangas Espanoles en Mexico</a></li>
                 </ul>
             </div>
- 
         </div>
- 
-        <!-- Barra inferior: redes sociales centradas -->
+
         <div class="footer-inferior">
             <div class="footer-redes">
                 <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
@@ -341,16 +336,19 @@
                 <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
- 
     </footer>
- 
- 
-    <!-- Modo oscuro -->
+
+    <!-- Botón modo oscuro -->
     <button id="btnModo" aria-label="Cambiar modo">
         <i class="fa-solid fa-moon"></i>
     </button>
- 
-    <script src="script.js"></script>
- 
+
+    <!-- ── Scripts modulares ── -->
+    <script src="js/utils.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/banner.js"></script>
+    <script src="js/modo-oscuro.js"></script>
+    <script src="js/index.js"></script>
+
 </body>
 </html>

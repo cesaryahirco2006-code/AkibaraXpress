@@ -1,0 +1,148 @@
+/* ============================================================
+   responsivo.css — Media queries y adaptaciones por breakpoint
+   ============================================================ */
+
+/* ── Tablets (≤ 768px) ── */
+@media (max-width: 768px) {
+
+    /* ── Header mobile ── */
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 16px;
+        gap: 8px;
+        justify-content: space-between;
+    }
+
+    .hamburguesa {
+        display: flex;
+        position: static;
+        order: 1;
+        flex-shrink: 0;
+    }
+
+    .Logo {
+        position: static;
+        order: 2;
+        margin: 0 auto;
+    }
+
+    .Logo img { height: 50px; }
+
+    .user-section { position: static; order: 3; flex-shrink: 0; }
+    .user-info    { display: none; }
+    .separador    { display: none; }
+
+    header .container {
+        display: flex;
+        order: 4;
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    header .container input { width: 100%; }
+
+    /* ── Subheader mobile: colapsado ── */
+    .subheader {
+        position: static;
+        overflow: hidden;
+        max-height: 0;
+        padding: 0;
+        border-bottom: none;
+        transition: max-height var(--trans-normal), padding 0.2s ease;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .subheader.abierto {
+        max-height: 600px;
+        padding: 6px 0;
+        border-bottom: 1px solid var(--color-borde);
+    }
+
+    .nav-items {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+    }
+
+    .nav-centro {
+        position: static;
+        transform: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-item {
+        width: 100%;
+        padding: 14px 20px;
+        border-bottom: 1px solid #f2f2f2;
+        justify-content: space-between;
+    }
+
+    .separador-nav { display: none; }
+
+    .nav-item.destacado {
+        width: 100%;
+        margin: 4px 0 0;
+        border-radius: 0;
+        justify-content: center;
+    }
+
+    /* ── Dropdown mobile: en flujo ── */
+    .dropdown {
+        position: static;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        border-top: 1px solid #f0f0f0;
+        min-width: 100%;
+        background-color: #fafafa;
+    }
+
+    .dropdown a {
+        padding: 12px 40px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* ── Carrusel figuras: 2 items ── */
+    .carrusel-item {
+        min-width: calc((100% - var(--gap-carrusel)) / 2);
+    }
+
+    /* ── Carrusel productos: 1 item ── */
+    .producto-card { min-width: 100%; }
+
+    /* ── Footer mobile ── */
+    .footer-principal {
+        grid-template-columns: 1fr;
+        padding: 32px 20px;
+        gap: 32px;
+    }
+
+    .footer-inferior {
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* ── Modo oscuro: subheader mobile ── */
+@media (max-width: 768px) {
+    body.modo-oscuro .subheader.abierto {
+        background-color: rgb(24, 22, 23);
+    }
+
+    body.modo-oscuro .nav-item {
+        border-bottom-color: #2a2828;
+    }
+
+    body.modo-oscuro .dropdown {
+        background-color: #1e1c1d;
+        border-top-color: #333;
+    }
+
+    body.modo-oscuro .dropdown a {
+        border-bottom-color: #2a2828;
+    }
+}

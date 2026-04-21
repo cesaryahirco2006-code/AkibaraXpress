@@ -1,0 +1,137 @@
+/* ============================================================
+   modo-oscuro.css — Botón de toggle y overrides para modo oscuro
+   ============================================================ */
+
+/* ── Botón flotante ── */
+#btnModo {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(24, 22, 23);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: background-color var(--trans-rapida), transform var(--trans-rapida);
+}
+
+#btnModo:hover {
+    background-color: var(--color-primario);
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   OVERRIDES — se activan cuando <body> tiene .modo-oscuro
+   ============================================================ */
+
+/* ── Base ── */
+body.modo-oscuro { background-color: rgb(34, 32, 33); }
+
+/* ── Secciones de contenido ── */
+body.modo-oscuro .banner-container,
+body.modo-oscuro .carrusel-section,
+body.modo-oscuro .productos-section {
+    background-color: rgb(34, 32, 33);
+}
+
+/* ── Textos de carrusel y productos ── */
+body.modo-oscuro .carrusel-titulo,
+body.modo-oscuro .productos-titulo,
+body.modo-oscuro .carrusel-item span,
+body.modo-oscuro .producto-nombre,
+body.modo-oscuro .producto-categoria,
+body.modo-oscuro .producto-vendedor { color: white; }
+
+body.modo-oscuro .carrusel-item span:hover,
+body.modo-oscuro .producto-nombre:hover,
+body.modo-oscuro .producto-vendedor:hover { color: var(--color-primario); }
+
+/* ── Tarjeta de producto ── */
+body.modo-oscuro .producto-card {
+    background-color: rgb(24, 22, 23);
+    border-color: #6b5a62;
+}
+
+/* ── Subheader / Nav ── */
+body.modo-oscuro .subheader {
+    background-color: rgb(24, 22, 23);
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+body.modo-oscuro .nav-item          { color: white; }
+body.modo-oscuro .nav-item:hover    { color: var(--color-primario); }
+body.modo-oscuro .nav-item.destacado:hover { color: white; }
+
+body.modo-oscuro .nav-item i        { color: rgba(255, 255, 255, 0.6); }
+body.modo-oscuro .separador-nav     { background-color: rgba(255, 255, 255, 0.2); }
+
+body.modo-oscuro .dropdown          { background-color: rgb(34, 32, 33); border-color: #444; }
+body.modo-oscuro .dropdown a        { color: white; }
+body.modo-oscuro .dropdown a:hover  { background-color: #333131; color: var(--color-primario); }
+
+/* ── Página de Producto ── */
+body.modo-oscuro .breadcrumb-bar {
+    background-color: rgb(24, 22, 23);
+    border-bottom-color: #333;
+}
+
+body.modo-oscuro .breadcrumb-item a     { color: #aaa; }
+body.modo-oscuro .breadcrumb-item.active { color: #eee; }
+
+body.modo-oscuro .pd-imagen-principal,
+body.modo-oscuro .pd-thumb {
+    background-color: rgb(24, 22, 23);
+    border-color: #3a3838;
+}
+
+body.modo-oscuro .pd-nombre        { color: #f0f0f0; }
+body.modo-oscuro .pd-vendedor-row  { color: #aaa; }
+
+body.modo-oscuro .pd-variante-btn  {
+    background-color: rgb(24, 22, 23);
+    border-color: #444;
+    color: #ddd;
+}
+body.modo-oscuro .pd-variante-btn.active {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+body.modo-oscuro .pd-cantidad-ctrl { border-color: #444; }
+body.modo-oscuro .pd-cantidad-btn  { background-color: #2a2828; color: #ddd; }
+body.modo-oscuro .pd-cantidad-valor { color: white; }
+
+body.modo-oscuro .pd-btn-carrito {
+    background-color: transparent;
+    color: var(--color-primario);
+    border-color: var(--color-primario);
+}
+body.modo-oscuro .pd-btn-carrito:hover { background-color: rgba(220, 20, 60, 0.12); }
+
+body.modo-oscuro .pd-btn-wish {
+    background-color: rgb(24, 22, 23);
+    border-color: #444;
+    color: #aaa;
+}
+
+body.modo-oscuro .pd-acordeon       { border-color: #333; }
+body.modo-oscuro .pd-detalle-item   { border-bottom-color: #333; }
+body.modo-oscuro .pd-detalle-item summary { color: #eee; }
+body.modo-oscuro .pd-detalle-item summary:hover { background-color: rgb(24, 22, 23); }
+body.modo-oscuro .pd-detalle-contenido { color: #aaa; }
+
+body.modo-oscuro .pd-specs-table td             { color: #999; }
+body.modo-oscuro .pd-specs-table td:first-child { color: #ccc; }
+body.modo-oscuro .pd-specs-table tr             { border-bottom-color: #2a2a2a; }
+
+body.modo-oscuro .pd-divider       { background-color: #333; }
+body.modo-oscuro .pd-relacionados  { border-top-color: #333; }
+body.modo-oscuro .pd-toast         { background-color: #2a2a2a; }

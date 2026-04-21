@@ -1,0 +1,49 @@
+/* ============================================================
+   accesibilidad.css — Barra de carga y utilidades de accesibilidad
+   ============================================================ */
+
+/* ── Barra de progreso de carga ── */
+#barra-carga {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    z-index: 9999;
+}
+
+#barra-carga-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--color-primario);
+    transition: width 0.4s ease;
+}
+
+/* Oculta el contenido mientras la página carga */
+body.cargando              { overflow: hidden; }
+body.cargando > *:not(#barra-carga) { opacity: 0; }
+body:not(.cargando) > *   { opacity: 1; transition: opacity 0.4s ease; }
+
+/* ── Skip link (accesibilidad de teclado) ── */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 8px;
+    background-color: var(--color-primario);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 0 0 var(--radio-btn) var(--radio-btn);
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 10000;
+    transition: top var(--trans-rapida);
+}
+
+.skip-link:focus { top: 0; }
+
+/* ── Outline global para navegación por teclado ── */
+:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+}

@@ -1,0 +1,134 @@
+/* ============================================================
+   footer.css — Pie de página
+   ============================================================ */
+
+footer {
+    background-color: var(--color-fondo-footer);
+    color: var(--color-texto-gris);
+    font-size: 14px;
+}
+
+/* ── Grid principal (4 columnas) ── */
+.footer-principal {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 56px 48px;
+}
+
+.footer-titulo-col {
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+
+.footer-subtitulo {
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.footer-descripcion {
+    color: #aaa;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+
+.footer-leer-mas {
+    color: var(--color-primario);
+    font-size: 13px;
+    font-weight: 600;
+    transition: color var(--trans-rapida);
+}
+
+.footer-leer-mas:hover { color: #ff3355; }
+
+/* ── Listas de enlaces ── */
+.footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col ul a {
+    color: #999;
+    font-size: 13px;
+    transition: color var(--trans-rapida);
+}
+
+.footer-col ul a:hover { color: white; }
+
+/* ── Newsletter ── */
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #2a2728;
+    border: 1px solid #3a3838;
+    border-radius: 4px;
+    outline: none;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color var(--trans-rapida);
+}
+
+.newsletter-form input::placeholder { color: #666; }
+.newsletter-form input:focus         { border-color: var(--color-primario); }
+
+.newsletter-form button {
+    padding: 12px 16px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: background-color var(--trans-rapida);
+}
+
+.newsletter-form button:hover { background-color: var(--color-primario-dark); }
+
+/* ── Barra inferior con redes ── */
+.footer-inferior {
+    border-top: 1px solid #2a2728;
+    padding: 22px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-copy { font-size: 12px; color: #555; }
+
+.footer-redes { display: flex; gap: 12px; }
+
+.footer-redes a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2a2728;
+    color: white;
+    font-size: 17px;
+    transition: background-color var(--trans-rapida), transform var(--trans-rapida);
+}
+
+.footer-redes a:hover {
+    background-color: var(--color-primario);
+    transform: translateY(-2px);
+}

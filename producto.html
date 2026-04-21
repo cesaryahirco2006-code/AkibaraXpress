@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nombre del Producto — AkibaraXpress</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="producto.css">
+
+    <!-- ── Estilos modulares ── -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/subheader.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/accesibilidad.css">
+    <link rel="stylesheet" href="css/modo-oscuro.css">
+    <link rel="stylesheet" href="css/contenido/principal.css">
+    <link rel="stylesheet" href="css/contenido/producto.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+
+    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <!-- ========== HEADER (idéntico al index) ========== -->
+    <!-- ========== HEADER ========== -->
     <header>
         <div class="Logo">
             <a href="index.html"><img src="Imagenes/logo.webp" alt="Logo AkibaraXpress"></a>
@@ -89,32 +100,26 @@
     <!-- ========== CONTENIDO PRINCIPAL ========== -->
     <main class="producto-detalle-main">
 
-        <!-- ── Layout dos columnas ── -->
         <div class="pd-grid">
 
             <!-- Columna izquierda: galería -->
             <div class="pd-galeria">
-
-                <!-- Imagen principal -->
                 <div class="pd-imagen-principal" id="pdImagenPrincipal">
                     <i class="fa-regular fa-image"></i>
                     <span class="pd-badge-nuevo">NUEVO</span>
                 </div>
 
-                <!-- Miniaturas -->
                 <div class="pd-thumbs" id="pdThumbs">
                     <div class="pd-thumb active" data-index="0"><i class="fa-regular fa-image"></i></div>
                     <div class="pd-thumb" data-index="1"><i class="fa-regular fa-image"></i></div>
                     <div class="pd-thumb" data-index="2"><i class="fa-regular fa-image"></i></div>
                     <div class="pd-thumb" data-index="3"><i class="fa-regular fa-image"></i></div>
                 </div>
-
             </div>
 
             <!-- Columna derecha: información -->
             <div class="pd-info">
 
-                <!-- Cabecera del producto -->
                 <div class="pd-cabecera">
                     <div class="pd-tags">
                         <span class="pd-tag">Figuras</span>
@@ -127,17 +132,18 @@
                     </div>
                 </div>
 
-                <!-- Precio y disponibilidad -->
                 <div class="pd-precio-bloque">
                     <div class="pd-precio-row">
                         <span class="pd-precio" id="pdPrecio">$999.00</span>
                         <span class="pd-precio-original">$1,299.00</span>
                         <span class="pd-descuento">−23%</span>
                     </div>
-                    <span class="pd-envio"><i class="fa-solid fa-truck-fast"></i> Envío gratis en órdenes mayores a $500</span>
+                    <span class="pd-envio">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        Envío gratis en órdenes mayores a $500
+                    </span>
                 </div>
 
-                <!-- Rating -->
                 <div class="pd-rating">
                     <div class="pd-estrellas">
                         <i class="fa-solid fa-star"></i>
@@ -147,12 +153,11 @@
                         <i class="fa-regular fa-star"></i>
                     </div>
                     <span class="pd-rating-num">4.0</span>
-                    <span class="pd-rating-total">(128 reseñas)</span>
+                    <span class="pd-rating-total">(No reseñas)</span>
                 </div>
 
                 <div class="pd-divider"></div>
 
-                <!-- Variantes -->
                 <div class="pd-variantes">
                     <p class="pd-variante-label">Variante: <strong id="varianteSeleccionada">Estándar</strong></p>
                     <div class="pd-variante-opciones">
@@ -162,7 +167,6 @@
                     </div>
                 </div>
 
-                <!-- Cantidad -->
                 <div class="pd-cantidad-row">
                     <span class="pd-cantidad-label">Cantidad:</span>
                     <div class="pd-cantidad-ctrl">
@@ -173,24 +177,19 @@
                     <span class="pd-stock"><i class="fa-solid fa-circle-check"></i> 15 en stock</span>
                 </div>
 
-                <!-- Botones de acción -->
                 <div class="pd-acciones">
                     <button class="pd-btn-carrito" id="btnAgregarCarrito">
-                        <i class="fa-solid fa-cart-plus"></i>
-                        Agregar al carrito
+                        <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
                     </button>
                     <button class="pd-btn-comprar">
-                        <i class="fa-solid fa-bolt"></i>
-                        Comprar ahora
+                        <i class="fa-solid fa-bolt"></i> Comprar ahora
                     </button>
                     <button class="pd-btn-wish" aria-label="Agregar a favoritos">
                         <i class="fa-regular fa-heart"></i>
                     </button>
                 </div>
 
-                <!-- Detalles del producto (acordeón) -->
                 <div class="pd-acordeon">
-
                     <details class="pd-detalle-item" open>
                         <summary>
                             <span>Descripción</span>
@@ -229,12 +228,10 @@
                             <p><i class="fa-solid fa-rotate-left"></i> Devoluciones aceptadas dentro de 15 días con producto sin abrir.</p>
                         </div>
                     </details>
-
                 </div>
 
-            </div><!-- /pd-info -->
-
-        </div><!-- /pd-grid -->
+            </div>
+        </div>
 
         <!-- ── Productos relacionados ── -->
         <section class="pd-relacionados">
@@ -325,7 +322,7 @@
 
     </main>
 
-    <!-- ========== PIE DE PÁGINA (idéntico al index) ========== -->
+    <!-- ========== PIE DE PÁGINA ========== -->
     <footer>
         <div class="footer-principal">
             <div class="footer-col">
@@ -381,18 +378,22 @@
         </div>
     </footer>
 
-    <!-- Modo oscuro -->
+    <!-- Botón modo oscuro -->
     <button id="btnModo" aria-label="Cambiar modo">
         <i class="fa-solid fa-moon"></i>
     </button>
 
-    <!-- Toast de confirmación -->
+    <!-- Toast -->
     <div class="pd-toast" id="pdToast">
         <i class="fa-solid fa-circle-check"></i>
         <span>¡Producto agregado al carrito!</span>
     </div>
 
-    <script src="script.js"></script>
-    <script src="producto.js"></script>
+    <!-- ── Scripts modulares ── -->
+    <script src="js/utils.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/modo-oscuro.js"></script>
+    <script src="js/producto.js"></script>
+
 </body>
 </html>
