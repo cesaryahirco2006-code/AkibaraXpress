@@ -460,10 +460,33 @@
         </div>
     </footer>
 
-    <!-- Botón modo oscuro -->
-    <button id="btnModo" aria-label="Cambiar modo">
-        <i class="fa-solid fa-moon"></i>
+    <!-- Botón de accesibilidad -->
+    <button id="btnAccesibilidad" aria-label="Opciones de accesibilidad" aria-expanded="false" aria-controls="menuAccesibilidad">
+        <i class="fa-solid fa-universal-access"></i>
     </button>
+
+    <!-- Menú de accesibilidad -->
+    <aside id="menuAccesibilidad" class="accesibilidad-panel" role="dialog" aria-label="Menú de accesibilidad" aria-hidden="true">
+        <div class="accesibilidad-header">
+            <h2>Accesibilidad</h2>
+            <button id="btnCerrarMenu" aria-label="Cerrar menú de accesibilidad">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="accesibilidad-opciones">
+            <button class="accesibilidad-opcion" id="btnModoOscuro">
+                <i class="fa-solid fa-moon"></i>
+                <span>Modo oscuro</span>
+            </button>
+<button class="accesibilidad-opcion" id="btnCursorGrande">
+                <i class="fa-solid fa-arrow-pointer"></i>
+                <span>Cursor grande</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Overlay para cerrar el menú -->
+    <div id="accesibilidadOverlay" class="accesibilidad-overlay"></div>
 
     <!-- ── Scripts modulares ── -->
     <script src="js/transiciones.js"></script>
@@ -471,6 +494,7 @@
     <script src="js/header.js"></script>
     <script src="js/banner.js"></script>
     <script src="js/modo-oscuro.js"></script>
+    <script src="js/accesibilidad.js"></script>
     <script src="js/index.js"></script>
 
 </body>
