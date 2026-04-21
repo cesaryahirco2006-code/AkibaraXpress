@@ -263,7 +263,7 @@
 
 /* Lo Más Nuevo con fondo blanco para separación visual clara */
 .lo-mas-nuevo-section {
-    var(--color-fondo-alt);
+    background-color: #ffffff;
 }
 
 .productos-track {

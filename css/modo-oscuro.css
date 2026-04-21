@@ -103,22 +103,24 @@ body.modo-oscuro .producto-vendedor:hover   { color: var(--color-primario); }
 /* ── Subheader / Nav ── */
 body.modo-oscuro .subheader {
     background-color: rgb(24, 22, 23);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
-body.modo-oscuro .nav-item          { color: #ddd; }
-body.modo-oscuro .nav-item:hover    { color: var(--color-primario); }
-body.modo-oscuro .nav-item.destacado:hover { color: white; }
+body.modo-oscuro .nav-item                  { color: #bbb; }
+body.modo-oscuro .nav-item:hover,
+body.modo-oscuro .nav-item:focus-visible    { background-color: rgba(255, 255, 255, 0.06); color: #eee; }
+body.modo-oscuro .nav-item.destacado:hover  { background-color: #15803d; color: white; }
 
-body.modo-oscuro .nav-item i        { color: rgba(255, 255, 255, 0.5); }
-body.modo-oscuro .separador-nav     { background-color: rgba(255, 255, 255, 0.15); }
+body.modo-oscuro .nav-item i                { color: rgba(255, 255, 255, 0.3); }
+body.modo-oscuro .separador-nav             { background-color: rgba(255, 255, 255, 0.1); }
 
 body.modo-oscuro .dropdown {
-    background-color: rgb(30, 28, 29);
+    background-color: rgb(28, 26, 27);
     border-color: #3a3838;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
-body.modo-oscuro .dropdown a        { color: #ddd; }
-body.modo-oscuro .dropdown a:hover  { background-color: rgb(40, 38, 39); color: var(--color-primario); }
+body.modo-oscuro .dropdown a                { color: #bbb; }
+body.modo-oscuro .dropdown a:hover          { background-color: rgba(255, 255, 255, 0.05); color: var(--color-primario); }
 
 /* ── Página de Producto — breadcrumb ── */
 body.modo-oscuro .pd-breadcrumb a       { color: #888; }

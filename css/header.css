@@ -32,7 +32,7 @@ header {
 /* ── Buscador ── */
 .container {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     border-radius: 40px;
     overflow: hidden;
     border: 2px solid #ccc;
@@ -159,8 +159,7 @@ header.scrolled {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
-header.scrolled .Logo img      { height: 45px; }
-header.scrolled .container input { padding: 7px 16px; }
+header.scrolled .Logo img { height: 45px; }
 
 header.scrolled ~ .subheader {
     top: var(--alto-header);
