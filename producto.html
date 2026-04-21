@@ -20,7 +20,7 @@
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body class="pagina-producto">
 
     <!-- Barra de carga -->
     <div id="barra-carga">
@@ -136,46 +136,39 @@
 
                 <!-- Módulo 3: Métodos de pago y envío -->
                 <div class="pd-modulo pd-modulo-pagos">
-                    <div class="pd-pago-metodos">
-                        <div class="pd-metodos-labels">
-                            <span>Apple Pay</span>
-                            <span>Google Pay</span>
-                            <span>Mastercard</span>
-                            <span>Visa</span>
-                            <span>Shop</span>
-                            <span>Mercado Pago</span>
-                        </div>
-                        <div class="pd-metodos-iconos">
-                            <i class="fa-brands fa-apple-pay"></i>
-                            <i class="fa-brands fa-google-pay"></i>
-                            <i class="fa-brands fa-cc-mastercard"></i>
-                            <i class="fa-brands fa-cc-visa"></i>
-                            <i class="fa-solid fa-bag-shopping"></i>
-                            <i class="fa-brands fa-cc-paypal"></i>
-                        </div>
+
+                    <!-- Cabecera del módulo -->
+                    <div class="pd-pago-header">
+                        <span class="pd-pago-titulo">Métodos de pago aceptados</span>
+                        <i class="fa-solid fa-lock pd-lock-icon"></i>
                     </div>
 
+                    <!-- Pills de métodos de pago -->
+                    <div class="pd-metodos-pills">
+                        <span class="pd-pago-pill"><i class="fa-brands fa-google-pay"></i> Google Pay</span>
+                        <span class="pd-pago-pill"><i class="fa-brands fa-paypal"></i> PayPal</span>
+                        <span class="pd-pago-pill"><i class="fa-brands fa-apple-pay"></i> Apple Pay</span>
+                        <span class="pd-pago-pill"><i class="fa-brands fa-cc-visa"></i> Visa</span>
+                        <span class="pd-pago-pill"><i class="fa-brands fa-cc-mastercard"></i> Mastercard</span>
+                        <span class="pd-pago-pill"><i class="fa-brands fa-cc-amex"></i> Amex</span>
+                        <span class="pd-pago-pill"><i class="fa-solid fa-building-columns"></i> Mercado Pago</span>
+                        <span class="pd-pago-pill"><i class="fa-brands fa-stripe"></i> Stripe</span>
+                    </div>
+
+                    <p class="pd-seguridad-texto">Todas tus compras están protegidas con encriptación SSL de 256 bits.</p>
+
+                    <div class="pd-modulo-divisor"></div>
+
+                    <!-- Estimador de envío -->
                     <div class="pd-envio-estimador">
-                        <div class="pd-envio-campos">
-                            <p>País</p>
-                            <p>Provincia</p>
-                            <p>Código Postal</p>
+                        <div class="pd-envio-inputs">
+                            <input type="text" class="pd-envio-input" placeholder="Estado">
+                            <input type="text" class="pd-envio-input" placeholder="Ciudad">
+                            <input type="text" class="pd-envio-input" placeholder="Código Postal">
                         </div>
-                        <button class="pd-envio-btn">Estimación</button>
+                        <button class="pd-envio-btn">Calcular envío</button>
                     </div>
 
-                    <div class="pd-seguridad">
-                        <div class="pd-seguridad-iconos">
-                            <i class="fa-brands fa-cc-visa"></i>
-                            <i class="fa-brands fa-cc-mastercard"></i>
-                            <i class="fa-brands fa-cc-amex"></i>
-                            <i class="fa-brands fa-cc-paypal"></i>
-                            <i class="fa-brands fa-apple-pay"></i>
-                            <i class="fa-brands fa-google-pay"></i>
-                            <i class="fa-solid fa-lock"></i>
-                        </div>
-                        <p class="pd-seguridad-texto">Texto que genere confianza para usar sus formas de pago</p>
-                    </div>
                 </div>
 
             </div>
@@ -216,7 +209,9 @@
                         </div>
                         <div class="pd-fila">
                             <span class="pd-fila-label">Stock:</span>
-                            <span class="pd-fila-valor">Disponibilidad</span>
+                            <span class="pd-fila-valor pd-stock">
+                                <span class="pd-stock-dot"></span>Disponible
+                            </span>
                         </div>
                         <div class="pd-fila">
                             <span class="pd-fila-label">Cantidad:</span>
@@ -239,6 +234,24 @@
                     <button class="pd-btn-comprar" id="btnComprar">Comprar Ahora</button>
 
                     <button class="pd-btn-carrito" id="btnAgregarCarrito">Agregar al carrito</button>
+
+                    <!-- Promociones de pago -->
+                    <div class="pd-promos">
+                        <div class="pd-promo-fila">
+                            <div class="pd-promo-icono">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <div class="pd-promo-texto">
+                                <span>Hasta <strong>20% OFF</strong> con Meses sin Tarjeta. <a href="#" class="pd-promo-link">Saber más.</a></span>
+                                <span class="pd-promo-codigo">Código <strong>BNPLMP</strong> <i class="fa-solid fa-arrow-up-right-from-square pd-promo-ext"></i></span>
+                            </div>
+                        </div>
+                        <div class="pd-promo-fila">
+                            <span class="pd-promo-texto-aplazo">Paga con</span>
+                            <span class="pd-aplazo-badge">aplazo <i class="fa-solid fa-circle-nodes"></i></span>
+                            <span class="pd-promo-texto-aplazo">y difiere tus pagos en quincenas, sin letras chiquitas. <a href="#" class="pd-promo-link">Conoce más.</a></span>
+                        </div>
+                    </div>
 
                     <div class="pd-vendedor-row">
                         <i class="fa-solid fa-store"></i>
@@ -367,8 +380,9 @@
                 <h4 class="footer-titulo-col">Newsletter</h4>
                 <p class="footer-descripcion">Suscribete con nosotros y recibe promociones, informacion de preventas y mucho mas!</p>
                 <div class="newsletter-form">
-                    <input type="email" placeholder="Tu email" aria-label="Correo electronico">
-                    <button>Suscribir</button>
+                    <input type="tel" placeholder="Tu teléfono (10 dígitos)" aria-label="Número de teléfono" maxlength="15">
+                    <button type="button">Suscribir</button>
+                    <span class="newsletter-msg"></span>
                 </div>
             </div>
             <div class="footer-col">

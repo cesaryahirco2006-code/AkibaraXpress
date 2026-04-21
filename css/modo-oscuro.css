@@ -178,19 +178,19 @@ body.modo-oscuro .pd-tiendas-btn {
 body.modo-oscuro .pd-tiendas-btn:hover { border-color: #666; }
 
 body.modo-oscuro .pd-btn-comprar {
-    background-color: #e8e8e8;
-    color: #111;
+    background-color: var(--color-primario);
+    color: white;
 }
-body.modo-oscuro .pd-btn-comprar:hover { background-color: white; }
+body.modo-oscuro .pd-btn-comprar:hover { background-color: var(--color-primario-dark); }
 
 body.modo-oscuro .pd-btn-carrito {
     background-color: transparent;
-    border-color: #555;
-    color: #ccc;
+    border-color: var(--color-primario);
+    color: var(--color-primario);
 }
 body.modo-oscuro .pd-btn-carrito:hover {
-    border-color: #888;
-    background-color: rgb(40, 38, 39);
+    background-color: var(--color-primario);
+    color: white;
 }
 
 body.modo-oscuro .pd-btn-wish,
@@ -211,21 +211,64 @@ body.modo-oscuro .pd-vendedor-row  { color: #777; border-top-color: #3a3838; }
 body.modo-oscuro .pd-zoom-hint     { color: #666; }
 
 /* ── Página de Producto — módulo pagos ── */
-body.modo-oscuro .pd-pago-metodos  { border-bottom-color: #3a3838; }
-body.modo-oscuro .pd-metodos-labels span { color: #777; }
-body.modo-oscuro .pd-metodos-iconos { color: #777; }
+body.modo-oscuro .pd-pago-header   { background-color: #111; }
 
-body.modo-oscuro .pd-envio-campos  { color: #888; }
-body.modo-oscuro .pd-envio-btn {
+body.modo-oscuro .pd-pago-pill {
     background-color: rgb(40, 38, 39);
     border-color: #3a3838;
     color: #ccc;
 }
-body.modo-oscuro .pd-envio-btn:hover { background-color: rgb(46, 44, 45); }
+body.modo-oscuro .pd-pago-pill:hover { background-color: rgb(46, 44, 45); }
+body.modo-oscuro .pd-pago-pill i    { color: #888; }
 
-body.modo-oscuro .pd-seguridad     { border-top-color: #3a3838; }
-body.modo-oscuro .pd-seguridad-iconos { color: #666; }
-body.modo-oscuro .pd-seguridad-texto  { color: #666; }
+body.modo-oscuro .pd-modulo-divisor { background-color: #3a3838; }
+body.modo-oscuro .pd-seguridad-texto { color: #666; }
+
+body.modo-oscuro .pd-envio-input {
+    background-color: rgb(40, 38, 39);
+    border-color: #3a3838;
+    color: #ccc;
+}
+body.modo-oscuro .pd-envio-input::placeholder { color: #555; }
+body.modo-oscuro .pd-envio-input:focus { background-color: rgb(44, 42, 43); }
+
+body.modo-oscuro .pd-envio-btn {
+    background-color: var(--color-primario);
+    color: white;
+}
+body.modo-oscuro .pd-envio-btn:hover { background-color: var(--color-primario-dark); }
+
+/* ── Página de Producto — fondo y estados faltantes ── */
+body.modo-oscuro.pagina-producto {
+    background-color: rgb(24, 22, 23);
+}
+
+body.modo-oscuro .pd-btn-wish.activo {
+    background-color: rgba(220, 20, 60, 0.18);
+    border-color: var(--color-primario);
+    color: var(--color-primario);
+}
+
+body.modo-oscuro .pd-badge-nuevo {
+    background-color: var(--color-primario);
+}
+
+body.modo-oscuro .pd-thumb-nav-btn {
+    background-color: rgb(40, 38, 39);
+    border-color: #3a3838;
+    color: #666;
+}
 
 /* ── Toast ── */
 body.modo-oscuro .pd-toast { background-color: rgb(40, 38, 39); }
+
+/* ── Promociones de pago ── */
+body.modo-oscuro .pd-promos {
+    background-color: rgb(32, 30, 31);
+    border-color: #3a3838;
+}
+body.modo-oscuro .pd-promo-fila       { color: #bbb; }
+body.modo-oscuro .pd-promo-texto-aplazo { color: #bbb; }
+body.modo-oscuro .pd-promo-codigo     { color: #777; }
+body.modo-oscuro .pd-promo-link       { color: #6baed6; }
+body.modo-oscuro .pd-promo-link:hover { color: #93c5e8; }

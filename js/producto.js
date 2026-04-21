@@ -64,13 +64,31 @@ document.addEventListener('click', e => {
 });
 
 
-/* ── 4. WISHLIST — Toggle de corazón ── */
+/* ── 4. WISHLIST — Toggle de corazón con animación ── */
 const btnWish = document.querySelector('.pd-btn-wish');
 
 btnWish?.addEventListener('click', () => {
     const activo    = btnWish.classList.toggle('activo');
     const icono     = btnWish.querySelector('i');
     icono.className = activo ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+
+    // Animación bounce del botón
+    btnWish.classList.remove('animando');
+    void btnWish.offsetWidth;
+    btnWish.classList.add('animando');
+    setTimeout(() => btnWish.classList.remove('animando'), 450);
+
+    // Corazón flotante al activar
+    if (activo) {
+        const rect    = btnWish.getBoundingClientRect();
+        const corazon = document.createElement('span');
+        corazon.className   = 'pd-wish-float';
+        corazon.textContent = '♥';
+        corazon.style.left  = (rect.left + rect.width / 2 - 10) + 'px';
+        corazon.style.top   = (rect.top - 4) + 'px';
+        document.body.appendChild(corazon);
+        setTimeout(() => corazon.remove(), 750);
+    }
 });
 
 
@@ -85,37 +103,30 @@ crearCarrusel({
 });
 
 
-/* ── 6. DATOS DINÁMICOS desde URL ── */
+/* ── 6. DATOS — siempre muestra placeholder genérico ── */
 (function initDatosDinamicos() {
     const params    = new URLSearchParams(window.location.search);
-    const nombre    = params.get('nombre');
     const categoria = params.get('categoria');
-    const precio    = params.get('precio');
 
-    if (nombre) {
-        const decoded = decodeURIComponent(nombre);
+    const NOMBRE = 'Nombre del Producto';
+    const PRECIO = '$999.00';
 
-        document.title = `${decoded} — AkibaraXpress`;
+    document.title = `${NOMBRE} — AkibaraXpress`;
 
-        const bcProducto = document.getElementById('bc-producto');
-        if (bcProducto) bcProducto.textContent = decoded;
+    const bcProducto = document.getElementById('bc-producto');
+    if (bcProducto) bcProducto.textContent = NOMBRE;
 
-        // Sincroniza nombre en panel derecho y módulo descripción
-        const pdNombre = document.getElementById('pdNombre');
-        if (pdNombre) pdNombre.textContent = decoded;
+    const pdNombre = document.getElementById('pdNombre');
+    if (pdNombre) pdNombre.textContent = NOMBRE;
 
-        const pdNombreDesc = document.getElementById('pdNombreDesc');
-        if (pdNombreDesc) pdNombreDesc.textContent = decoded;
-    }
+    const pdNombreDesc = document.getElementById('pdNombreDesc');
+    if (pdNombreDesc) pdNombreDesc.textContent = NOMBRE;
+
+    const pdPrecio = document.getElementById('pdPrecio');
+    if (pdPrecio) pdPrecio.textContent = PRECIO;
 
     if (categoria) {
-        const decoded     = decodeURIComponent(categoria);
         const bcCategoria = document.getElementById('bc-categoria');
-        if (bcCategoria) bcCategoria.textContent = decoded;
-    }
-
-    if (precio) {
-        const pdPrecio = document.getElementById('pdPrecio');
-        if (pdPrecio) pdPrecio.textContent = decodeURIComponent(precio);
+        if (bcCategoria) bcCategoria.textContent = decodeURIComponent(categoria);
     }
 })();

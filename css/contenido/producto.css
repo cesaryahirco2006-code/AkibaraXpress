@@ -2,6 +2,11 @@
    contenido/producto.css — Página de detalle de producto
    ============================================================ */
 
+/* ── Fondo de página coherente con el index ── */
+body.pagina-producto {
+    background-color: var(--color-fondo-alt);
+}
+
 /* ── Layout principal ── */
 .producto-detalle-main {
     max-width: 1400px;
@@ -196,90 +201,127 @@
 
 
 /* ── Módulo pagos ── */
-.pd-pago-metodos {
+
+/* Cabecera del módulo pagos */
+.pd-pago-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--color-borde);
-    margin-bottom: 16px;
-}
-
-.pd-metodos-labels {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    font-size: 12px;
-    color: #888;
-}
-
-.pd-metodos-iconos {
-    display: flex;
-    gap: 10px;
-    font-size: 26px;
-    color: #555;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-}
-
-.pd-envio-estimador {
-    display: flex;
-    align-items: flex-end;
-    gap: 14px;
-    margin-bottom: 16px;
-}
-
-.pd-envio-campos {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    flex: 1;
-    font-size: 13px;
-    color: #555;
-}
-
-.pd-envio-btn {
-    padding: 10px 22px;
-    background-color: #f0f0f0;
-    border: 1px solid var(--color-borde);
+    padding: 10px 14px;
+    background-color: #222;
     border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.pd-pago-titulo {
     font-size: 13px;
     font-weight: 600;
-    color: #333;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background-color var(--trans-rapida);
+    color: white;
+    letter-spacing: 0.02em;
 }
 
-.pd-envio-btn:hover { background-color: #e5e5e5; }
-
-.pd-seguridad {
-    border-top: 1px solid var(--color-borde);
-    padding-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.pd-lock-icon {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
 }
 
-.pd-seguridad-iconos {
+/* Pills de métodos de pago */
+.pd-metodos-pills {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 22px;
-    color: #666;
     flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
 }
 
-.pd-seguridad-iconos .fa-lock {
-    font-size: 17px;
-    color: #999;
+.pd-pago-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    transition: background-color var(--trans-rapida), border-color var(--trans-rapida);
 }
 
+.pd-pago-pill:hover {
+    background-color: #ebebeb;
+    border-color: #ccc;
+}
+
+.pd-pago-pill i {
+    font-size: 15px;
+    color: #555;
+}
+
+/* Divisor interno del módulo */
+.pd-modulo-divisor {
+    height: 1px;
+    background-color: var(--color-borde);
+    margin: 16px 0;
+}
+
+/* Texto de seguridad */
 .pd-seguridad-texto {
     font-size: 12px;
     color: #999;
     text-align: center;
+    margin-bottom: 4px;
 }
+
+/* Estimador de envío */
+.pd-envio-estimador {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pd-envio-inputs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pd-envio-input {
+    flex: 1;
+    min-width: 90px;
+    padding: 9px 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: inherit;
+    color: #333;
+    outline: none;
+    background-color: #fafafa;
+    transition: border-color var(--trans-rapida), box-shadow var(--trans-rapida);
+}
+
+.pd-envio-input::placeholder { color: #bbb; }
+
+.pd-envio-input:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 2px rgba(220, 20, 60, 0.12);
+    background-color: white;
+}
+
+.pd-envio-btn {
+    padding: 10px 22px;
+    background-color: var(--color-primario);
+    border: none;
+    border-radius: var(--radio-btn);
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    align-self: flex-end;
+    transition: background-color var(--trans-rapida), transform var(--trans-rapida);
+}
+
+.pd-envio-btn:hover { background-color: var(--color-primario-dark); transform: translateY(-1px); }
 
 
 /* ── Panel derecho ── */
@@ -344,6 +386,32 @@
     color: var(--color-primario);
 }
 
+@keyframes wishPop {
+    0%   { transform: scale(1); }
+    20%  { transform: scale(0.8); }
+    55%  { transform: scale(1.45); }
+    80%  { transform: scale(0.92); }
+    100% { transform: scale(1); }
+}
+
+@keyframes wishFloat {
+    0%   { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-44px) scale(0.6); }
+}
+
+.pd-btn-wish.animando { animation: wishPop 0.45s ease forwards; }
+
+/* Corazón flotante al dar like en detalle de producto */
+.pd-wish-float {
+    position: fixed;
+    pointer-events: none;
+    color: var(--color-primario);
+    font-size: 20px;
+    z-index: 9999;
+    animation: wishFloat 0.7s ease forwards;
+    line-height: 1;
+}
+
 /* ── Rating ── */
 .pd-rating {
     display: flex;
@@ -394,6 +462,21 @@
 .pd-fila-valor {
     color: #111;
     font-weight: 600;
+}
+
+.pd-stock {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pd-stock-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #22c55e;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
 }
 
 .pd-precio {
@@ -467,36 +550,132 @@
 
 .pd-tiendas-left > i { color: var(--color-primario); font-size: 14px; }
 
-/* ── Botones de compra ── */
+/* ── Botones de compra — coherentes con btn-comprar / btn-ver del index ── */
 .pd-btn-comprar {
     width: 100%;
     padding: 14px;
     border: none;
-    background-color: #222;
+    background-color: var(--color-primario);
     color: white;
-    border-radius: 8px;
+    border-radius: var(--radio-btn);
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
     transition: background-color var(--trans-rapida), transform var(--trans-rapida);
 }
 
-.pd-btn-comprar:hover { background-color: #444; transform: translateY(-1px); }
+.pd-btn-comprar:hover {
+    background-color: var(--color-primario-dark);
+    transform: translateY(-1px);
+}
 
 .pd-btn-carrito {
     width: 100%;
     padding: 13px;
-    border: 1.5px solid var(--color-borde);
-    background-color: white;
-    color: #333;
-    border-radius: 8px;
+    border: 1.5px solid var(--color-primario);
+    background-color: transparent;
+    color: var(--color-primario);
+    border-radius: var(--radio-btn);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: border-color var(--trans-rapida), background-color var(--trans-rapida);
+    transition: background-color var(--trans-rapida), color var(--trans-rapida), transform var(--trans-rapida);
 }
 
-.pd-btn-carrito:hover { border-color: #aaa; background-color: #fafafa; }
+.pd-btn-carrito:hover {
+    background-color: var(--color-primario);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* ── Promociones de pago ── */
+.pd-promos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    background-color: var(--color-fondo-alt);
+    border-radius: var(--radio-btn);
+    border: 1px solid var(--color-borde);
+}
+
+.pd-promo-fila {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #444;
+    line-height: 1.4;
+}
+
+.pd-promo-icono {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #fde047;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: #333;
+    flex-shrink: 0;
+}
+
+.pd-promo-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+}
+
+.pd-promo-codigo {
+    color: #666;
+    font-size: 11px;
+}
+
+.pd-promo-codigo strong {
+    color: var(--color-primario);
+    letter-spacing: 0.04em;
+}
+
+.pd-promo-ext {
+    font-size: 9px;
+    color: #888;
+    vertical-align: middle;
+}
+
+.pd-promo-link {
+    color: #1a6cbf;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color var(--trans-rapida);
+}
+
+.pd-promo-link:hover { color: #1050a0; }
+
+.pd-promo-texto-aplazo {
+    font-size: 12px;
+    color: #444;
+}
+
+.pd-aplazo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #00c16e;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.01em;
+    flex-shrink: 0;
+}
+
+.pd-aplazo-badge i { font-size: 11px; }
+
 
 /* ── Fila vendedor ── */
 .pd-vendedor-row {
