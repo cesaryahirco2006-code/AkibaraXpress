@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nombre del Producto — AkibaraXpress</title>
+    <title>Nombre Producto — AkibaraXpress</title>
 
     <!-- ── Estilos modulares ── -->
     <link rel="stylesheet" href="css/variables.css">
@@ -80,157 +80,167 @@
         </div>
     </nav>
 
-    <!-- ========== MIGAS DE PAN ========== -->
-    <nav class="breadcrumb-bar" aria-label="Migas de pan">
-        <div class="breadcrumb-inner">
-            <ol class="breadcrumb" id="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="#" id="bc-categoria">Figuras</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page" id="bc-producto">
-                    Nombre del Producto
-                </li>
-            </ol>
-        </div>
-    </nav>
-
     <!-- ========== CONTENIDO PRINCIPAL ========== -->
     <main class="producto-detalle-main">
 
-        <div class="pd-grid">
+        <div class="pd-layout">
 
-            <!-- Columna izquierda: galería -->
-            <div class="pd-galeria">
-                <div class="pd-imagen-principal" id="pdImagenPrincipal">
-                    <i class="fa-regular fa-image"></i>
-                    <span class="pd-badge-nuevo">NUEVO</span>
+            <!-- ── COLUMNA IZQUIERDA ── -->
+            <div class="pd-columna-izq">
+
+                <!-- Módulo 1: Galería con breadcrumb anclado -->
+                <div class="pd-modulo pd-modulo-galeria">
+                    <nav aria-label="Migas de pan" class="pd-breadcrumb">
+                        <ol id="breadcrumb">
+                            <li><a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                            <li><a href="#" id="bc-categoria">Categoria</a></li>
+                            <li class="active" aria-current="page" id="bc-producto">Nombre Producto</li>
+                        </ol>
+                    </nav>
+
+                    <div class="pd-galeria-inner">
+                        <!-- Miniaturas verticales (izquierda) -->
+                        <div class="pd-thumbs-col" id="pdThumbs">
+                            <div class="pd-thumb active" data-index="0"><i class="fa-regular fa-image"></i></div>
+                            <div class="pd-thumb" data-index="1"><i class="fa-regular fa-image"></i></div>
+                            <div class="pd-thumb" data-index="2"><i class="fa-regular fa-image"></i></div>
+                            <button class="pd-thumb-nav-btn" id="btnThumbsDown" aria-label="Ver más">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                        </div>
+
+                        <!-- Imagen principal -->
+                        <div class="pd-imagen-principal" id="pdImagenPrincipal">
+                            <i class="fa-regular fa-image"></i>
+                            <span class="pd-badge-nuevo">NUEVO</span>
+                        </div>
+                    </div>
+
+                    <p class="pd-zoom-hint">
+                        <i class="fa-solid fa-magnifying-glass"></i> Pasa el cursor para ampliar la imagen
+                    </p>
                 </div>
 
-                <div class="pd-thumbs" id="pdThumbs">
-                    <div class="pd-thumb active" data-index="0"><i class="fa-regular fa-image"></i></div>
-                    <div class="pd-thumb" data-index="1"><i class="fa-regular fa-image"></i></div>
-                    <div class="pd-thumb" data-index="2"><i class="fa-regular fa-image"></i></div>
-                    <div class="pd-thumb" data-index="3"><i class="fa-regular fa-image"></i></div>
+                <!-- Módulo 2: Nombre + Descripción -->
+                <div class="pd-modulo pd-modulo-descripcion">
+                    <h2 class="pd-nombre-seccion" id="pdNombreDesc">Nombre Producto</h2>
+                    <p class="pd-descripcion-texto">Descripción del producto. Aquí se incluye información detallada sobre sus características, materiales, dimensiones y todo lo que el comprador necesita saber para tomar una decisión informada sobre su compra.</p>
                 </div>
+
+                <!-- Módulo 3: Métodos de pago y envío -->
+                <div class="pd-modulo pd-modulo-pagos">
+                    <div class="pd-pago-metodos">
+                        <div class="pd-metodos-labels">
+                            <span>Apple Pay</span>
+                            <span>Google Pay</span>
+                            <span>Mastercard</span>
+                            <span>Visa</span>
+                            <span>Shop</span>
+                            <span>Mercado Pago</span>
+                        </div>
+                        <div class="pd-metodos-iconos">
+                            <i class="fa-brands fa-apple-pay"></i>
+                            <i class="fa-brands fa-google-pay"></i>
+                            <i class="fa-brands fa-cc-mastercard"></i>
+                            <i class="fa-brands fa-cc-visa"></i>
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <i class="fa-brands fa-cc-paypal"></i>
+                        </div>
+                    </div>
+
+                    <div class="pd-envio-estimador">
+                        <div class="pd-envio-campos">
+                            <p>País</p>
+                            <p>Provincia</p>
+                            <p>Código Postal</p>
+                        </div>
+                        <button class="pd-envio-btn">Estimación</button>
+                    </div>
+
+                    <div class="pd-seguridad">
+                        <div class="pd-seguridad-iconos">
+                            <i class="fa-brands fa-cc-visa"></i>
+                            <i class="fa-brands fa-cc-mastercard"></i>
+                            <i class="fa-brands fa-cc-amex"></i>
+                            <i class="fa-brands fa-cc-paypal"></i>
+                            <i class="fa-brands fa-apple-pay"></i>
+                            <i class="fa-brands fa-google-pay"></i>
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <p class="pd-seguridad-texto">Texto que genere confianza para usar sus formas de pago</p>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Columna derecha: información -->
-            <div class="pd-info">
+            <!-- ── COLUMNA DERECHA (panel sticky) ── -->
+            <div class="pd-columna-der">
+                <div class="pd-panel">
 
-                <div class="pd-cabecera">
-                    <div class="pd-tags">
-                        <span class="pd-tag">Figuras</span>
-                        <span class="pd-tag">Preventa</span>
+                    <div class="pd-panel-header">
+                        <h1 class="pd-nombre" id="pdNombre">Nombre Producto</h1>
+                        <div class="pd-panel-top-acciones">
+                            <button class="pd-btn-wish" aria-label="Agregar a favoritos">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                            <button class="pd-btn-share" aria-label="Compartir">
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </button>
+                        </div>
                     </div>
-                    <h1 class="pd-nombre" id="pdNombre">Nombre del Producto Largo que Puede Tener Dos Líneas</h1>
+
+                    <div class="pd-rating">
+                        <div class="pd-estrellas">
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <span class="pd-rating-total">reseñas</span>
+                    </div>
+
+                    <div class="pd-panel-divider"></div>
+
+                    <div class="pd-filas-info">
+                        <div class="pd-fila">
+                            <span class="pd-fila-label">Precio</span>
+                            <span class="pd-fila-valor pd-precio" id="pdPrecio">Numero</span>
+                        </div>
+                        <div class="pd-fila">
+                            <span class="pd-fila-label">Stock:</span>
+                            <span class="pd-fila-valor">Disponibilidad</span>
+                        </div>
+                        <div class="pd-fila">
+                            <span class="pd-fila-label">Cantidad:</span>
+                            <div class="pd-cantidad-ctrl">
+                                <button class="pd-cantidad-btn" id="btnMenos" aria-label="Disminuir">−</button>
+                                <span class="pd-cantidad-valor" id="cantidadValor">1</span>
+                                <button class="pd-cantidad-btn" id="btnMas" aria-label="Aumentar">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="pd-tiendas-btn">
+                        <div class="pd-tiendas-left">
+                            <i class="fa-solid fa-store"></i>
+                            <span>En Tiendas Disponibles</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+
+                    <button class="pd-btn-comprar" id="btnComprar">Comprar Ahora</button>
+
+                    <button class="pd-btn-carrito" id="btnAgregarCarrito">Agregar al carrito</button>
+
                     <div class="pd-vendedor-row">
                         <i class="fa-solid fa-store"></i>
-                        <span>Vendido por <a href="#" class="pd-vendedor-link">AkibaraXpress Oficial</a></span>
+                        <span>Vendido por <a href="#" class="pd-vendedor-link">Vendedor</a></span>
                     </div>
+
                 </div>
-
-                <div class="pd-precio-bloque">
-                    <div class="pd-precio-row">
-                        <span class="pd-precio" id="pdPrecio">$999.00</span>
-                        <span class="pd-precio-original">$1,299.00</span>
-                        <span class="pd-descuento">−23%</span>
-                    </div>
-                    <span class="pd-envio">
-                        <i class="fa-solid fa-truck-fast"></i>
-                        Envío gratis en órdenes mayores a $500
-                    </span>
-                </div>
-
-                <div class="pd-rating">
-                    <div class="pd-estrellas">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                    <span class="pd-rating-num">4.0</span>
-                    <span class="pd-rating-total">(No reseñas)</span>
-                </div>
-
-                <div class="pd-divider"></div>
-
-                <div class="pd-variantes">
-                    <p class="pd-variante-label">Variante: <strong id="varianteSeleccionada">Estándar</strong></p>
-                    <div class="pd-variante-opciones">
-                        <button class="pd-variante-btn active">Estándar</button>
-                        <button class="pd-variante-btn">Exclusiva</button>
-                        <button class="pd-variante-btn">Edición Limitada</button>
-                    </div>
-                </div>
-
-                <div class="pd-cantidad-row">
-                    <span class="pd-cantidad-label">Cantidad:</span>
-                    <div class="pd-cantidad-ctrl">
-                        <button class="pd-cantidad-btn" id="btnMenos" aria-label="Disminuir">−</button>
-                        <span class="pd-cantidad-valor" id="cantidadValor">1</span>
-                        <button class="pd-cantidad-btn" id="btnMas" aria-label="Aumentar">+</button>
-                    </div>
-                    <span class="pd-stock"><i class="fa-solid fa-circle-check"></i> 15 en stock</span>
-                </div>
-
-                <div class="pd-acciones">
-                    <button class="pd-btn-carrito" id="btnAgregarCarrito">
-                        <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-                    </button>
-                    <button class="pd-btn-comprar">
-                        <i class="fa-solid fa-bolt"></i> Comprar ahora
-                    </button>
-                    <button class="pd-btn-wish" aria-label="Agregar a favoritos">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                </div>
-
-                <div class="pd-acordeon">
-                    <details class="pd-detalle-item" open>
-                        <summary>
-                            <span>Descripción</span>
-                            <i class="fa-solid fa-chevron-down pd-chevron"></i>
-                        </summary>
-                        <div class="pd-detalle-contenido">
-                            <p>Figura de colección de alta calidad basada en el popular personaje. Fabricada con materiales PVC premium y pintada a mano con acabados de alta definición. Incluye base decorativa y caja de presentación.</p>
-                            <p>Altura aproximada: 25 cm | Escala: 1/7 | Material: PVC + ABS</p>
-                        </div>
-                    </details>
-
-                    <details class="pd-detalle-item">
-                        <summary>
-                            <span>Especificaciones</span>
-                            <i class="fa-solid fa-chevron-down pd-chevron"></i>
-                        </summary>
-                        <div class="pd-detalle-contenido">
-                            <table class="pd-specs-table">
-                                <tr><td>Fabricante</td><td>Good Smile Company</td></tr>
-                                <tr><td>Escala</td><td>1/7</td></tr>
-                                <tr><td>Altura</td><td>~25 cm</td></tr>
-                                <tr><td>Material</td><td>PVC, ABS</td></tr>
-                                <tr><td>País de origen</td><td>Japón</td></tr>
-                                <tr><td>Fecha de lanzamiento</td><td>Marzo 2025</td></tr>
-                            </table>
-                        </div>
-                    </details>
-
-                    <details class="pd-detalle-item">
-                        <summary>
-                            <span>Envío y devoluciones</span>
-                            <i class="fa-solid fa-chevron-down pd-chevron"></i>
-                        </summary>
-                        <div class="pd-detalle-contenido">
-                            <p><i class="fa-solid fa-truck"></i> Entrega estándar: 3–5 días hábiles</p>
-                            <p><i class="fa-solid fa-rotate-left"></i> Devoluciones aceptadas dentro de 15 días con producto sin abrir.</p>
-                        </div>
-                    </details>
-                </div>
-
             </div>
+
         </div>
 
         <!-- ── Productos relacionados ── -->
@@ -249,10 +259,10 @@
                         <div class="producto-card">
                             <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                             <div class="producto-info">
-                                <span class="producto-precio">$849.00</span>
-                                <span class="producto-nombre">Producto Relacionado 1</span>
-                                <span class="producto-categoria">Figuras</span>
-                                <span class="producto-vendedor">AkibaraXpress</span>
+                                <span class="producto-precio">$999.00</span>
+                                <span class="producto-nombre">Nombre de Producto Relacionado</span>
+                                <span class="producto-categoria">Categoria</span>
+                                <span class="producto-vendedor">Vendedor</span>
                                 <div class="producto-botones">
                                     <button class="btn-ver">Ver Producto</button>
                                     <button class="btn-comprar">Comprar Ahora</button>
@@ -262,10 +272,10 @@
                         <div class="producto-card">
                             <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                             <div class="producto-info">
-                                <span class="producto-precio">$1,200.00</span>
-                                <span class="producto-nombre">Producto Relacionado 2</span>
-                                <span class="producto-categoria">Figuras</span>
-                                <span class="producto-vendedor">AkibaraXpress</span>
+                                <span class="producto-precio">$999.00</span>
+                                <span class="producto-nombre">Nombre de Producto Relacionado</span>
+                                <span class="producto-categoria">Categoria</span>
+                                <span class="producto-vendedor">Vendedor</span>
                                 <div class="producto-botones">
                                     <button class="btn-ver">Ver Producto</button>
                                     <button class="btn-comprar">Comprar Ahora</button>
@@ -275,10 +285,10 @@
                         <div class="producto-card">
                             <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                             <div class="producto-info">
-                                <span class="producto-precio">$750.00</span>
-                                <span class="producto-nombre">Producto Relacionado 3</span>
-                                <span class="producto-categoria">Figuras</span>
-                                <span class="producto-vendedor">AkibaraXpress</span>
+                                <span class="producto-precio">$999.00</span>
+                                <span class="producto-nombre">Nombre de Producto Relacionado</span>
+                                <span class="producto-categoria">Categoria</span>
+                                <span class="producto-vendedor">Vendedor</span>
                                 <div class="producto-botones">
                                     <button class="btn-ver">Ver Producto</button>
                                     <button class="btn-comprar">Comprar Ahora</button>
@@ -288,10 +298,10 @@
                         <div class="producto-card">
                             <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                             <div class="producto-info">
-                                <span class="producto-precio">$980.00</span>
-                                <span class="producto-nombre">Producto Relacionado 4</span>
-                                <span class="producto-categoria">Figuras</span>
-                                <span class="producto-vendedor">AkibaraXpress</span>
+                                <span class="producto-precio">$999.00</span>
+                                <span class="producto-nombre">Nombre de Producto Relacionado</span>
+                                <span class="producto-categoria">Categoria</span>
+                                <span class="producto-vendedor">Vendedor</span>
                                 <div class="producto-botones">
                                     <button class="btn-ver">Ver Producto</button>
                                     <button class="btn-comprar">Comprar Ahora</button>
@@ -301,10 +311,10 @@
                         <div class="producto-card">
                             <div class="producto-imagen"><i class="fa-regular fa-image"></i></div>
                             <div class="producto-info">
-                                <span class="producto-precio">$1,100.00</span>
-                                <span class="producto-nombre">Producto Relacionado 5</span>
-                                <span class="producto-categoria">Figuras</span>
-                                <span class="producto-vendedor">AkibaraXpress</span>
+                                <span class="producto-precio">$999.00</span>
+                                <span class="producto-nombre">Nombre de Producto Relacionado</span>
+                                <span class="producto-categoria">Categoria</span>
+                                <span class="producto-vendedor">Vendedor</span>
                                 <div class="producto-botones">
                                     <button class="btn-ver">Ver Producto</button>
                                     <button class="btn-comprar">Comprar Ahora</button>

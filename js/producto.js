@@ -23,8 +23,8 @@ const btnMenos  = document.getElementById('btnMenos');
 const btnMas    = document.getElementById('btnMas');
 const cantValor = document.getElementById('cantidadValor');
 
-let cantidad      = 1;
-const STOCK_MAX   = 15;
+let cantidad    = 1;
+const STOCK_MAX = 15;
 
 function actualizarCantidad(nueva) {
     if (nueva < 1 || nueva > STOCK_MAX) return;
@@ -38,22 +38,9 @@ btnMenos?.addEventListener('click', () => actualizarCantidad(cantidad - 1));
 btnMas?.addEventListener('click',   () => actualizarCantidad(cantidad + 1));
 
 
-/* ── 3. SELECTOR DE VARIANTES ── */
-const varianteBtns         = document.querySelectorAll('.pd-variante-btn');
-const varianteSeleccionada = document.getElementById('varianteSeleccionada');
-
-varianteBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        varianteBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        if (varianteSeleccionada) varianteSeleccionada.textContent = btn.textContent;
-    });
-});
-
-
-/* ── 4. TOAST — Confirmación al agregar al carrito ── */
-const toast       = document.getElementById('pdToast');
-const btnAgregar  = document.getElementById('btnAgregarCarrito');
+/* ── 3. TOAST — Confirmación al agregar al carrito ── */
+const toast      = document.getElementById('pdToast');
+const btnAgregar = document.getElementById('btnAgregarCarrito');
 let toastTimeout;
 
 function mostrarToast() {
@@ -65,17 +52,17 @@ function mostrarToast() {
 btnAgregar?.addEventListener('click', mostrarToast);
 
 
-/* ── 5. WISHLIST — Toggle de corazón ── */
+/* ── 4. WISHLIST — Toggle de corazón ── */
 const btnWish = document.querySelector('.pd-btn-wish');
 
 btnWish?.addEventListener('click', () => {
-    const activo       = btnWish.classList.toggle('activo');
-    const icono        = btnWish.querySelector('i');
-    icono.className    = activo ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+    const activo    = btnWish.classList.toggle('activo');
+    const icono     = btnWish.querySelector('i');
+    icono.className = activo ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
 });
 
 
-/* ── 6. CARRUSEL DE PRODUCTOS RELACIONADOS ── */
+/* ── 5. CARRUSEL DE PRODUCTOS RELACIONADOS ── */
 crearCarrusel({
     trackId:      'relacionadosTrack',
     btnIzqId:     'btnIzqRel',
@@ -86,8 +73,8 @@ crearCarrusel({
 });
 
 
-/* ── 7. BREADCRUMB Y DATOS DINÁMICOS desde URL ── */
-(function initBreadcrumb() {
+/* ── 6. DATOS DINÁMICOS desde URL ── */
+(function initDatosDinamicos() {
     const params    = new URLSearchParams(window.location.search);
     const nombre    = params.get('nombre');
     const categoria = params.get('categoria');
@@ -96,19 +83,23 @@ crearCarrusel({
     if (nombre) {
         const decoded = decodeURIComponent(nombre);
 
-        // Miga de pan
+        document.title = `${decoded} — AkibaraXpress`;
+
         const bcProducto = document.getElementById('bc-producto');
         if (bcProducto) bcProducto.textContent = decoded;
 
-        // Título de la página y del producto
-        document.title = `${decoded} — AkibaraXpress`;
+        // Sincroniza nombre en panel derecho y módulo descripción
         const pdNombre = document.getElementById('pdNombre');
         if (pdNombre) pdNombre.textContent = decoded;
+
+        const pdNombreDesc = document.getElementById('pdNombreDesc');
+        if (pdNombreDesc) pdNombreDesc.textContent = decoded;
     }
 
     if (categoria) {
+        const decoded     = decodeURIComponent(categoria);
         const bcCategoria = document.getElementById('bc-categoria');
-        if (bcCategoria) bcCategoria.textContent = decodeURIComponent(categoria);
+        if (bcCategoria) bcCategoria.textContent = decoded;
     }
 
     if (precio) {

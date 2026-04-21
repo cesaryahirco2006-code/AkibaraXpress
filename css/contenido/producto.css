@@ -2,50 +2,78 @@
    contenido/producto.css — Página de detalle de producto
    ============================================================ */
 
-/* ── Migas de pan ── */
-.breadcrumb-bar {
-    background-color: #f9f9f9;
-    border-bottom: 1px solid var(--color-borde);
-    padding: 10px 60px;
+/* ── Layout principal ── */
+.producto-detalle-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 36px 60px 60px;
 }
 
-.breadcrumb-inner { max-width: 1400px; margin: 0 auto; }
+.pd-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 32px;
+    align-items: start;
+    margin-bottom: 64px;
+}
 
-.breadcrumb {
+/* ── Columnas ── */
+.pd-columna-izq {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pd-columna-der {
+    position: sticky;
+    top: 110px;
+}
+
+/* ── Módulos ── */
+.pd-modulo {
+    background-color: white;
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+
+/* ── Breadcrumb (anclado dentro del módulo galería) ── */
+.pd-breadcrumb ol {
     display: flex;
     align-items: center;
-    gap: 0;
     list-style: none;
     flex-wrap: wrap;
+    margin: 0 0 14px;
+    padding: 0;
 }
 
-.breadcrumb-item {
+.pd-breadcrumb li {
     display: flex;
     align-items: center;
-    font-size: 13px;
+    font-size: 12px;
     color: #888;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
-    content: '/';
+.pd-breadcrumb li + li::before {
+    content: '›';
     margin: 0 8px;
     color: #ccc;
-    font-weight: 300;
 }
 
-.breadcrumb-item a {
+.pd-breadcrumb a {
     color: #666;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     transition: color var(--trans-rapida);
 }
 
-.breadcrumb-item a i  { font-size: 11px; }
-.breadcrumb-item a:hover { color: var(--color-primario); }
+.pd-breadcrumb a:hover { color: var(--color-primario); }
+.pd-breadcrumb a i { font-size: 10px; }
 
-.breadcrumb-item.active {
+.pd-breadcrumb li.active {
     color: #222;
     font-weight: 600;
     max-width: 260px;
@@ -55,44 +83,69 @@
 }
 
 
-/* ── Contenido principal ── */
-.producto-detalle-main {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 36px 60px 60px;
-}
-
-
-/* ── Grid: galería + info ── */
-.pd-grid {
+/* ── Galería inner: miniaturas izq + imagen der ── */
+.pd-galeria-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 76px 1fr;
+    gap: 14px;
     align-items: start;
-    margin-bottom: 64px;
 }
 
-
-/* ── GALERÍA ── */
-.pd-galeria {
+/* ── Miniaturas columna vertical ── */
+.pd-thumbs-col {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    position: sticky;
-    top: 110px;
+    gap: 10px;
 }
 
+.pd-thumb {
+    width: 72px;
+    aspect-ratio: 1;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #bbb;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color var(--trans-rapida), transform var(--trans-rapida);
+}
+
+.pd-thumb:hover { border-color: #ccc; transform: translateY(-2px); }
+.pd-thumb.active { border-color: var(--color-primario); }
+
+.pd-thumb-nav-btn {
+    width: 72px;
+    height: 32px;
+    border: 1px solid var(--color-borde);
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #888;
+    transition: background-color var(--trans-rapida);
+}
+
+.pd-thumb-nav-btn:hover { background-color: #efefef; }
+
+/* ── Imagen principal ── */
 .pd-imagen-principal {
     width: 100%;
     aspect-ratio: 1;
-    background-color: #f5f5f5;
-    border-radius: 16px;
+    background-color: #2d2d2d;
+    border-radius: 10px;
     border: 1px solid var(--color-borde);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 80px;
-    color: #ccc;
+    color: rgba(255, 255, 255, 0.2);
     position: relative;
     overflow: hidden;
     cursor: zoom-in;
@@ -103,136 +156,210 @@
 
 .pd-badge-nuevo {
     position: absolute;
-    top: 16px;
-    left: 16px;
+    top: 14px;
+    left: 14px;
     background-color: var(--color-primario);
     color: white;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.08em;
-    padding: 4px 10px;
+    padding: 3px 9px;
     border-radius: 4px;
 }
 
-/* ── Miniaturas ── */
-.pd-thumbs { display: flex; gap: 10px; }
-
-.pd-thumb {
-    flex: 1;
-    aspect-ratio: 1;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    border: 2px solid transparent;
+/* ── Texto de ayuda zoom ── */
+.pd-zoom-hint {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #999;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
-    color: #bbb;
-    cursor: pointer;
-    transition: border-color var(--trans-rapida), transform var(--trans-rapida);
-    overflow: hidden;
+    gap: 6px;
 }
 
-.pd-thumb:hover { border-color: #ccc; transform: translateY(-2px); }
-.pd-thumb.active { border-color: var(--color-primario); }
 
-
-/* ── INFO ── */
-.pd-info {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.pd-cabecera { display: flex; flex-direction: column; gap: 10px; }
-
-.pd-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-
-.pd-tag {
-    background-color: var(--color-primario-light);
-    color: var(--color-primario);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    padding: 3px 10px;
-    border-radius: 20px;
-    text-transform: uppercase;
-}
-
-.pd-nombre {
-    font-size: clamp(20px, 2.5vw, 28px);
+/* ── Módulo descripción ── */
+.pd-nombre-seccion {
+    font-size: clamp(18px, 2.2vw, 24px);
     font-weight: 800;
     color: #111;
-    line-height: 1.25;
+    margin-bottom: 12px;
+    line-height: 1.3;
 }
 
-.pd-vendedor-row {
+.pd-descripcion-texto {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+}
+
+
+/* ── Módulo pagos ── */
+.pd-pago-metodos {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 6px;
-    font-size: 13px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-borde);
+    margin-bottom: 16px;
+}
+
+.pd-metodos-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 12px;
     color: #888;
 }
 
-.pd-vendedor-row i { color: var(--color-primario); font-size: 12px; }
-
-.pd-vendedor-link {
-    color: var(--color-primario);
-    font-weight: 600;
-    transition: opacity var(--trans-rapida);
+.pd-metodos-iconos {
+    display: flex;
+    gap: 10px;
+    font-size: 26px;
+    color: #555;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
-.pd-vendedor-link:hover { opacity: 0.75; }
-
-/* ── Precio ── */
-.pd-precio-bloque { display: flex; flex-direction: column; gap: 8px; }
-
-.pd-precio-row {
+.pd-envio-estimador {
     display: flex;
-    align-items: baseline;
-    gap: 12px;
+    align-items: flex-end;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.pd-envio-campos {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    font-size: 13px;
+    color: #555;
+}
+
+.pd-envio-btn {
+    padding: 10px 22px;
+    background-color: #f0f0f0;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color var(--trans-rapida);
+}
+
+.pd-envio-btn:hover { background-color: #e5e5e5; }
+
+.pd-seguridad {
+    border-top: 1px solid var(--color-borde);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pd-seguridad-iconos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    color: #666;
     flex-wrap: wrap;
 }
 
-.pd-precio {
-    font-size: clamp(26px, 3vw, 34px);
-    font-weight: 900;
-    color: var(--color-primario);
-    letter-spacing: -0.02em;
+.pd-seguridad-iconos .fa-lock {
+    font-size: 17px;
+    color: #999;
 }
 
-.pd-precio-original {
-    font-size: 16px;
-    color: #bbb;
-    text-decoration: line-through;
+.pd-seguridad-texto {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
 }
 
-.pd-descuento {
-    background-color: #fff0f3;
-    color: var(--color-primario);
-    font-size: 13px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 6px;
+
+/* ── Panel derecho ── */
+.pd-panel {
+    background-color: white;
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.pd-envio {
-    font-size: 13px;
-    color: #2a9d3f;
+.pd-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.pd-nombre {
+    font-size: clamp(14px, 1.5vw, 17px);
+    font-weight: 800;
+    color: #111;
+    line-height: 1.35;
+    flex: 1;
+}
+
+.pd-panel-top-acciones {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ── Botones wishlist y compartir ── */
+.pd-btn-wish,
+.pd-btn-share {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-borde);
+    background-color: white;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #888;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    transition: border-color var(--trans-rapida), color var(--trans-rapida), transform var(--trans-rapida);
+}
+
+.pd-btn-wish:hover,
+.pd-btn-share:hover {
+    border-color: var(--color-primario);
+    color: var(--color-primario);
+    transform: scale(1.1);
+}
+
+.pd-btn-wish.activo {
+    background-color: #fff0f3;
+    border-color: var(--color-primario);
+    color: var(--color-primario);
 }
 
 /* ── Rating ── */
-.pd-rating { display: flex; align-items: center; gap: 8px; }
+.pd-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-.pd-estrellas { display: flex; gap: 2px; color: #f5a623; font-size: 15px; }
-
-.pd-rating-num { font-weight: 700; font-size: 15px; color: #222; }
+.pd-estrellas {
+    display: flex;
+    gap: 2px;
+    color: #f5a623;
+    font-size: 14px;
+}
 
 .pd-rating-total {
-    font-size: 13px;
+    font-size: 12px;
     color: #888;
     cursor: pointer;
     text-decoration: underline;
@@ -240,51 +367,56 @@
 }
 
 /* ── Divider ── */
-.pd-divider { height: 1px; background-color: var(--color-borde); }
+.pd-panel-divider {
+    height: 1px;
+    background-color: var(--color-borde);
+}
 
-/* ── Variantes ── */
-.pd-variantes { display: flex; flex-direction: column; gap: 10px; }
-.pd-variante-label { font-size: 13px; color: #555; }
-.pd-variante-opciones { display: flex; gap: 8px; flex-wrap: wrap; }
+/* ── Filas de info (Precio, Stock, Cantidad) ── */
+.pd-filas-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
-.pd-variante-btn {
-    padding: 8px 16px;
-    border: 1.5px solid var(--color-borde);
-    background-color: white;
-    border-radius: 8px;
-    font-size: 13px;
+.pd-fila {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.pd-fila-label {
+    color: #888;
+    min-width: 75px;
+}
+
+.pd-fila-valor {
+    color: #111;
     font-weight: 600;
-    color: #333;
-    cursor: pointer;
-    transition: border-color var(--trans-rapida), color var(--trans-rapida), background-color var(--trans-rapida);
 }
 
-.pd-variante-btn:hover { border-color: var(--color-primario); color: var(--color-primario); }
-
-.pd-variante-btn.active {
-    border-color: var(--color-primario);
-    background-color: var(--color-primario);
-    color: white;
+.pd-precio {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--color-primario);
 }
 
-/* ── Cantidad ── */
-.pd-cantidad-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-.pd-cantidad-label { font-size: 13px; color: #555; font-weight: 600; }
-
+/* ── Control de cantidad ── */
 .pd-cantidad-ctrl {
     display: flex;
     align-items: center;
-    border: 1.5px solid var(--color-borde);
-    border-radius: 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
     overflow: hidden;
 }
 
 .pd-cantidad-btn {
-    width: 38px;
-    height: 38px;
+    width: 32px;
+    height: 32px;
     border: none;
     background-color: #f5f5f5;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: #333;
     cursor: pointer;
@@ -297,156 +429,102 @@
 .pd-cantidad-btn:hover { background-color: var(--color-primario); color: white; }
 
 .pd-cantidad-valor {
-    min-width: 40px;
+    min-width: 36px;
     text-align: center;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     color: #111;
-    padding: 0 6px;
+    padding: 0 4px;
     user-select: none;
+    transition: transform 0.15s ease;
 }
 
-.pd-stock {
-    font-size: 13px;
-    color: #2a9d3f;
+.pd-cantidad-valor.animado { transform: scale(1.3); }
+
+/* ── Botón En Tiendas ── */
+.pd-tiendas-btn {
     display: flex;
     align-items: center;
-    gap: 5px;
-    font-weight: 500;
-}
-
-/* ── Botones de acción ── */
-.pd-acciones {
-    display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    gap: 10px;
-    align-items: center;
-}
-
-.pd-btn-carrito {
-    padding: 14px;
-    border: 2px solid var(--color-primario);
+    justify-content: space-between;
+    padding: 10px 14px;
+    border: 1px solid var(--color-borde);
     background-color: white;
-    color: var(--color-primario);
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 700;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #444;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: background-color var(--trans-rapida), transform var(--trans-rapida);
+    width: 100%;
+    transition: border-color var(--trans-rapida);
 }
 
-.pd-btn-carrito:hover { background-color: var(--color-primario-light); transform: translateY(-2px); }
-.pd-btn-carrito:active { transform: scale(0.97); }
+.pd-tiendas-btn:hover { border-color: #aaa; }
 
+.pd-tiendas-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pd-tiendas-left > i { color: var(--color-primario); font-size: 14px; }
+
+/* ── Botones de compra ── */
 .pd-btn-comprar {
+    width: 100%;
     padding: 14px;
     border: none;
-    background-color: var(--color-primario);
+    background-color: #222;
     color: white;
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
     transition: background-color var(--trans-rapida), transform var(--trans-rapida);
 }
 
-.pd-btn-comprar:hover { background-color: var(--color-primario-dark); transform: translateY(-2px); }
+.pd-btn-comprar:hover { background-color: #444; transform: translateY(-1px); }
 
-.pd-btn-wish {
-    width: 48px;
-    height: 48px;
+.pd-btn-carrito {
+    width: 100%;
+    padding: 13px;
     border: 1.5px solid var(--color-borde);
     background-color: white;
-    border-radius: 10px;
-    font-size: 18px;
-    color: #888;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: border-color var(--trans-rapida), color var(--trans-rapida), transform var(--trans-rapida);
-}
-
-.pd-btn-wish:hover { border-color: var(--color-primario); color: var(--color-primario); transform: scale(1.1); }
-
-.pd-btn-wish.activo {
-    background-color: #fff0f3;
-    border-color: var(--color-primario);
-    color: var(--color-primario);
-}
-
-/* ── Acordeón de detalles ── */
-.pd-acordeon {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--color-borde);
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.pd-detalle-item { border-bottom: 1px solid var(--color-borde); }
-.pd-detalle-item:last-child { border-bottom: none; }
-
-.pd-detalle-item summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    cursor: pointer;
+    color: #333;
+    border-radius: 8px;
     font-size: 14px;
-    font-weight: 700;
-    color: #222;
-    list-style: none;
-    user-select: none;
-    transition: background-color var(--trans-rapida);
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color var(--trans-rapida), background-color var(--trans-rapida);
 }
 
-.pd-detalle-item summary::-webkit-details-marker { display: none; }
-.pd-detalle-item summary:hover { background-color: #fafafa; }
+.pd-btn-carrito:hover { border-color: #aaa; background-color: #fafafa; }
 
-.pd-chevron {
-    font-size: 12px;
-    color: #999;
-    transition: transform var(--trans-normal);
-}
-
-.pd-detalle-item[open] .pd-chevron { transform: rotate(180deg); }
-
-.pd-detalle-contenido {
-    padding: 0 20px 18px;
-    font-size: 13px;
-    color: #555;
-    line-height: 1.75;
+/* ── Fila vendedor ── */
+.pd-vendedor-row {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 8px;
-}
-
-.pd-specs-table {
-    width: 100%;
-    border-collapse: collapse;
     font-size: 13px;
+    color: #888;
+    padding-top: 4px;
+    border-top: 1px solid var(--color-borde);
 }
 
-.pd-specs-table tr          { border-bottom: 1px solid #f0f0f0; }
-.pd-specs-table tr:last-child { border-bottom: none; }
-.pd-specs-table td          { padding: 8px 4px; color: #555; }
-.pd-specs-table td:first-child { font-weight: 600; color: #333; width: 45%; }
+.pd-vendedor-row > i { color: var(--color-primario); font-size: 14px; }
 
-/* ── Productos relacionados ── */
+.pd-vendedor-link {
+    color: var(--color-primario);
+    font-weight: 600;
+    transition: opacity var(--trans-rapida);
+}
+
+.pd-vendedor-link:hover { opacity: 0.75; }
+
+
+/* ── Productos relacionados (sin borde superior doble) ── */
 .pd-relacionados {
-    padding-top: 16px;
-    border-top: 2px solid var(--color-borde);
+    padding-top: 0;
 }
+
 
 /* ── Toast de confirmación ── */
 .pd-toast {
@@ -474,27 +552,27 @@
 .pd-toast.visible { transform: translateY(0); opacity: 1; }
 
 
-/* ── Responsive — Producto ── */
-@media (max-width: 900px) {
-    .pd-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-
-    .pd-galeria      { position: static; }
-
-    .producto-detalle-main { padding: 24px 20px 48px; }
-    .breadcrumb-bar        { padding: 10px 20px; }
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+    .pd-layout { grid-template-columns: 1fr 320px; }
 }
 
-@media (max-width: 600px) {
-    .pd-acciones { grid-template-columns: 1fr 1fr; }
-
-    .pd-btn-wish {
-        grid-column: span 2;
-        width: 100%;
-        height: 44px;
+@media (max-width: 860px) {
+    .pd-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
-    .pd-thumbs { gap: 8px; }
+    .pd-columna-der { position: static; }
+    .producto-detalle-main { padding: 24px 20px 48px; }
+}
+
+@media (max-width: 480px) {
+    .pd-galeria-inner {
+        grid-template-columns: 58px 1fr;
+        gap: 10px;
+    }
+
+    .pd-thumb,
+    .pd-thumb-nav-btn { width: 54px; }
 }
