@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/accesibilidad.css">
     <link rel="stylesheet" href="css/modo-oscuro.css">
     <link rel="stylesheet" href="css/contenido/principal.css">
+    <link rel="stylesheet" href="css/transiciones.css">
     <link rel="stylesheet" href="css/responsivo.css">
 
     <!-- Iconos -->
@@ -428,8 +429,9 @@
                 <h4 class="footer-titulo-col">Newsletter</h4>
                 <p class="footer-descripcion">Suscribete con nosotros y recibe promociones, informacion de preventas y mucho mas!</p>
                 <div class="newsletter-form">
-                    <input type="email" placeholder="Tu email" aria-label="Correo electronico">
-                    <button>Suscribir</button>
+                    <input type="tel" placeholder="Tu teléfono (10 dígitos)" aria-label="Número de teléfono" maxlength="15">
+                    <button type="button">Suscribir</button>
+                    <span class="newsletter-msg"></span>
                 </div>
             </div>
             <div class="footer-col">
@@ -464,6 +466,7 @@
     </button>
 
     <!-- ── Scripts modulares ── -->
+    <script src="js/transiciones.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/header.js"></script>
     <script src="js/banner.js"></script>

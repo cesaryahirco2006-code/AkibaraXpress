@@ -43,7 +43,7 @@ function irADetalle(nombre, categoria, precio) {
     params.set('nombre',    nombre);
     params.set('categoria', categoria);
     if (precio) params.set('precio', precio);
-    window.location.href = `producto.html?${params.toString()}`;
+    navegarConFade(`producto.html?${params.toString()}`);
 }
 
 function bindNavegacionCards(trackId) {
