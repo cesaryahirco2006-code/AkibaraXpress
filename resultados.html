@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de búsqueda — AkibaraXpress</title>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/subheader.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/accesibilidad.css">
+    <link rel="stylesheet" href="css/modo-oscuro.css">
+    <link rel="stylesheet" href="css/contenido/principal.css">
+    <link rel="stylesheet" href="css/contenido/resultados.css">
+    <link rel="stylesheet" href="css/transiciones.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div id="barra-carga"><div id="barra-carga-fill"></div></div>
+
+    <!-- HEADER (igual que index) -->
+    <header>
+        <div class="Logo">
+            <a href="index.html"><img src="Imagenes/logo.webp" alt="Logo AkibaraXpress"></a>
+        </div>
+        <div class="container">
+            <input type="text" placeholder="Buscar productos..." id="searchInput">
+            <button aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div class="user-section">
+            <div class="user-info">
+                <span class="saludo">Hola,</span>
+                <span class="nombre-cliente">Juan Pérez</span>
+            </div>
+            <div class="separador"></div>
+            <div class="carrito" role="button" aria-label="Ver carrito">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="carrito-badge" id="carritoBadge">0</span>
+            </div>
+        </div>
+        <button class="hamburguesa" id="btnHamburguesa" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="subheader">
+        <div class="nav-items">
+            <div class="nav-centro">
+                <div class="nav-item"><span>Figuras</span><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="separador-nav"></div>
+                <div class="nav-item"><span>Mangas</span><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="separador-nav"></div>
+                <div class="nav-item"><span>Series</span><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="separador-nav"></div>
+                <div class="nav-item"><span>TCG</span><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="separador-nav"></div>
+                <div class="nav-item"><span>Apparel</span><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="separador-nav"></div>
+                <div class="nav-item mas-item" id="mas-btn">
+                    <span>Más</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <div class="dropdown" id="dropdown-mas">
+                        <a href="#">Juegos</a>
+                        <a href="#">Preventas</a>
+                        <a href="#">Promociones</a>
+                        <a href="#">Subastas</a>
+                        <a href="#">Mercancía</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item destacado"><span>FIFA World Cup 26</span></div>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="resultados-main">
+
+        <!-- Breadcrumb -->
+        <nav class="res-breadcrumb" aria-label="Migas de pan">
+            <ol>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                <li class="active" id="bcQuery">Resultados</li>
+            </ol>
+        </nav>
+
+        <!-- Encabezado de resultados -->
+        <div class="res-header">
+            <div class="res-titulo-wrap">
+                <h1 class="res-titulo">Resultados para: <span id="queryLabel"></span></h1>
+                <span class="res-count" id="resCount">0 productos encontrados</span>
+            </div>
+            <div class="res-controles">
+                <select class="res-orden" id="resOrden" aria-label="Ordenar por">
+                    <option value="relevancia">Más relevantes</option>
+                    <option value="precio-asc">Precio: menor a mayor</option>
+                    <option value="precio-desc">Precio: mayor a menor</option>
+                    <option value="nombre">Nombre A–Z</option>
+                </select>
+                <div class="res-vista-btns">
+                    <button class="res-vista-btn active" id="btnGrid" aria-label="Vista grilla">
+                        <i class="fa-solid fa-grip"></i>
+                    </button>
+                    <button class="res-vista-btn" id="btnLista" aria-label="Vista lista">
+                        <i class="fa-solid fa-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="res-layout">
+
+            <!-- FILTROS LATERALES -->
+            <aside class="res-filtros">
+                <div class="res-filtro-header">
+                    <span><i class="fa-solid fa-sliders"></i> Filtros</span>
+                    <button class="res-limpiar-btn" id="btnLimpiarFiltros">Limpiar</button>
+                </div>
+
+                <!-- Categoría -->
+                <div class="res-filtro-grupo">
+                    <button class="res-filtro-titulo" aria-expanded="true">
+                        Categoría <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="res-filtro-cuerpo">
+                        <label class="res-checkbox"><input type="checkbox" value="figuras"> Figuras</label>
+                        <label class="res-checkbox"><input type="checkbox" value="mangas"> Mangas</label>
+                        <label class="res-checkbox"><input type="checkbox" value="series"> Series</label>
+                        <label class="res-checkbox"><input type="checkbox" value="tcg"> TCG</label>
+                        <label class="res-checkbox"><input type="checkbox" value="apparel"> Apparel</label>
+                        <label class="res-checkbox"><input type="checkbox" value="juegos"> Juegos</label>
+                    </div>
+                </div>
+
+                <!-- Precio -->
+                <div class="res-filtro-grupo">
+                    <button class="res-filtro-titulo" aria-expanded="true">
+                        Precio <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="res-filtro-cuerpo">
+                        <label class="res-checkbox"><input type="checkbox" value="0-500"> Hasta $500</label>
+                        <label class="res-checkbox"><input type="checkbox" value="500-1000"> $500 – $1,000</label>
+                        <label class="res-checkbox"><input type="checkbox" value="1000-2000"> $1,000 – $2,000</label>
+                        <label class="res-checkbox"><input type="checkbox" value="2000+"> Más de $2,000</label>
+                    </div>
+                </div>
+
+                <!-- Disponibilidad -->
+                <div class="res-filtro-grupo">
+                    <button class="res-filtro-titulo" aria-expanded="true">
+                        Disponibilidad <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="res-filtro-cuerpo">
+                        <label class="res-checkbox"><input type="checkbox" value="en-stock"> En stock</label>
+                        <label class="res-checkbox"><input type="checkbox" value="preventa"> Preventa</label>
+                        <label class="res-checkbox"><input type="checkbox" value="agotado"> Agotado</label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- GRID DE PRODUCTOS -->
+            <section class="res-productos">
+                <div class="res-grid" id="resGrid">
+                    <!-- Las tarjetas se generan desde resultados.js -->
+                </div>
+
+                <!-- Estado vacío -->
+                <div class="res-vacio" id="resVacio" hidden>
+                    <i class="fa-solid fa-box-open"></i>
+                    <p>No encontramos productos para "<span id="resVacioQuery"></span>"</p>
+                    <a href="index.html" class="res-vacio-link">Volver al inicio</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-principal">
+            <div class="footer-col">
+                <h4 class="footer-titulo-col">Quienes Somos?</h4>
+                <p class="footer-descripcion">Akibara Xpress fue fundado en 2014...</p>
+                <a href="#" class="footer-leer-mas">Leer mas</a>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-titulo-col">Akibara Xpress</h4>
+                <ul>
+                    <li><a href="#">Quienes Somos</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Aviso de Privacidad</a></li>
+                    <li><a href="#">Terminos del servicio</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-titulo-col">Newsletter</h4>
+                <div class="newsletter-form">
+                    <input type="tel" placeholder="Tu teléfono" maxlength="15">
+                    <button type="button">Suscribir</button>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-titulo-col">Mexico</h4>
+                <ul>
+                    <li><a href="#">Tienda Monterrey</a></li>
+                    <li><a href="#">Tienda Interplaza</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-inferior">
+            <div class="footer-redes">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="btnAccesibilidad" aria-label="Opciones de accesibilidad">
+        <i class="fa-solid fa-universal-access"></i>
+    </button>
+    <aside id="menuAccesibilidad" class="accesibilidad-panel" aria-hidden="true">
+        <div class="accesibilidad-header">
+            <h2>Accesibilidad</h2>
+            <button id="btnCerrarMenu"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="accesibilidad-opciones">
+            <button class="accesibilidad-opcion" id="btnModoOscuro">
+                <i class="fa-solid fa-moon"></i><span>Modo oscuro</span>
+            </button>
+            <button class="accesibilidad-opcion" id="btnCursorGrande">
+                <i class="fa-solid fa-arrow-pointer"></i><span>Cursor grande</span>
+            </button>
+        </div>
+    </aside>
+    <div id="accesibilidadOverlay" class="accesibilidad-overlay"></div>
+
+    <script src="js/transiciones.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/modo-oscuro.js"></script>
+    <script src="js/accesibilidad.js"></script>
+    <script src="js/resultados.js"></script>
+
+</body>
+</html>

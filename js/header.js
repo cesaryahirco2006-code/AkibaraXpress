@@ -77,3 +77,21 @@ if (header && subheader) {
 
     syncSubheaderTop();
 }
+
+// ── Buscador ──
+function initBuscador() {
+    const input = document.querySelector('.container input');
+    const btn   = document.querySelector('.container button');
+    if (!input || !btn) return;
+
+    function buscar() {
+        const q = input.value.trim();
+        if (!q) return;
+        navegarConFade(`resultados.html?q=${encodeURIComponent(q)}`);
+    }
+
+    btn.addEventListener('click', buscar);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') buscar(); });
+}
+
+document.addEventListener('DOMContentLoaded', initBuscador);
