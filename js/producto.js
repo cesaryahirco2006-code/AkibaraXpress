@@ -63,6 +63,17 @@ document.addEventListener('click', e => {
     }
 });
 
+function agregarAlCarrito() {
+    const nombre    = document.getElementById('pdNombre')?.textContent.trim()    || 'Producto';
+    const precioTxt = document.getElementById('pdPrecio')?.textContent.replace(/[^0-9.]/g, '') || '0';
+    const categoria = document.getElementById('bc-categoria')?.textContent.trim() || 'General';
+    const precio    = parseFloat(precioTxt) || 999;
+
+    for (let i = 0; i < cantidad; i++) {
+        Carrito.agregar(nombre, precio, categoria);
+    }
+}
+
 
 /* ── 4. WISHLIST — Toggle de corazón con animación ── */
 const btnWish = document.querySelector('.pd-btn-wish');

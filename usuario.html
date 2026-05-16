@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuenta — AkibaraXpress</title>
+
+    <!-- ── Estilos modulares ── -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/paneles.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/subheader.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/accesibilidad.css">
+    <link rel="stylesheet" href="css/modo-oscuro.css">
+    <link rel="stylesheet" href="css/contenido/principal.css">
+    <link rel="stylesheet" href="css/contenido/usuario.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/transiciones.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="pagina-usuario">
+
+    <!-- Barra de carga -->
+    <div id="barra-carga">
+        <div id="barra-carga-fill"></div>
+    </div>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="Logo">
+            <a href="index.html">
+                <img src="Imagenes/logo.webp" alt="Logo AkibaraXpress">
+            </a>
+        </div>
+
+        <div class="container">
+            <input type="text" placeholder="Buscar productos...">
+            <button aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="user-section">
+            <div class="user-info">
+                <span class="saludo">Hola,</span>
+                <span class="nombre-cliente">Juan Pérez</span>
+            </div>
+            <div class="separador"></div>
+            <div class="carrito" role="button" aria-label="Ver carrito">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="carrito-badge" id="carritoBadge">0</span>
+            </div>
+        </div>
+
+        <button class="hamburguesa" id="btnHamburguesa" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- ========== NAVEGACIÓN ========== -->
+    <nav class="subheader">
+        <div class="nav-items">
+            <div class="nav-centro">
+                <div class="nav-item"><span>Figuras</span><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="separador-nav"></div>
+                <div class="nav-item"><span>Mangas</span><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="separador-nav"></div>
+                <div class="nav-item"><span>Series</span><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="separador-nav"></div>
+                <div class="nav-item"><span>TCG</span><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="separador-nav"></div>
+                <div class="nav-item"><span>Apparel</span><i class="fa-solid fa-chevron-down"></i></div>
+                <div class="separador-nav"></div>
+                <div class="nav-item mas-item" id="mas-btn">
+                    <span>Más</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <div class="dropdown" id="dropdown-mas">
+                        <a href="#">Juegos</a>
+                        <a href="#">Preventas</a>
+                        <a href="#">Promociones</a>
+                        <a href="#">Subastas</a>
+                        <a href="#">Mercancía</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item destacado">
+                <span>FIFA World Cup 26</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO: PERFIL DE USUARIO ========== -->
+    <section class="usuario-hero">
+        <div class="usuario-hero-inner">
+
+            <!-- Avatar -->
+            <div class="usuario-avatar">JP</div>
+
+            <!-- Datos -->
+            <div class="usuario-datos">
+                <h1 class="usuario-nombre">Juan Pérez</h1>
+                <span class="usuario-email" id="heroEmail">juan.perez@email.com</span>
+                <span class="usuario-miembro" data-desde="2023-01-01"></span>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="usuario-stats">
+                <div class="usuario-stat" data-tab="ordenes" role="button" aria-label="Ver mis órdenes">
+                    <span class="usuario-stat-valor">12</span>
+                    <span class="usuario-stat-label">Órdenes</span>
+                </div>
+                <div class="usuario-stat" data-tab="wishlist" role="button" aria-label="Ver wishlist">
+                    <span class="usuario-stat-valor">5</span>
+                    <span class="usuario-stat-label">Wishlist</span>
+                </div>
+                <div class="usuario-stat" data-tab="direcciones" role="button" aria-label="Ver direcciones">
+                    <span class="usuario-stat-valor">2</span>
+                    <span class="usuario-stat-label">Direcciones</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========== TABS ========== -->
+    <div class="usuario-tabs-bar" role="tablist">
+        <button class="usuario-tab activo" data-tab="wishlist" role="tab" aria-selected="true">
+            <i class="fa-regular fa-heart"></i> Wishlist
+        </button>
+        <button class="usuario-tab" data-tab="ordenes" role="tab" aria-selected="false">
+            <i class="fa-solid fa-box-open"></i> Mis Órdenes
+        </button>
+        <button class="usuario-tab" data-tab="direcciones" role="tab" aria-selected="false">
+            <i class="fa-solid fa-location-dot"></i> Direcciones
+        </button>
+        <button class="usuario-tab" data-tab="configuracion" role="tab" aria-selected="false">
+            <i class="fa-solid fa-gear"></i> Configuración
+        </button>
+    </div>
+
+    <!-- ========== CONTENIDO ========== -->
+    <div class="usuario-contenido">
+
+        <!-- ─── TAB: WISHLIST ─── -->
+        <section id="tab-wishlist" class="usuario-tab-panel activo" role="tabpanel">
+            <div class="usuario-seccion-header">
+                <span class="usuario-seccion-titulo">
+                    Mi Wishlist <span class="usuario-seccion-count">(5 productos)</span>
+                </span>
+            </div>
+
+            <div class="usuario-grid" id="wishlistGrid">
+
+                <div class="producto-card">
+                    <div class="producto-imagen">
+                        <i class="fa-regular fa-image"></i>
+                        <button class="wish-quitar-btn" aria-label="Quitar de wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-precio">$1,299.00</span>
+                        <span class="producto-nombre">Figura Goku Ultra Instinct</span>
+                        <span class="producto-categoria">Figuras</span>
+                        <span class="producto-vendedor">AkibaraXpress</span>
+                        <div class="producto-botones">
+                            <button class="btn-ver" onclick="location.href='producto.html'">Ver Producto</button>
+                            <button class="btn-comprar">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <div class="producto-imagen">
+                        <i class="fa-regular fa-image"></i>
+                        <button class="wish-quitar-btn" aria-label="Quitar de wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-precio">$549.00</span>
+                        <span class="producto-nombre">Manga Jujutsu Kaisen Vol. 1–10</span>
+                        <span class="producto-categoria">Mangas</span>
+                        <span class="producto-vendedor">AkibaraXpress</span>
+                        <div class="producto-botones">
+                            <button class="btn-ver" onclick="location.href='producto.html'">Ver Producto</button>
+                            <button class="btn-comprar">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <div class="producto-imagen">
+                        <i class="fa-regular fa-image"></i>
+                        <button class="wish-quitar-btn" aria-label="Quitar de wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-precio">$2,499.00</span>
+                        <span class="producto-nombre">Figura Zoro Roronoa King of Hell</span>
+                        <span class="producto-categoria">Figuras</span>
+                        <span class="producto-vendedor">AkibaraXpress</span>
+                        <div class="producto-botones">
+                            <button class="btn-ver" onclick="location.href='producto.html'">Ver Producto</button>
+                            <button class="btn-comprar">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <div class="producto-imagen">
+                        <i class="fa-regular fa-image"></i>
+                        <button class="wish-quitar-btn" aria-label="Quitar de wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-precio">$799.00</span>
+                        <span class="producto-nombre">Playera Naruto Shippuden</span>
+                        <span class="producto-categoria">Apparel</span>
+                        <span class="producto-vendedor">AkibaraXpress</span>
+                        <div class="producto-botones">
+                            <button class="btn-ver" onclick="location.href='producto.html'">Ver Producto</button>
+                            <button class="btn-comprar">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <div class="producto-imagen">
+                        <i class="fa-regular fa-image"></i>
+                        <button class="wish-quitar-btn" aria-label="Quitar de wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-precio">$349.00</span>
+                        <span class="producto-nombre">Booster Pack Pokémon Scarlet &amp; Violet</span>
+                        <span class="producto-categoria">TCG</span>
+                        <span class="producto-vendedor">AkibaraXpress</span>
+                        <div class="producto-botones">
+                            <button class="btn-ver" onclick="location.href='producto.html'">Ver Producto</button>
+                            <button class="btn-comprar">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Estado vacío (oculto mientras hay ítems) -->
+            <div class="usuario-vacio" id="wishlistVacio" style="display:none;">
+                <i class="fa-regular fa-heart"></i>
+                <p>Tu wishlist está vacía</p>
+                <span>Guarda productos que te gusten para comprarlos después</span>
+                <a href="index.html">Explorar productos</a>
+            </div>
+        </section>
+
+        <!-- ─── TAB: ÓRDENES ─── -->
+        <section id="tab-ordenes" class="usuario-tab-panel" role="tabpanel">
+            <div class="usuario-seccion-header">
+                <span class="usuario-seccion-titulo">
+                    Mis Órdenes <span class="usuario-seccion-count">(12 en total)</span>
+                </span>
+            </div>
+
+            <div class="ordenes-lista">
+
+                <!-- Orden 1 -->
+                <div class="orden-card">
+                    <div class="orden-header">
+                        <span class="orden-numero">#AK-2025-0089</span>
+                        <span class="orden-fecha">3 de mayo, 2025</span>
+                        <span class="orden-estado entregado"><i class="fa-solid fa-circle-check"></i> Entregado</span>
+                    </div>
+                    <div class="orden-cuerpo">
+                        <div class="orden-thumbs">
+                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="orden-thumb-mas">+1</div>
+                        </div>
+                        <div class="orden-resumen">
+                            <span class="orden-total">$2,847.00</span>
+                            <span class="orden-items-count">4 productos</span>
+                        </div>
+                    </div>
+                    <div class="orden-acciones">
+                        <button class="btn-ver">Ver detalles</button>
+                        <button class="btn-comprar">Reordenar</button>
+                    </div>
+                </div>
+
+                <!-- Orden 2 -->
+                <div class="orden-card">
+                    <div class="orden-header">
+                        <span class="orden-numero">#AK-2025-0076</span>
+                        <span class="orden-fecha">18 de abril, 2025</span>
+                        <span class="orden-estado en-camino"><i class="fa-solid fa-truck"></i> En camino</span>
+                    </div>
+                    <div class="orden-cuerpo">
+                        <div class="orden-thumbs">
+                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                        </div>
+                        <div class="orden-resumen">
+                            <span class="orden-total">$1,598.00</span>
+                            <span class="orden-items-count">2 productos</span>
+                        </div>
+                    </div>
+                    <div class="orden-acciones">
+                        <button class="btn-ver">Rastrear pedido</button>
+                        <button class="btn-comprar">Reordenar</button>
+                    </div>
+                </div>
+
+                <!-- Orden 3 -->
+                <div class="orden-card">
+                    <div class="orden-header">
+                        <span class="orden-numero">#AK-2025-0061</span>
+                        <span class="orden-fecha">2 de abril, 2025</span>
+                        <span class="orden-estado procesando"><i class="fa-solid fa-clock"></i> Procesando</span>
+                    </div>
+                    <div class="orden-cuerpo">
+                        <div class="orden-thumbs">
+                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                        </div>
+                        <div class="orden-resumen">
+                            <span class="orden-total">$549.00</span>
+                            <span class="orden-items-count">1 producto</span>
+                        </div>
+                    </div>
+                    <div class="orden-acciones">
+                        <button class="btn-ver">Ver detalles</button>
+                        <button class="btn-comprar">Reordenar</button>
+                    </div>
+                </div>
+
+                <!-- Orden 4 -->
+                <div class="orden-card">
+                    <div class="orden-header">
+                        <span class="orden-numero">#AK-2025-0044</span>
+                        <span class="orden-fecha">10 de marzo, 2025</span>
+                        <span class="orden-estado cancelado"><i class="fa-solid fa-xmark"></i> Cancelado</span>
+                    </div>
+                    <div class="orden-cuerpo">
+                        <div class="orden-thumbs">
+                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="orden-thumb-mas">+3</div>
+                        </div>
+                        <div class="orden-resumen">
+                            <span class="orden-total">$4,120.00</span>
+                            <span class="orden-items-count">5 productos</span>
+                        </div>
+                    </div>
+                    <div class="orden-acciones">
+                        <button class="btn-ver">Ver detalles</button>
+                        <button class="btn-comprar">Reordenar</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ─── TAB: DIRECCIONES ─── -->
+        <section id="tab-direcciones" class="usuario-tab-panel" role="tabpanel">
+            <div class="usuario-seccion-header">
+                <span class="usuario-seccion-titulo">Mis Direcciones</span>
+            </div>
+
+            <div class="direcciones-grid">
+
+                <div class="direccion-card">
+                    <div class="direccion-card-header">
+                        <span class="direccion-tipo">
+                            <i class="fa-solid fa-house"></i> Casa
+                        </span>
+                        <span class="direccion-badge-default">Predeterminada</span>
+                    </div>
+                    <p class="direccion-texto">
+                        Juan Pérez<br>
+                        Av. Constitución 1234, Col. Centro<br>
+                        Monterrey, Nuevo León, 64000<br>
+                        México
+                    </p>
+                    <div class="direccion-acciones">
+                        <button class="direccion-btn direccion-btn-editar">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </button>
+                        <button class="direccion-btn direccion-btn-eliminar">
+                            <i class="fa-solid fa-trash"></i> Eliminar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="direccion-card">
+                    <div class="direccion-card-header">
+                        <span class="direccion-tipo">
+                            <i class="fa-solid fa-briefcase"></i> Trabajo
+                        </span>
+                    </div>
+                    <p class="direccion-texto">
+                        Juan Pérez<br>
+                        Blvd. Díaz Ordaz 500, Piso 3<br>
+                        San Pedro Garza García, N.L., 66220<br>
+                        México
+                    </p>
+                    <div class="direccion-acciones">
+                        <button class="direccion-btn direccion-btn-editar">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </button>
+                        <button class="direccion-btn direccion-btn-eliminar">
+                            <i class="fa-solid fa-trash"></i> Eliminar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="direccion-agregar" role="button" aria-label="Agregar nueva dirección">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Agregar dirección</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ─── TAB: CONFIGURACIÓN ─── -->
+        <section id="tab-configuracion" class="usuario-tab-panel" role="tabpanel">
+            <div class="usuario-seccion-header">
+                <span class="usuario-seccion-titulo">Configuración de Cuenta</span>
+            </div>
+
+            <div class="config-layout">
+
+                <!-- Información personal -->
+                <div class="config-bloque">
+                    <h3 class="config-bloque-titulo">
+                        <i class="fa-solid fa-user"></i> Información Personal
+                    </h3>
+                    <div class="config-campos-row">
+                        <div class="config-campo">
+                            <label for="cfg-nombre">Nombre</label>
+                            <input type="text" id="cfg-nombre" value="Juan" placeholder="Tu nombre">
+                        </div>
+                        <div class="config-campo">
+                            <label for="cfg-apellido">Apellido</label>
+                            <input type="text" id="cfg-apellido" value="Pérez" placeholder="Tu apellido">
+                        </div>
+                    </div>
+                    <div class="config-campo">
+                        <label for="cfg-email">Correo electrónico <span class="config-campo-nota">No modificable</span></label>
+                        <input type="email" id="cfg-email" value="juan.perez@email.com" readonly>
+                    </div>
+                    <div class="config-campo">
+                        <label for="cfg-tel">Teléfono</label>
+                        <input type="tel" id="cfg-tel" value="81 1234 5678" placeholder="81 XXXX XXXX" maxlength="15">
+                    </div>
+                    <button class="config-guardar" id="btnGuardarInfo">
+                        <i class="fa-solid fa-floppy-disk"></i> Guardar cambios
+                    </button>
+                </div>
+
+                <!-- Seguridad -->
+                <div class="config-bloque">
+                    <h3 class="config-bloque-titulo">
+                        <i class="fa-solid fa-lock"></i> Seguridad
+                    </h3>
+                    <div class="config-campo">
+                        <label for="cfg-pass-actual">Contraseña actual</label>
+                        <input type="password" id="cfg-pass-actual" placeholder="••••••••">
+                    </div>
+                    <div class="config-campo">
+                        <label for="cfg-pass-nueva">Nueva contraseña</label>
+                        <input type="password" id="cfg-pass-nueva" placeholder="Mínimo 8 caracteres">
+                    </div>
+                    <div class="config-campo">
+                        <label for="cfg-pass-confirm">Confirmar contraseña</label>
+                        <input type="password" id="cfg-pass-confirm" placeholder="Repite la nueva contraseña">
+                    </div>
+                    <button class="config-guardar">
+                        <i class="fa-solid fa-key"></i> Cambiar contraseña
+                    </button>
+                </div>
+
+                <!-- Preferencias -->
+                <div class="config-bloque">
+                    <h3 class="config-bloque-titulo">
+                        <i class="fa-solid fa-bell"></i> Notificaciones
+                    </h3>
+                    <div class="config-campo">
+                        <label>Notificaciones por correo</label>
+                        <select>
+                            <option>Todas las notificaciones</option>
+                            <option>Solo órdenes y envíos</option>
+                            <option>Solo promociones</option>
+                            <option>Ninguna</option>
+                        </select>
+                    </div>
+                    <div class="config-campo">
+                        <label>Newsletter</label>
+                        <select>
+                            <option>Suscrito — recibo novedades semanales</option>
+                            <option>No suscrito</option>
+                        </select>
+                    </div>
+                    <button class="config-guardar">
+                        <i class="fa-solid fa-floppy-disk"></i> Guardar preferencias
+                    </button>
+                </div>
+
+                <!-- Zona de peligro -->
+                <div class="config-bloque">
+                    <h3 class="config-bloque-titulo">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Zona de Peligro
+                    </h3>
+                    <p class="config-peligro-texto">
+                        Cerrar sesión en todos los dispositivos activos. Esta acción no elimina tu cuenta ni tus datos.
+                    </p>
+                    <button class="config-btn-peligro">
+                        <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión en todos los dispositivos
+                    </button>
+                    <p class="config-peligro-texto" style="margin-top: 8px;">
+                        Eliminar tu cuenta es permanente. Perderás tus órdenes, wishlist y puntos acumulados.
+                    </p>
+                    <button class="config-btn-peligro">
+                        <i class="fa-solid fa-trash"></i> Eliminar mi cuenta
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </div><!-- /usuario-contenido -->
+
+    <!-- ========== PIE DE PÁGINA ========== -->
+    <footer>
+        <div class="footer-principal">
+            <div class="footer-col">
+                <h4 class="footer-titulo-col">Quienes Somos?</h4>
+                <p class="footer-subtitulo">Gracias por tu interes en nosotros!</p>
+                <p class="footer-descripcion">Akibara Xpress fue fundado en 2014, y empezamos haciendo entregas a domicilio, hemos ido creciendo y todos los dias entrenamos para ser los mejores. Nos gusta mucho el anime y somos saiyajines!</p>
+                <a href="#" class="footer-leer-mas">Leer mas</a>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-titulo-col">Akibara Xpress</h4>
+                <ul>
+                    <li><a href="#">Quienes Somos</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Ubicaciones</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Aviso de Privacidad</a></li>
+                    <li><a href="#">Terminos del servicio</a></li>
+                    <li><a href="#">Politica de reembolso</a></li>
+                    <li><a href="#">Eliminacion de cuenta</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-titulo-col">Newsletter</h4>
+                <p class="footer-descripcion">Suscribete con nosotros y recibe promociones, informacion de preventas y mucho mas!</p>
+                <div class="newsletter-form">
+                    <input type="tel" placeholder="Tu teléfono (10 dígitos)" aria-label="Número de teléfono" maxlength="15">
+                    <button type="button">Suscribir</button>
+                    <span class="newsletter-msg"></span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-titulo-col">Mexico</h4>
+                <ul>
+                    <li><a href="#">Tienda de Mangas en Monterrey</a></li>
+                    <li><a href="#">Tienda de Mangas en Interplaza</a></li>
+                    <li><a href="#">Tienda de Mangas en TEC</a></li>
+                    <li><a href="#">Tienda de Mangas en Universidad</a></li>
+                    <li><a href="#">Panini en Mexico</a></li>
+                    <li><a href="#">DAM EN Mexico</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-inferior">
+            <div class="footer-redes">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de accesibilidad -->
+    <button id="btnAccesibilidad" aria-label="Opciones de accesibilidad" aria-expanded="false" aria-controls="menuAccesibilidad">
+        <i class="fa-solid fa-universal-access"></i>
+    </button>
+
+    <!-- Menú de accesibilidad -->
+    <aside id="menuAccesibilidad" class="accesibilidad-panel" role="dialog" aria-label="Menú de accesibilidad" aria-hidden="true">
+        <div class="accesibilidad-header">
+            <h2>Accesibilidad</h2>
+            <button id="btnCerrarMenu" aria-label="Cerrar menú de accesibilidad">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="accesibilidad-opciones">
+            <button class="accesibilidad-opcion" id="btnModoOscuro">
+                <i class="fa-solid fa-moon"></i>
+                <span>Modo oscuro</span>
+            </button>
+            <button class="accesibilidad-opcion" id="btnCursorGrande">
+                <i class="fa-solid fa-arrow-pointer"></i>
+                <span>Cursor grande</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Overlay para cerrar el menú -->
+    <div id="accesibilidadOverlay" class="accesibilidad-overlay"></div>
+
+    <!-- ========== PANEL: CARRITO DE COMPRAS ========== -->
+    <div id="carritoOverlay" class="carrito-overlay"></div>
+
+    <aside id="panelCarrito" class="carrito-panel" role="dialog" aria-label="Carrito de compras" aria-hidden="true">
+        <div class="carrito-panel-header">
+            <h2><i class="fa-solid fa-cart-shopping"></i> Carrito</h2>
+            <button id="btnCerrarCarrito" aria-label="Cerrar carrito">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="carrito-vacio" id="carritoVacio">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Tu carrito está vacío</p>
+            <span>Agrega productos para comenzar</span>
+        </div>
+
+        <div class="carrito-lista" id="carritoLista"></div>
+
+        <div class="carrito-footer" id="carritoFooter">
+            <div class="carrito-total-row">
+                <span>Total</span>
+                <span class="carrito-total-precio" id="carritoTotal">$0.00</span>
+            </div>
+            <button class="carrito-btn-pago">
+                <i class="fa-solid fa-lock"></i> Proceder al Pago
+            </button>
+            <button class="carrito-btn-vaciar" id="btnVaciarCarrito">
+                Vaciar carrito
+            </button>
+        </div>
+    </aside>
+
+    <!-- ── Scripts modulares ── -->
+    <script src="js/transiciones.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/modo-oscuro.js"></script>
+    <script src="js/accesibilidad.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/usuario.js"></script>
+
+</body>
+</html>

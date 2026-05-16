@@ -236,6 +236,66 @@ body.modo-oscuro .pd-thumb-nav-btn {
 /* ── Toast ── */
 body.modo-oscuro .pd-toast { background-color: rgb(40, 38, 39); }
 
+/* ── Panel Carrito ── */
+body.modo-oscuro .carrito-item {
+    background-color: rgb(36, 34, 35);
+    border-color: #3a3838;
+}
+
+body.modo-oscuro .carrito-item:hover {
+    border-color: #555;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.modo-oscuro .carrito-item-imagen {
+    background-color: rgb(40, 38, 39);
+    color: #555;
+}
+
+body.modo-oscuro .carrito-item-nombre { color: #e8e8e8; }
+body.modo-oscuro .carrito-item-categoria { color: #666; }
+
+body.modo-oscuro .carrito-cantidad-btn {
+    border-color: #3a3838;
+    color: #aaa;
+}
+
+body.modo-oscuro .carrito-cantidad-btn:hover {
+    border-color: var(--color-primario);
+    background-color: var(--color-primario);
+    color: white;
+}
+
+body.modo-oscuro .carrito-cantidad-valor { color: #e0e0e0; }
+
+body.modo-oscuro .carrito-item-eliminar { color: #555; }
+
+body.modo-oscuro .carrito-item-eliminar:hover {
+    color: var(--color-primario);
+    background-color: rgba(220, 20, 60, 0.12);
+}
+
+body.modo-oscuro .carrito-footer {
+    background-color: rgb(30, 28, 29);
+    border-top-color: #3a3838;
+}
+
+body.modo-oscuro .carrito-total-row span:first-child { color: #bbb; }
+
+body.modo-oscuro .carrito-btn-vaciar {
+    border-color: #3a3838;
+    color: #666;
+}
+
+body.modo-oscuro .carrito-btn-vaciar:hover {
+    border-color: var(--color-primario);
+    color: var(--color-primario);
+}
+
+body.modo-oscuro .carrito-vacio i  { color: #3a3838; }
+body.modo-oscuro .carrito-vacio p  { color: #777; }
+body.modo-oscuro .carrito-vacio span { color: #555; }
+
 /* ── Promociones de pago ── */
 body.modo-oscuro .pd-promos {
     background-color: rgb(32, 30, 31);

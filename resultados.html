@@ -6,6 +6,7 @@
     <title>Resultados de búsqueda — AkibaraXpress</title>
 
     <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/paneles.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/subheader.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="css/contenido/principal.css">
     <link rel="stylesheet" href="css/contenido/resultados.css">
     <link rel="stylesheet" href="css/transiciones.css">
+    <link rel="stylesheet" href="css/carrito.css">
     <link rel="stylesheet" href="css/responsivo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -33,7 +35,7 @@
         <div class="user-section">
             <div class="user-info">
                 <span class="saludo">Hola,</span>
-                <span class="nombre-cliente">Juan Pérez</span>
+                <a href="usuario.html" class="nombre-cliente">Juan Pérez</a>
             </div>
             <div class="separador"></div>
             <div class="carrito" role="button" aria-label="Ver carrito">
@@ -239,11 +241,45 @@
     </aside>
     <div id="accesibilidadOverlay" class="accesibilidad-overlay"></div>
 
+    <!-- ========== PANEL: CARRITO DE COMPRAS ========== -->
+    <div id="carritoOverlay" class="carrito-overlay"></div>
+
+    <aside id="panelCarrito" class="carrito-panel" role="dialog" aria-label="Carrito de compras" aria-hidden="true">
+        <div class="carrito-panel-header">
+            <h2><i class="fa-solid fa-cart-shopping"></i> Carrito</h2>
+            <button id="btnCerrarCarrito" aria-label="Cerrar carrito">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="carrito-vacio" id="carritoVacio">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Tu carrito está vacío</p>
+            <span>Agrega productos para comenzar</span>
+        </div>
+
+        <div class="carrito-lista" id="carritoLista"></div>
+
+        <div class="carrito-footer" id="carritoFooter">
+            <div class="carrito-total-row">
+                <span>Total</span>
+                <span class="carrito-total-precio" id="carritoTotal">$0.00</span>
+            </div>
+            <button class="carrito-btn-pago">
+                <i class="fa-solid fa-lock"></i> Proceder al Pago
+            </button>
+            <button class="carrito-btn-vaciar" id="btnVaciarCarrito">
+                Vaciar carrito
+            </button>
+        </div>
+    </aside>
+
     <script src="js/transiciones.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/header.js"></script>
     <script src="js/modo-oscuro.js"></script>
     <script src="js/accesibilidad.js"></script>
+    <script src="js/carrito.js"></script>
     <script src="js/resultados.js"></script>
 
 </body>
