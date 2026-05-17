@@ -282,6 +282,10 @@ body.pagina-usuario { background-color: var(--color-fondo-alt); }
     transition: box-shadow var(--trans-normal), border-color var(--trans-rapida);
 }
 
+.orden-nueva {
+    border-left: 3px solid var(--color-primario);
+}
+
 .orden-card:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     border-color: #d0d0d0;
@@ -404,6 +408,26 @@ body.pagina-usuario { background-color: var(--color-fondo-alt); }
     justify-content: flex-end;
     flex-wrap: wrap;
 }
+
+.btn-cancelar-orden {
+    padding: 7px 14px;
+    border: 1.5px solid #ef4444;
+    background: none;
+    color: #ef4444;
+    border-radius: var(--radio-btn, 8px);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.btn-cancelar-orden:hover {
+    background-color: #ef4444;
+    color: #fff;
+}
+
+body.modo-oscuro .btn-cancelar-orden { border-color: #f87171; color: #f87171; }
+body.modo-oscuro .btn-cancelar-orden:hover { background-color: #f87171; color: #1a1a1a; }
 
 
 /* ============================================================

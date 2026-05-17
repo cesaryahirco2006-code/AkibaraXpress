@@ -4,7 +4,8 @@
    ============================================================ */
 
 const Carrito = (() => {
-    const STORAGE_KEY = 'akibara_carrito';
+    const STORAGE_KEY  = 'akibara_carrito';
+    const ORDENES_KEY  = 'akibara_ordenes';
 
     let items = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 
@@ -155,6 +156,67 @@ const Carrito = (() => {
         setTimeout(() => iconoCart.classList.remove('animando'), 520);
     }
 
+    /* ── Guardar orden en localStorage ── */
+    function guardarOrden() {
+        const orden = {
+            id:     'AKB-' + Date.now(),
+            fecha:  new Date().toISOString(),
+            items:  JSON.parse(JSON.stringify(items)),
+            total:  calcularTotal(),
+            estado: 'en-camino',
+        };
+        const ordenes = JSON.parse(localStorage.getItem(ORDENES_KEY) || '[]');
+        ordenes.unshift(orden);
+        localStorage.setItem(ORDENES_KEY, JSON.stringify(ordenes));
+    }
+
+    /* ── Modal de pago ── */
+    function crearModalPago() {
+        const overlay = document.createElement('div');
+        overlay.className = 'pago-overlay';
+        overlay.innerHTML = `
+            <div class="pago-modal">
+                <div class="pago-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <svg class="pago-check" viewBox="0 0 72 72" aria-hidden="true">
+                    <circle class="pago-check-circle" cx="36" cy="36" r="34"/>
+                    <polyline class="pago-check-tick" points="20,37 31,48 52,26"/>
+                </svg>
+                <p class="pago-titulo">Procesando pago…</p>
+                <p class="pago-subtitulo">Esto solo tomará un momento</p>
+            </div>`;
+        document.body.appendChild(overlay);
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => overlay.classList.add('visible'));
+        });
+
+        /* Después de 1.8s → transición a éxito */
+        setTimeout(() => {
+            guardarOrden();
+            vaciar();
+
+            const dots     = overlay.querySelector('.pago-dots');
+            const check    = overlay.querySelector('.pago-check');
+            const titulo   = overlay.querySelector('.pago-titulo');
+            const subtitulo = overlay.querySelector('.pago-subtitulo');
+
+            dots.style.display    = 'none';
+            check.style.display   = 'block';
+            titulo.textContent    = '¡Pago exitoso!';
+            subtitulo.textContent = 'Tu pedido está en camino 🛍';
+
+        }, 1800);
+
+        /* Después de 3.8s → cerrar modal y panel */
+        setTimeout(() => {
+            overlay.classList.remove('visible');
+            cerrar();
+            setTimeout(() => overlay.remove(), 300);
+        }, 3800);
+    }
+
     /* ── Eventos globales ── */
     function init() {
         /* Abrir al hacer clic en el ícono del header */
@@ -168,6 +230,13 @@ const Carrito = (() => {
 
         /* Vaciar */
         document.getElementById('btnVaciarCarrito')?.addEventListener('click', vaciar);
+
+        /* Proceder al pago */
+        document.querySelector('.carrito-btn-pago')?.addEventListener('click', () => {
+            if (items.length === 0) return;
+            cerrar();
+            setTimeout(crearModalPago, 280);
+        });
 
         /* Tecla Escape */
         document.addEventListener('keydown', e => {

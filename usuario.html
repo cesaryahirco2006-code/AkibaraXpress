@@ -166,106 +166,16 @@
         <section id="tab-ordenes" class="usuario-tab-panel" role="tabpanel">
             <div class="usuario-seccion-header">
                 <span class="usuario-seccion-titulo">
-                    Mis Órdenes <span class="usuario-seccion-count">(12 en total)</span>
+                    Mis Órdenes <span class="usuario-seccion-count" id="ordenesCount"></span>
                 </span>
             </div>
 
-            <div class="ordenes-lista">
+            <div class="ordenes-lista" id="ordenesList"></div>
 
-                <!-- Orden 1 -->
-                <div class="orden-card">
-                    <div class="orden-header">
-                        <span class="orden-numero">#AK-2025-0089</span>
-                        <span class="orden-fecha">3 de mayo, 2025</span>
-                        <span class="orden-estado entregado"><i class="fa-solid fa-circle-check"></i> Entregado</span>
-                    </div>
-                    <div class="orden-cuerpo">
-                        <div class="orden-thumbs">
-                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/SH FIGUAFRTS SON GOKU -DAIMA-.webp" alt="Goku DAIMA"></div>
-                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/SH FIGUARTS VEGETA -DAIMA-.webp" alt="Vegeta DAIMA"></div>
-                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/S.H FIGUARTS PICCOLO -DAIMA-.webp" alt="Piccolo DAIMA"></div>
-                            <div class="orden-thumb-mas">+1</div>
-                        </div>
-                        <div class="orden-resumen">
-                            <span class="orden-total">$3,797.00</span>
-                            <span class="orden-items-count">4 productos</span>
-                        </div>
-                    </div>
-                    <div class="orden-acciones">
-                        <button class="btn-ver">Ver detalles</button>
-                        <button class="btn-comprar">Reordenar</button>
-                    </div>
-                </div>
-
-                <!-- Orden 2 -->
-                <div class="orden-card">
-                    <div class="orden-header">
-                        <span class="orden-numero">#AK-2025-0076</span>
-                        <span class="orden-fecha">18 de abril, 2025</span>
-                        <span class="orden-estado en-camino"><i class="fa-solid fa-truck"></i> En camino</span>
-                    </div>
-                    <div class="orden-cuerpo">
-                        <div class="orden-thumbs">
-                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/Figma Akaza.webp" alt="Figma Akaza"></div>
-                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/POP UP PARADE Mitsuri Kanroji.webp" alt="Mitsuri Kanroji"></div>
-                        </div>
-                        <div class="orden-resumen">
-                            <span class="orden-total">$2,298.00</span>
-                            <span class="orden-items-count">2 productos</span>
-                        </div>
-                    </div>
-                    <div class="orden-acciones">
-                        <button class="btn-ver">Rastrear pedido</button>
-                        <button class="btn-comprar">Reordenar</button>
-                    </div>
-                </div>
-
-                <!-- Orden 3 -->
-                <div class="orden-card">
-                    <div class="orden-header">
-                        <span class="orden-numero">#AK-2025-0061</span>
-                        <span class="orden-fecha">2 de abril, 2025</span>
-                        <span class="orden-estado procesando"><i class="fa-solid fa-clock"></i> Procesando</span>
-                    </div>
-                    <div class="orden-cuerpo">
-                        <div class="orden-thumbs">
-                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/ONE PIECE N.57.webp" alt="One Piece Vol. 57"></div>
-                        </div>
-                        <div class="orden-resumen">
-                            <span class="orden-total">$189.00</span>
-                            <span class="orden-items-count">1 producto</span>
-                        </div>
-                    </div>
-                    <div class="orden-acciones">
-                        <button class="btn-ver">Ver detalles</button>
-                        <button class="btn-comprar">Reordenar</button>
-                    </div>
-                </div>
-
-                <!-- Orden 4 -->
-                <div class="orden-card">
-                    <div class="orden-header">
-                        <span class="orden-numero">#AK-2025-0044</span>
-                        <span class="orden-fecha">10 de marzo, 2025</span>
-                        <span class="orden-estado cancelado"><i class="fa-solid fa-xmark"></i> Cancelado</span>
-                    </div>
-                    <div class="orden-cuerpo">
-                        <div class="orden-thumbs">
-                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/WORLD CUP 2026 TCG DREAM BOX (50 CARDS) ADRENALYN XL.webp" alt="Dream Box"></div>
-                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/SH Figuarts Piccolo Super Hero -Dragon Ball Super.webp" alt="Piccolo Super Hero"></div>
-                            <div class="orden-thumb-mas">+3</div>
-                        </div>
-                        <div class="orden-resumen">
-                            <span class="orden-total">$4,196.00</span>
-                            <span class="orden-items-count">5 productos</span>
-                        </div>
-                    </div>
-                    <div class="orden-acciones">
-                        <button class="btn-ver">Ver detalles</button>
-                        <button class="btn-comprar">Reordenar</button>
-                    </div>
-                </div>
-
+            <div class="ordenes-vacio" id="ordenesVacio">
+                <i class="fa-solid fa-box-open"></i>
+                <p>Aún no tienes pedidos</p>
+                <span>Tus compras aparecerán aquí</span>
             </div>
         </section>
 

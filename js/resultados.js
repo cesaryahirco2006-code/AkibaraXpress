@@ -16,7 +16,20 @@ const searchInput = document.getElementById('searchInput');
 if (searchInput) searchInput.value = query;
 
 /* ── Estado global ── */
-let ordenActual = 'relevancia';
+let ordenActual   = 'relevancia';
+let textoBusqueda = query; // puede limpiarse si el query activa un filtro directo
+
+/* ── Mapeo: query exacto → checkbox a pre-activar ── */
+const QUERY_A_FILTRO = {
+    'figuras':   { grupo: 'filtros-cat',   valor: 'figuras' },
+    'mangas':    { grupo: 'filtros-cat',   valor: 'mangas' },
+    'series':    { grupo: 'filtros-cat',   valor: 'series' },
+    'tcg':       { grupo: 'filtros-cat',   valor: 'tcg' },
+    'apparel':   { grupo: 'filtros-cat',   valor: 'apparel' },
+    'juegos':    { grupo: 'filtros-cat',   valor: 'juegos' },
+    'preventas': { grupo: 'filtros-stock', valor: 'preventa' },
+    'preventa':  { grupo: 'filtros-stock', valor: 'preventa' },
+};
 
 /* ── Leer filtros activos ── */
 function obtenerFiltros() {
@@ -31,12 +44,13 @@ function obtenerProductos() {
     const q = query.toLowerCase();
     const { cats, precios, stocks } = obtenerFiltros();
 
+    const t = textoBusqueda.toLowerCase();
     let lista = CATALOGO.filter(p => {
-        /* Búsqueda por texto */
-        if (q) {
-            const matchQ = p.nombre.toLowerCase().includes(q) ||
-                           p.categoria.toLowerCase().includes(q) ||
-                           p.serie.toLowerCase().includes(q);
+        /* Búsqueda por texto (solo si no fue reemplazado por filtro directo) */
+        if (t) {
+            const matchQ = p.nombre.toLowerCase().includes(t) ||
+                           p.categoria.toLowerCase().includes(t) ||
+                           p.serie.toLowerCase().includes(t);
             if (!matchQ) return false;
         }
 
@@ -188,4 +202,13 @@ document.getElementById('btnToggleFiltros')?.addEventListener('click', function 
 });
 
 /* ── Init ── */
-document.addEventListener('DOMContentLoaded', actualizar);
+document.addEventListener('DOMContentLoaded', () => {
+    /* Pre-activar filtro si el query coincide exactamente con una categoría/estado */
+    const mapeo = QUERY_A_FILTRO[query.trim().toLowerCase()];
+    if (mapeo) {
+        const cb = document.querySelector(`#${mapeo.grupo} input[value="${mapeo.valor}"]`);
+        if (cb) cb.checked = true;
+        textoBusqueda = ''; /* no usar como búsqueda libre */
+    }
+    actualizar();
+});
