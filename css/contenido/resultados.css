@@ -82,6 +82,7 @@
     border: 1px solid var(--color-borde);
     border-radius: 8px;
     font-size: 13px;
+    font-family: var(--fuente-principal);
     color: #333;
     background-color: white;
     cursor: pointer;

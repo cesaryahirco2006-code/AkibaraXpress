@@ -718,6 +718,7 @@ body.modo-oscuro .config-bloque-titulo {
 }
 
 body.modo-oscuro .config-campo label { color: #555; }
+body.modo-oscuro .config-campo-nota { color: #555; }
 
 body.modo-oscuro .config-campo input,
 body.modo-oscuro .config-campo select {

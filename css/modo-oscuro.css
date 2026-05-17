@@ -124,7 +124,7 @@ body.modo-oscuro .pd-thumb.active { border-color: var(--color-primario); }
 body.modo-oscuro .pd-thumb-nav-btn {
     background-color: rgb(40, 38, 39);
     border-color: #3a3838;
-    color: #777;
+    color: #666;
 }
 
 body.modo-oscuro .pd-nombre,
@@ -227,12 +227,6 @@ body.modo-oscuro .pd-badge-nuevo {
     background-color: var(--color-primario);
 }
 
-body.modo-oscuro .pd-thumb-nav-btn {
-    background-color: rgb(40, 38, 39);
-    border-color: #3a3838;
-    color: #666;
-}
-
 /* ── Toast ── */
 body.modo-oscuro .pd-toast { background-color: rgb(40, 38, 39); }
 
@@ -295,6 +289,53 @@ body.modo-oscuro .carrito-btn-vaciar:hover {
 body.modo-oscuro .carrito-vacio i  { color: #3a3838; }
 body.modo-oscuro .carrito-vacio p  { color: #777; }
 body.modo-oscuro .carrito-vacio span { color: #555; }
+
+body.modo-oscuro .carrito-lista::-webkit-scrollbar-thumb { background-color: #3a3838; }
+
+/* ── Página de Resultados ── */
+body.modo-oscuro .res-breadcrumb li            { color: #666; }
+body.modo-oscuro .res-breadcrumb li + li::before { color: #444; }
+body.modo-oscuro .res-breadcrumb a             { color: #777; }
+body.modo-oscuro .res-breadcrumb li.active     { color: #ddd; font-weight: 600; }
+
+body.modo-oscuro .res-header     { border-bottom-color: #3a3838; }
+body.modo-oscuro .res-titulo     { color: #f0f0f0; }
+body.modo-oscuro .res-count      { color: #666; }
+
+body.modo-oscuro .res-orden {
+    background-color: rgb(36, 34, 35);
+    border-color: #3a3838;
+    color: #ccc;
+}
+
+body.modo-oscuro .res-vista-btns { border-color: #3a3838; }
+
+body.modo-oscuro .res-vista-btn {
+    background-color: rgb(36, 34, 35);
+    color: #666;
+}
+
+body.modo-oscuro .res-vista-btn:hover {
+    background-color: rgb(44, 42, 43);
+    color: #ccc;
+}
+
+body.modo-oscuro .res-filtros {
+    background-color: rgb(36, 34, 35);
+    border-color: #3a3838;
+}
+
+body.modo-oscuro .res-filtro-header  { color: #e0e0e0; }
+body.modo-oscuro .res-filtro-grupo   { border-top-color: #3a3838; }
+
+body.modo-oscuro .res-filtro-titulo  { color: #ccc; }
+body.modo-oscuro .res-filtro-titulo:hover { color: var(--color-primario); }
+
+body.modo-oscuro .res-checkbox       { color: #888; }
+body.modo-oscuro .res-checkbox:hover { color: var(--color-primario); }
+
+body.modo-oscuro .res-vacio   { color: #555; }
+body.modo-oscuro .res-vacio p { color: #666; }
 
 /* ── Promociones de pago ── */
 body.modo-oscuro .pd-promos {
