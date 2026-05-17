@@ -99,9 +99,45 @@ document.addEventListener('DOMContentLoaded', () => {
         feedbackGuardado(document.getElementById('btnGuardarInfo'));
     });
 
-    document.querySelectorAll('.config-guardar:not(#btnGuardarInfo)').forEach(btn => {
-        btn.addEventListener('click', () => feedbackGuardado(btn));
-    });
+    /* ── Cambiar contraseña ── */
+    const btnCambiarPass = document.getElementById('btnCambiarPass');
+    if (btnCambiarPass) {
+        const PASS_ACTUAL = 'CONTRASEÑA123';
+        const inpActual   = document.getElementById('cfg-pass-actual');
+        const inpNueva    = document.getElementById('cfg-pass-nueva');
+        const inpConfirm  = document.getElementById('cfg-pass-confirm');
+        const passError   = document.getElementById('passError');
+
+        function mostrarError(msg) {
+            passError.textContent = msg;
+            passError.style.display = 'block';
+        }
+
+        btnCambiarPass.addEventListener('click', () => {
+            passError.style.display = 'none';
+
+            if (inpActual.value !== PASS_ACTUAL) {
+                mostrarError('La contraseña actual no es correcta.');
+                inpActual.focus();
+                return;
+            }
+            if (inpNueva.value.length < 8) {
+                mostrarError('La nueva contraseña debe tener al menos 8 caracteres.');
+                inpNueva.focus();
+                return;
+            }
+            if (inpNueva.value !== inpConfirm.value) {
+                mostrarError('Las contraseñas no coinciden.');
+                inpConfirm.focus();
+                return;
+            }
+
+            inpActual.value  = '';
+            inpNueva.value   = '';
+            inpConfirm.value = '';
+            feedbackGuardado(btnCambiarPass);
+        });
+    }
 
 
     /* ── Wishlist — quitar producto ── */

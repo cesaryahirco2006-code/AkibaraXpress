@@ -658,6 +658,13 @@ body.pagina-usuario { background-color: var(--color-fondo-alt); }
 
 .config-guardar:active { transform: scale(0.98); }
 
+.config-pass-error {
+    display: none;
+    font-size: 13px;
+    color: #dc143c;
+    margin-bottom: 8px;
+}
+
 .config-peligro-texto {
     font-size: 13px;
     color: #888;
@@ -812,5 +819,23 @@ body.modo-oscuro .usuario-vacio span { color: #555; }
 }
 
 @media (max-width: 480px) {
-    .usuario-grid { grid-template-columns: 1fr; }
+    .usuario-grid    { grid-template-columns: 1fr; }
+    .usuario-contenido { padding: 16px 14px; }
+
+    /* Stats: más compactas */
+    .usuario-stat         { padding: 12px 10px; }
+    .usuario-stat-valor   { font-size: 20px; }
+    .usuario-stat-label   { font-size: 10px; }
+
+    /* Tabs: sin padding lateral para que quepan todas */
+    .usuario-tabs-bar { padding: 0; gap: 0; }
+    .usuario-tab      { padding: 12px 10px; font-size: 12px; }
+
+    /* Órdenes: header más compacto */
+    .orden-header    { flex-wrap: wrap; }
+    .orden-numero    { font-size: 13px; }
+    .orden-fecha     { font-size: 11px; }
+
+    /* Config: reduce gaps */
+    .config-bloque   { padding: 16px 14px; }
 }

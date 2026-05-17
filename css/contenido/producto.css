@@ -754,4 +754,26 @@ body.pagina-producto {
 
     .pd-thumb,
     .pd-thumb-nav-btn { width: 54px; }
+
+    /* Padding más compacto */
+    .producto-detalle-main { padding: 14px 12px 40px; }
+
+    /* Inputs de envío: apilados verticalmente */
+    .pd-envio-inputs    { flex-direction: column; }
+    .pd-envio-input     { min-width: unset; width: 100%; }
+    .pd-envio-btn       { align-self: stretch; text-align: center; }
+
+    /* Toast: ancho completo en teléfono */
+    .pd-toast {
+        left: 12px;
+        right: 12px;
+        bottom: 16px;
+        font-size: 13px;
+    }
+
+    /* Breadcrumb: nombre más corto */
+    .pd-breadcrumb li.active { max-width: 160px; }
+
+    /* Hint de zoom innecesario en móvil */
+    .pd-zoom-hint { display: none; }
 }

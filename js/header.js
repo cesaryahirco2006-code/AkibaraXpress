@@ -46,11 +46,8 @@ if (header) {
     }, { passive: true });
 }
 
-/* ── 4. SINCRONIZACIÓN SUBHEADER — elimina el hueco durante la transición ── */
+/* ── 4. SINCRONIZACIÓN SUBHEADER — Solo en desktop ── */
 if (header && subheader) {
-    // Desactiva la transición CSS del subheader; JS maneja el top en cada frame
-    subheader.style.transition = 'none';
-
     let rafId = null;
 
     function syncSubheaderTop() {
@@ -71,11 +68,25 @@ if (header && subheader) {
         syncSubheaderTop();
     }
 
+    /* En desktop: desactiva la transición CSS de top y sincroniza con JS.
+       En móvil: subheader es position:static, top no aplica; restaurar
+       la transición para que funcione la animación del menú hamburguesa. */
+    function aplicarModoSync() {
+        if (window.innerWidth > 768) {
+            subheader.style.transition = 'none';
+            syncSubheaderTop();
+        } else {
+            subheader.style.removeProperty('transition');
+            subheader.style.removeProperty('top');
+        }
+    }
+
     header.addEventListener('transitionstart',  e => { if (e.propertyName === 'height') startSubheaderSync(); });
     header.addEventListener('transitionend',    e => { if (e.propertyName === 'height') stopSubheaderSync(); });
     header.addEventListener('transitioncancel', e => { if (e.propertyName === 'height') stopSubheaderSync(); });
 
-    syncSubheaderTop();
+    aplicarModoSync();
+    window.addEventListener('resize', aplicarModoSync);
 }
 
 // ── Buscador ──

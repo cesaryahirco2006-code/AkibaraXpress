@@ -15,24 +15,74 @@ document.getElementById('resVacioQuery').textContent = query;
 const searchInput = document.getElementById('searchInput');
 if (searchInput) searchInput.value = query;
 
-/* ── Filtrar productos ── */
-function filtrarProductos() {
+/* ── Estado global ── */
+let ordenActual = 'relevancia';
+
+/* ── Leer filtros activos ── */
+function obtenerFiltros() {
+    const cats    = [...document.querySelectorAll('#filtros-cat input:checked')].map(c => c.value);
+    const precios = [...document.querySelectorAll('#filtros-precio input:checked')].map(c => c.value);
+    const stocks  = [...document.querySelectorAll('#filtros-stock input:checked')].map(c => c.value);
+    return { cats, precios, stocks };
+}
+
+/* ── Filtrar + ordenar ── */
+function obtenerProductos() {
     const q = query.toLowerCase();
-    return CATALOGO.filter(p =>
-        p.nombre.toLowerCase().includes(q)    ||
-        p.categoria.toLowerCase().includes(q) ||
-        p.serie.toLowerCase().includes(q)
-    );
+    const { cats, precios, stocks } = obtenerFiltros();
+
+    let lista = CATALOGO.filter(p => {
+        /* Búsqueda por texto */
+        if (q) {
+            const matchQ = p.nombre.toLowerCase().includes(q) ||
+                           p.categoria.toLowerCase().includes(q) ||
+                           p.serie.toLowerCase().includes(q);
+            if (!matchQ) return false;
+        }
+
+        /* Categoría */
+        if (cats.length && !cats.includes(p.categoria.toLowerCase())) return false;
+
+        /* Precio */
+        if (precios.length) {
+            const ok = precios.some(rango => {
+                if (rango === '0-500')     return p.precio <= 500;
+                if (rango === '500-1000')  return p.precio > 500  && p.precio <= 1000;
+                if (rango === '1000-2000') return p.precio > 1000 && p.precio <= 2000;
+                if (rango === '2000+')     return p.precio > 2000;
+                return false;
+            });
+            if (!ok) return false;
+        }
+
+        /* Disponibilidad */
+        if (stocks.length && !stocks.includes(p.stock)) return false;
+
+        return true;
+    });
+
+    /* Orden */
+    if (ordenActual === 'precio-asc')  lista = [...lista].sort((a, b) => a.precio - b.precio);
+    if (ordenActual === 'precio-desc') lista = [...lista].sort((a, b) => b.precio - a.precio);
+    if (ordenActual === 'nombre')      lista = [...lista].sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    return lista;
 }
 
 /* ── Crear tarjeta de producto ── */
 function crearTarjeta(p) {
-    const enWish = Wishlist.tiene(p.id);
+    const enWish    = Wishlist.tiene(p.id);
+    const agotado   = p.stock === 'agotado';
+    const preventa  = p.stock === 'preventa';
+    const badgeHtml = agotado  ? '<span class="prod-badge agotado-badge">Agotado</span>'
+                    : preventa ? '<span class="prod-badge preventa-badge">Preventa</span>'
+                    : '';
     return `
-        <div class="producto-card" data-product-id="${p.id}" data-nombre="${p.nombre}"
+        <div class="producto-card${agotado ? ' card-agotado' : ''}" data-product-id="${p.id}" data-nombre="${p.nombre}"
              data-categoria="${p.categoria}" data-precio="${p.precio}">
             <div class="producto-imagen">
                 <img src="${p.imagen}" alt="${p.nombre}" loading="lazy">
+                ${badgeHtml}
                 <button class="btn-wishlist${enWish ? ' activo' : ''}" data-id="${p.id}" title="Wishlist" aria-label="Wishlist">
                     <i class="fa-${enWish ? 'solid' : 'regular'} fa-heart"></i>
                 </button>
@@ -44,7 +94,7 @@ function crearTarjeta(p) {
                 <span class="producto-vendedor">${p.vendedor}</span>
                 <div class="producto-botones">
                     <button class="btn-ver">Ver Producto</button>
-                    <button class="btn-comprar">Agregar al carrito</button>
+                    <button class="btn-comprar"${agotado ? ' disabled' : ''}>${agotado ? 'Agotado' : 'Agregar al carrito'}</button>
                 </div>
             </div>
         </div>`;
@@ -64,8 +114,8 @@ function renderizar(productos) {
         return;
     }
 
-    vacio.hidden     = true;
-    grid.innerHTML   = productos.map(crearTarjeta).join('');
+    vacio.hidden   = true;
+    grid.innerHTML = productos.map(crearTarjeta).join('');
 
     grid.querySelectorAll('.producto-card').forEach(card => {
         card.addEventListener('click', e => {
@@ -80,19 +130,26 @@ function renderizar(productos) {
     });
 }
 
+/* ── Actualizar (filtros + orden + render) ── */
+function actualizar() {
+    renderizar(obtenerProductos());
+}
+
+/* ── Escuchar cambios en checkboxes ── */
+document.querySelectorAll('.res-checkbox input').forEach(cb => {
+    cb.addEventListener('change', actualizar);
+});
+
 /* ── Ordenamiento ── */
 document.getElementById('resOrden').addEventListener('change', function () {
-    let lista = filtrarProductos();
-    if (this.value === 'precio-asc')  lista = [...lista].sort((a, b) => a.precio - b.precio);
-    if (this.value === 'precio-desc') lista = [...lista].sort((a, b) => b.precio - a.precio);
-    if (this.value === 'nombre')      lista = [...lista].sort((a, b) => a.nombre.localeCompare(b.nombre));
-    renderizar(lista);
+    ordenActual = this.value;
+    actualizar();
 });
 
 /* ── Filtros colapsables ── */
 document.querySelectorAll('.res-filtro-titulo').forEach(btn => {
     btn.addEventListener('click', () => {
-        const cuerpo = btn.nextElementSibling;
+        const cuerpo  = btn.nextElementSibling;
         const abierto = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', !abierto);
         btn.classList.toggle('collapsed', abierto);
@@ -108,6 +165,7 @@ document.querySelectorAll('.res-filtro-titulo').forEach(btn => {
 /* ── Limpiar filtros ── */
 document.getElementById('btnLimpiarFiltros').addEventListener('click', () => {
     document.querySelectorAll('.res-checkbox input').forEach(cb => cb.checked = false);
+    actualizar();
 });
 
 /* ── Vista grilla / lista ── */
@@ -125,10 +183,9 @@ document.getElementById('btnLista').addEventListener('click', () => {
 
 /* ── Toggle filtros (mobile) ── */
 document.getElementById('btnToggleFiltros')?.addEventListener('click', function () {
-    const filtros = document.querySelector('.res-filtros');
-    filtros.classList.toggle('visible');
+    document.querySelector('.res-filtros').classList.toggle('visible');
     this.classList.toggle('abierto');
 });
 
 /* ── Init ── */
-document.addEventListener('DOMContentLoaded', () => renderizar(filtrarProductos()));
+document.addEventListener('DOMContentLoaded', actualizar);

@@ -12,64 +12,104 @@
 /* ── Tablets (≤ 768px) ── */
 @media (max-width: 768px) {
 
-    /* ── Header mobile ── */
+    /* ══ HEADER MÓVIL ══════════════════════════════════════════ */
     header {
-        flex-wrap: wrap;
         height: auto;
-        padding: 10px 16px;
-        gap: 8px;
-        justify-content: space-between;
+        min-height: 56px;
+        padding: 0 14px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
     }
 
+    /* Hamburguesa — extremo izquierdo, área táctil generosa */
     .hamburguesa {
         display: flex;
-        position: static;
         order: 1;
-        flex-shrink: 0;
+        flex: 0 0 44px;
+        height: 56px;
+        align-items: center;
+        justify-content: flex-start;
     }
 
+    /* Logo — centrado absolutamente: siempre equidistante sin importar
+       el ancho del hamburger o del carrito */
     .Logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+        height: 56px;
+        display: flex;
+        align-items: center;
+    }
+
+    .Logo img { height: 46px; }
+
+    /* User-section — nombre + carrito, empujado al extremo derecho */
+    .user-section {
         position: static;
         order: 2;
-        margin: 0 auto;
+        margin-left: auto;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
-    .Logo img { height: 50px; }
-
-    .user-section { position: static; order: 3; flex-shrink: 0; }
-    .user-info    { display: none; }
-    .separador    { display: none; }
-
-    header .container {
+    /* Mostrar solo el nombre (sin "Hola,") como enlace al perfil */
+    .user-info {
         display: flex;
-        order: 4;
-        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+    }
+
+    .saludo { display: none; }
+
+    .nombre-cliente {
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+        max-width: 90px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .separador { display: none; }
+
+    /* Buscador — segunda fila, ocupa todo el ancho */
+    header .container {
+        order: 3;
         flex-basis: 100%;
+        width: 100%;
+        margin-bottom: 10px;
     }
 
     header .container input { width: 100%; }
 
-    /* ── Subheader mobile: colapsado ── */
+    /* ══ SUBHEADER MÓVIL ═══════════════════════════════════════ */
     .subheader {
         position: static;
         overflow: hidden;
         max-height: 0;
-        padding: 0;
         border-bottom: none;
-        transition: max-height var(--trans-normal), padding 0.2s ease;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        box-shadow: none;
+        /* transition restaurada por JS (aplicarModoSync) en móvil */
+        transition: max-height 0.35s ease;
     }
 
     .subheader.abierto {
-        max-height: 600px;
-        padding: 6px 0;
+        max-height: 700px;
         border-bottom: 1px solid var(--color-borde);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
 
     .nav-items {
         flex-direction: column;
         align-items: stretch;
-        padding: 0;
+        padding: 4px 0 8px;
     }
 
     .nav-centro {
@@ -79,36 +119,60 @@
         width: 100%;
     }
 
+    /* Ocultar chevron en items que solo navegan (no expanden nada) */
+    .nav-centro .nav-item:not(#mas-btn) > i { display: none; }
+
     .nav-item {
         width: 100%;
-        padding: 14px 20px;
-        border-bottom: 1px solid #f2f2f2;
+        padding: 15px 22px;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 15px;
+        font-weight: 500;
         justify-content: space-between;
     }
 
     .separador-nav { display: none; }
 
-    .nav-item.destacado {
-        width: 100%;
-        margin: 4px 0 0;
-        border-radius: 0;
-        justify-content: center;
-    }
+    /* Chevron del botón "Más" — rota al expandirse */
+    #mas-btn > i { transition: transform 0.25s ease; }
+    #mas-btn.active > i { transform: rotate(180deg); }
 
-    /* ── Dropdown mobile: en flujo ── */
+    /* Dropdown de "Más" — visibilidad mediante max-height (animado) */
     .dropdown {
         position: static;
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.28s ease;
         box-shadow: none;
         border: none;
         border-radius: 0;
-        border-top: 1px solid #f0f0f0;
-        min-width: 100%;
-        background-color: #fafafa;
+        border-top: 1px solid #eeeeee;
+        min-width: unset;
+        background-color: #f7f7f7;
     }
 
+    .mas-item.active .dropdown { max-height: 280px; }
+
     .dropdown a {
-        padding: 12px 40px;
-        border-bottom: 1px solid #f0f0f0;
+        padding: 12px 22px 12px 36px;
+        font-size: 14px;
+        color: #555;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    /* Destacado FIFA — mantiene identidad verde con borde lateral */
+    .nav-item.destacado {
+        background-color: #f0fdf4;
+        color: #15803d;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 0;
+        border-left: 4px solid #16a34a;
+        border-bottom-color: #dcfce7;
+        margin: 0;
+        justify-content: flex-start;
+        gap: 10px;
     }
 
     /* ── Carrusel figuras: 2 items ── */
@@ -152,4 +216,69 @@
     body.modo-oscuro .dropdown a {
         border-bottom-color: #2a2828;
     }
+
+    body.modo-oscuro .nav-item.destacado {
+        background-color: rgba(22, 163, 74, 0.12);
+        color: #4ade80;
+        border-left-color: #16a34a;
+        border-bottom-color: #1a2e1a;
+    }
+}
+
+/* ── Mejoras mobile: secciones y banner (≤ 768px) ── */
+@media (max-width: 768px) {
+    /* Secciones: reducir padding lateral excesivo */
+    .carrusel-section  { padding: 24px 16px; }
+    .productos-section { padding: 24px 16px; }
+
+    /* Encabezados de sección más compactos */
+    .carrusel-header,
+    .productos-header  { margin-bottom: 16px; }
+
+    /* Banner: botones siempre visibles en pantallas táctiles
+       (no hay estado :hover en touch) */
+    .banner-btn     { opacity: 0.75; }
+    .banner-btn-izq { left: 10px; }
+    .banner-btn-der { right: 10px; }
+
+    /* Dots del banner más pegados al borde */
+    .banner-dots { bottom: 10px; }
+
+    /* Botones de navegación de carrusel: hit area suficiente */
+    .carrusel-btn { width: 36px; height: 36px; }
+}
+
+/* ── Teléfonos pequeños (≤ 480px) ── */
+@media (max-width: 480px) {
+    /* Secciones aún más compactas */
+    .carrusel-section  { padding: 18px 12px; }
+    .productos-section { padding: 18px 12px; }
+
+    .carrusel-titulo,
+    .productos-titulo  { font-size: 15px; }
+
+    /* Banner: flechas más pequeñas */
+    .banner-btn         { width: 34px; height: 34px; font-size: 12px; opacity: 0.85; }
+
+    /* Dots más pequeños */
+    .dot        { width: 6px; height: 6px; }
+    .dot.active { width: 16px; }
+
+    /* Carrusel figuras: 1 item visible + peek lateral */
+    .carrusel-item { min-width: calc(100% - 28px); }
+
+    /* Botón de carrusel más pequeño */
+    .carrusel-btn { width: 32px; height: 32px; font-size: 12px; }
+}
+
+/* ── Teléfonos muy pequeños (≤ 360px) ── */
+@media (max-width: 360px) {
+    .carrusel-section  { padding: 14px 10px; }
+    .productos-section { padding: 14px 10px; }
+
+    .Logo img { height: 42px; }
+
+    /* Ocultar la hamburguesa en pantallas muy pequeñas puede causar problemas
+       — en cambio reducimos el padding del header */
+    header { padding: 8px 10px; }
 }
