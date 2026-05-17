@@ -147,108 +147,11 @@
         <section id="tab-wishlist" class="usuario-tab-panel activo" role="tabpanel">
             <div class="usuario-seccion-header">
                 <span class="usuario-seccion-titulo">
-                    Mi Wishlist <span class="usuario-seccion-count">(5 productos)</span>
+                    Mi Wishlist <span class="usuario-seccion-count" id="wishlistCount"></span>
                 </span>
             </div>
 
-            <div class="usuario-grid" id="wishlistGrid">
-
-                <div class="producto-card">
-                    <div class="producto-imagen">
-                        <i class="fa-regular fa-image"></i>
-                        <button class="wish-quitar-btn" aria-label="Quitar de wishlist">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="producto-info">
-                        <span class="producto-precio">$1,299.00</span>
-                        <span class="producto-nombre">Figura Goku Ultra Instinct</span>
-                        <span class="producto-categoria">Figuras</span>
-                        <span class="producto-vendedor">AkibaraXpress</span>
-                        <div class="producto-botones">
-                            <button class="btn-ver" onclick="location.href='producto.html'">Ver Producto</button>
-                            <button class="btn-comprar">Agregar al carrito</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="producto-card">
-                    <div class="producto-imagen">
-                        <i class="fa-regular fa-image"></i>
-                        <button class="wish-quitar-btn" aria-label="Quitar de wishlist">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="producto-info">
-                        <span class="producto-precio">$549.00</span>
-                        <span class="producto-nombre">Manga Jujutsu Kaisen Vol. 1–10</span>
-                        <span class="producto-categoria">Mangas</span>
-                        <span class="producto-vendedor">AkibaraXpress</span>
-                        <div class="producto-botones">
-                            <button class="btn-ver" onclick="location.href='producto.html'">Ver Producto</button>
-                            <button class="btn-comprar">Agregar al carrito</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="producto-card">
-                    <div class="producto-imagen">
-                        <i class="fa-regular fa-image"></i>
-                        <button class="wish-quitar-btn" aria-label="Quitar de wishlist">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="producto-info">
-                        <span class="producto-precio">$2,499.00</span>
-                        <span class="producto-nombre">Figura Zoro Roronoa King of Hell</span>
-                        <span class="producto-categoria">Figuras</span>
-                        <span class="producto-vendedor">AkibaraXpress</span>
-                        <div class="producto-botones">
-                            <button class="btn-ver" onclick="location.href='producto.html'">Ver Producto</button>
-                            <button class="btn-comprar">Agregar al carrito</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="producto-card">
-                    <div class="producto-imagen">
-                        <i class="fa-regular fa-image"></i>
-                        <button class="wish-quitar-btn" aria-label="Quitar de wishlist">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="producto-info">
-                        <span class="producto-precio">$799.00</span>
-                        <span class="producto-nombre">Playera Naruto Shippuden</span>
-                        <span class="producto-categoria">Apparel</span>
-                        <span class="producto-vendedor">AkibaraXpress</span>
-                        <div class="producto-botones">
-                            <button class="btn-ver" onclick="location.href='producto.html'">Ver Producto</button>
-                            <button class="btn-comprar">Agregar al carrito</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="producto-card">
-                    <div class="producto-imagen">
-                        <i class="fa-regular fa-image"></i>
-                        <button class="wish-quitar-btn" aria-label="Quitar de wishlist">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="producto-info">
-                        <span class="producto-precio">$349.00</span>
-                        <span class="producto-nombre">Booster Pack Pokémon Scarlet &amp; Violet</span>
-                        <span class="producto-categoria">TCG</span>
-                        <span class="producto-vendedor">AkibaraXpress</span>
-                        <div class="producto-botones">
-                            <button class="btn-ver" onclick="location.href='producto.html'">Ver Producto</button>
-                            <button class="btn-comprar">Agregar al carrito</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <div class="usuario-grid" id="wishlistGrid" style="display:none;"></div>
 
             <!-- Estado vacío (oculto mientras hay ítems) -->
             <div class="usuario-vacio" id="wishlistVacio" style="display:none;">
@@ -278,13 +181,13 @@
                     </div>
                     <div class="orden-cuerpo">
                         <div class="orden-thumbs">
-                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
-                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
-                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/SH FIGUAFRTS SON GOKU -DAIMA-.webp" alt="Goku DAIMA"></div>
+                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/SH FIGUARTS VEGETA -DAIMA-.webp" alt="Vegeta DAIMA"></div>
+                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/S.H FIGUARTS PICCOLO -DAIMA-.webp" alt="Piccolo DAIMA"></div>
                             <div class="orden-thumb-mas">+1</div>
                         </div>
                         <div class="orden-resumen">
-                            <span class="orden-total">$2,847.00</span>
+                            <span class="orden-total">$3,797.00</span>
                             <span class="orden-items-count">4 productos</span>
                         </div>
                     </div>
@@ -303,11 +206,11 @@
                     </div>
                     <div class="orden-cuerpo">
                         <div class="orden-thumbs">
-                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
-                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/Figma Akaza.webp" alt="Figma Akaza"></div>
+                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/POP UP PARADE Mitsuri Kanroji.webp" alt="Mitsuri Kanroji"></div>
                         </div>
                         <div class="orden-resumen">
-                            <span class="orden-total">$1,598.00</span>
+                            <span class="orden-total">$2,298.00</span>
                             <span class="orden-items-count">2 productos</span>
                         </div>
                     </div>
@@ -326,10 +229,10 @@
                     </div>
                     <div class="orden-cuerpo">
                         <div class="orden-thumbs">
-                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/ONE PIECE N.57.webp" alt="One Piece Vol. 57"></div>
                         </div>
                         <div class="orden-resumen">
-                            <span class="orden-total">$549.00</span>
+                            <span class="orden-total">$189.00</span>
                             <span class="orden-items-count">1 producto</span>
                         </div>
                     </div>
@@ -348,12 +251,12 @@
                     </div>
                     <div class="orden-cuerpo">
                         <div class="orden-thumbs">
-                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
-                            <div class="orden-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/WORLD CUP 2026 TCG DREAM BOX (50 CARDS) ADRENALYN XL.webp" alt="Dream Box"></div>
+                            <div class="orden-thumb"><img src="Imagenes/Imagenes Productos/SH Figuarts Piccolo Super Hero -Dragon Ball Super.webp" alt="Piccolo Super Hero"></div>
                             <div class="orden-thumb-mas">+3</div>
                         </div>
                         <div class="orden-resumen">
-                            <span class="orden-total">$4,120.00</span>
+                            <span class="orden-total">$4,196.00</span>
                             <span class="orden-items-count">5 productos</span>
                         </div>
                     </div>
@@ -457,6 +360,7 @@
                     <div class="config-campo">
                         <label for="cfg-tel">Teléfono</label>
                         <input type="tel" id="cfg-tel" value="81 1234 5678" placeholder="81 XXXX XXXX" maxlength="15">
+                        <span class="config-campo-error" id="telError">Número inválido. Debe contener exactamente 10 dígitos.</span>
                     </div>
                     <button class="config-guardar" id="btnGuardarInfo">
                         <i class="fa-solid fa-floppy-disk"></i> Guardar cambios
@@ -515,6 +419,7 @@
                 <div class="config-bloque">
                     <h3 class="config-bloque-titulo">
                         <i class="fa-solid fa-triangle-exclamation"></i> Zona de Peligro
+                        <span class="config-campo-nota">No funcional, solo con fines demostrativos</span>
                     </h3>
                     <p class="config-peligro-texto">
                         Cerrar sesión en todos los dispositivos activos. Esta acción no elimina tu cuenta ni tus datos.
@@ -656,6 +561,8 @@
     <script src="js/modo-oscuro.js"></script>
     <script src="js/accesibilidad.js"></script>
     <script src="js/carrito.js"></script>
+    <script src="js/catalogo.js"></script>
+    <script src="js/wishlist.js"></script>
     <script src="js/usuario.js"></script>
 
 </body>

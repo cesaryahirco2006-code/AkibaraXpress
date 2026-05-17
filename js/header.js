@@ -95,3 +95,32 @@ function initBuscador() {
 }
 
 document.addEventListener('DOMContentLoaded', initBuscador);
+
+
+/* ── 6. NAVEGACIÓN DEL SUBHEADER ── */
+function initNavItems() {
+    // Items principales: Figuras, Mangas, Series, TCG, Apparel
+    document.querySelectorAll('.nav-centro .nav-item:not(#mas-btn)').forEach(item => {
+        item.addEventListener('click', function () {
+            const q = this.querySelector('span')?.textContent.trim();
+            if (q) navegarConFade(`resultados.html?q=${encodeURIComponent(q)}`);
+        });
+    });
+
+    // Dropdown "Más": Juegos, Preventas, Promociones, Subastas, Mercancía
+    document.querySelectorAll('#dropdown-mas a').forEach(a => {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            const q = this.textContent.trim();
+            if (q) navegarConFade(`resultados.html?q=${encodeURIComponent(q)}`);
+        });
+    });
+
+    // Destacado: FIFA World Cup 26
+    document.querySelector('.nav-item.destacado')?.addEventListener('click', function () {
+        const q = this.querySelector('span')?.textContent.trim();
+        if (q) navegarConFade(`resultados.html?q=${encodeURIComponent(q)}`);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initNavItems);

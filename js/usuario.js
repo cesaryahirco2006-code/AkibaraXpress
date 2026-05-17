@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function activarTab(id) {
         tabs.forEach(t => t.classList.toggle('activo', t.dataset.tab === id));
         panels.forEach(p => p.classList.toggle('activo', p.id === `tab-${id}`));
+        if (id === 'wishlist') Wishlist.renderizarTab('wishlistGrid', 'wishlistVacio');
     }
 
     tabs.forEach(tab => tab.addEventListener('click', () => activarTab(tab.dataset.tab)));
@@ -52,32 +53,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    /* ── Validación de teléfono ── */
+    function validarTelefono(valor) {
+        if (!valor) return true;
+        const soloDigitos = valor.replace(/[\s\-()+]/g, '');
+        return /^\d{10}$/.test(soloDigitos) && /^[\d\s\-()+]+$/.test(valor);
+    }
+
+    const inputTel = document.getElementById('cfg-tel');
+    const telError = document.getElementById('telError');
+
+    inputTel?.addEventListener('input', () => {
+        const invalido = !validarTelefono(inputTel.value.trim());
+        inputTel.classList.toggle('invalido', invalido);
+        telError?.classList.toggle('visible', invalido);
+    });
+
+
     /* ── Guardar información personal — actualiza toda la página ── */
     document.getElementById('btnGuardarInfo')?.addEventListener('click', () => {
+        if (!validarTelefono(inputTel?.value.trim() || '')) {
+            inputTel?.classList.add('invalido');
+            telError?.classList.add('visible');
+            inputTel?.focus();
+            return;
+        }
+
         const nombre   = document.getElementById('cfg-nombre')?.value.trim()   || '';
         const apellido = document.getElementById('cfg-apellido')?.value.trim() || '';
 
         const nombreCompleto = [nombre, apellido].filter(Boolean).join(' ');
         const iniciales      = (nombre.charAt(0) + apellido.charAt(0)).toUpperCase() || 'U';
 
-        /* Hero */
         const elNombre = document.querySelector('.usuario-nombre');
         if (elNombre) elNombre.textContent = nombreCompleto;
 
         const elAvatar = document.querySelector('.usuario-avatar');
         if (elAvatar) elAvatar.textContent = iniciales;
 
-        /* Header — nombre del cliente */
         const elHeader = document.querySelector('.nombre-cliente');
         if (elHeader) elHeader.textContent = nombreCompleto;
 
-        /* Título de la pestaña del navegador */
         document.title = `${nombreCompleto} — AkibaraXpress`;
 
         feedbackGuardado(document.getElementById('btnGuardarInfo'));
     });
 
-    /* Otros botones de guardar (seguridad, notificaciones) */
     document.querySelectorAll('.config-guardar:not(#btnGuardarInfo)').forEach(btn => {
         btn.addEventListener('click', () => feedbackGuardado(btn));
     });
@@ -89,6 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!btn) return;
         const card = btn.closest('.producto-card');
         if (!card) return;
+
+        if (card.dataset.productId) Wishlist.toggle(card.dataset.productId);
+
         card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
         card.style.opacity    = '0';
         card.style.transform  = 'scale(0.92)';
@@ -99,9 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function actualizarConteoWishlist() {
-        const count    = document.querySelectorAll('#tab-wishlist .producto-card').length;
+        const count    = document.querySelectorAll('#wishlistGrid .producto-card').length;
         const statWish = document.querySelector('.usuario-stat[data-tab="wishlist"] .usuario-stat-valor');
         if (statWish) statWish.textContent = count;
+
+        const countEl = document.getElementById('wishlistCount');
+        if (countEl) countEl.textContent = `(${count} producto${count !== 1 ? 's' : ''})`;
 
         const grid  = document.getElementById('wishlistGrid');
         const vacio = document.getElementById('wishlistVacio');

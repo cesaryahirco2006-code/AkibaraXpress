@@ -1,11 +1,42 @@
 /* ============================================================
-   js/index.js — Lógica exclusiva de la página principal (index.html)
-   Depende de: utils.js
+   js/index.js — Lógica de la página principal
+   Depende de: utils.js, catalogo.js, wishlist.js, carrito.js
    ============================================================ */
 
-/* ── 1. INICIALIZACIÓN DE CARRUSELES ── */
+/* ── 1. RENDERIZAR TARJETAS ── */
 
-// Carrusel de Figuras de Anime
+function crearCardHTML(p) {
+    const enWish = Wishlist.tiene(p.id);
+    return `
+        <div class="producto-card" data-product-id="${p.id}" data-nombre="${p.nombre}" data-categoria="${p.categoria}" data-precio="${p.precio}">
+            <div class="producto-imagen">
+                <img src="${p.imagen}" alt="${p.nombre}" loading="lazy">
+                <button class="btn-wishlist${enWish ? ' activo' : ''}" data-id="${p.id}" title="Wishlist" aria-label="Wishlist">
+                    <i class="fa-${enWish ? 'solid' : 'regular'} fa-heart"></i>
+                </button>
+            </div>
+            <div class="producto-info">
+                <span class="producto-precio">$${p.precio.toLocaleString('es-MX')}.00</span>
+                <span class="producto-nombre">${p.nombre}</span>
+                <span class="producto-categoria">${p.categoria}</span>
+                <span class="producto-vendedor">${p.vendedor}</span>
+                <div class="producto-botones">
+                    <button class="btn-ver">Ver Producto</button>
+                    <button class="btn-comprar">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>`;
+}
+
+const nuevos     = CATALOGO.filter(p => p.nuevo);
+const destacados = CATALOGO.filter(p => p.categoria === 'Figuras');
+
+document.getElementById('nuevoTrack').innerHTML     = nuevos.map(crearCardHTML).join('');
+document.getElementById('productosTrack').innerHTML = destacados.map(crearCardHTML).join('');
+
+
+/* ── 2. INICIALIZACIÓN DE CARRUSELES ── */
+
 crearCarrusel({
     trackId:      'carruselTrack',
     btnIzqId:     'btnIzq',
@@ -15,7 +46,6 @@ crearCarrusel({
     autoplayMs:   3000,
 });
 
-// Carrusel Lo Más Nuevo
 crearCarrusel({
     trackId:      'nuevoTrack',
     btnIzqId:     'btnIzqNuevo',
@@ -25,7 +55,6 @@ crearCarrusel({
     autoplayMs:   3500,
 });
 
-// Carrusel de Productos Destacados
 crearCarrusel({
     trackId:      'productosTrack',
     btnIzqId:     'btnIzqProd',
@@ -36,64 +65,42 @@ crearCarrusel({
 });
 
 
-/* ── 2. NAVEGACIÓN A DETALLE DE PRODUCTO ── */
+/* ── 3. NAVEGACIÓN A DETALLE DE PRODUCTO ── */
 
-function irADetalle(nombre, categoria, precio) {
+function irADetalle(id, nombre, categoria, precio) {
     const params = new URLSearchParams();
+    if (id)       params.set('id',        id);
     params.set('nombre',    nombre);
     params.set('categoria', categoria);
-    if (precio) params.set('precio', precio);
+    if (precio)   params.set('precio',    precio);
     navegarConFade(`producto.html?${params.toString()}`);
 }
 
-function bindNavegacionCards(trackId) {
+function bindNavCards(trackId) {
     document.querySelectorAll(`#${trackId} .producto-card`).forEach(card => {
-        card.addEventListener('click', function (e) {
-            if (e.target.closest('.btn-ver, .btn-comprar')) return;
-            irADetalle(
-                this.querySelector('.producto-nombre')?.textContent   || 'Producto',
-                this.querySelector('.producto-categoria')?.textContent || 'General',
-                this.querySelector('.producto-precio')?.textContent    || ''
-            );
+        card.addEventListener('click', e => {
+            if (e.target.closest('.btn-ver, .btn-comprar, .btn-wishlist')) return;
+            irADetalle(card.dataset.productId, card.dataset.nombre, card.dataset.categoria, card.dataset.precio);
         });
 
-        const btnVer = card.querySelector('.btn-ver');
-        if (btnVer) {
-            btnVer.addEventListener('click', e => {
-                e.stopPropagation();
-                irADetalle(
-                    card.querySelector('.producto-nombre')?.textContent   || 'Producto',
-                    card.querySelector('.producto-categoria')?.textContent || 'General',
-                    card.querySelector('.producto-precio')?.textContent    || ''
-                );
-            });
-        }
+        card.querySelector('.btn-ver')?.addEventListener('click', e => {
+            e.stopPropagation();
+            irADetalle(card.dataset.productId, card.dataset.nombre, card.dataset.categoria, card.dataset.precio);
+        });
     });
 }
 
-function initNavegacionProductos() {
-    bindNavegacionCards('nuevoTrack');
-    bindNavegacionCards('productosTrack');
+document.addEventListener('DOMContentLoaded', () => {
+    bindNavCards('nuevoTrack');
+    bindNavCards('productosTrack');
 
-    // Items del carrusel de figuras
     document.querySelectorAll('#carruselTrack .carrusel-item').forEach(item => {
-        item.addEventListener('click', function () {
-            irADetalle(
-                this.querySelector('span')?.textContent || 'Figura',
-                'Figuras'
-            );
+        item.addEventListener('click', () => {
+            const q = item.querySelector('span')?.textContent.trim() || 'Figuras';
+            navegarConFade(`resultados.html?q=${encodeURIComponent(q)}`);
         });
     });
-}
-
-document.addEventListener('DOMContentLoaded', initNavegacionProductos);
-
-
-/* ── 3. AGREGAR AL CARRITO — delegación para cubrir clones del carrusel ── */
-document.addEventListener('click', e => {
-    const btn = e.target.closest('.producto-card .btn-comprar');
-    if (btn) {
-        e.stopPropagation();
-        agregarAlCarrito();
-    }
 });
+
+
+/* El carrito.js maneja globalmente todos los clics en .btn-comprar */

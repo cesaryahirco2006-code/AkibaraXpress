@@ -68,6 +68,16 @@ body.modo-oscuro .producto-card:hover .producto-imagen {
     background-color: rgb(46, 44, 45);
 }
 
+body.modo-oscuro .btn-wishlist {
+    background-color: rgb(40, 38, 39);
+    color: #555;
+}
+
+body.modo-oscuro .btn-wishlist:hover,
+body.modo-oscuro .btn-wishlist.activo {
+    color: var(--color-primario);
+}
+
 body.modo-oscuro .producto-nombre           { color: #e8e8e8; }
 body.modo-oscuro .producto-card:hover .producto-nombre { color: var(--color-primario); }
 body.modo-oscuro .producto-categoria        { color: #777; }

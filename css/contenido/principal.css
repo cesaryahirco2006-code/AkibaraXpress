@@ -196,6 +196,12 @@
     margin-bottom: -10px;
 }
 
+/* Container query: permite que las tarjetas calculen su ancho
+   relativo al contenedor visible, no al track completo */
+.productos-track-container {
+    container-type: inline-size;
+}
+
 
 /* ============================================================
    CARRUSEL DE FIGURAS
@@ -245,6 +251,13 @@
     background-color: #ddd;
 }
 
+.carrusel-circulo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .carrusel-item span {
     font-size: 13px;
     color: #555;
@@ -276,16 +289,16 @@
     will-change: transform;
 }
 
-/* 4 tarjetas visibles en desktop */
+/* 5 tarjetas visibles en desktop — cqi = ancho del contenedor visible */
 .producto-card {
-    min-width: calc((100% - (var(--gap-carrusel) * 3)) / 4);
+    width: calc((100cqi - (var(--gap-carrusel) * 4)) / 5);
+    flex: 0 0 auto;
     background-color: white;
     border-radius: var(--radio-card);
     overflow: hidden;
     border: 1px solid var(--color-borde);
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
     cursor: pointer;
     transition: box-shadow var(--trans-normal), transform var(--trans-normal), border-color var(--trans-rapida);
 }
@@ -305,7 +318,52 @@
     justify-content: center;
     font-size: clamp(36px, 6vw, 54px);
     color: #bbb;
+    position: relative;
+    overflow: hidden;
     transition: background-color var(--trans-rapida);
+}
+
+.producto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+/* ── Botón de wishlist sobre la imagen ── */
+.btn-wishlist {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #bbb;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: color var(--trans-rapida), transform 0.15s, opacity var(--trans-rapida);
+    opacity: 0;
+    z-index: 2;
+}
+
+.producto-card:hover .btn-wishlist { opacity: 1; }
+
+.btn-wishlist:hover {
+    color: var(--color-primario);
+    transform: scale(1.12);
+}
+
+.btn-wishlist.activo {
+    color: var(--color-primario);
+    opacity: 1;
 }
 
 .producto-card:hover .producto-imagen { background-color: #ddd; }
@@ -326,10 +384,14 @@
 }
 
 .producto-nombre {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: #111;
     line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     transition: color var(--trans-rapida);
 }
 

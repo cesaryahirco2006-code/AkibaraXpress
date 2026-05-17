@@ -349,6 +349,15 @@ body.pagina-usuario { background-color: var(--color-fondo-alt); }
     font-size: 18px;
     color: #bbb;
     flex-shrink: 0;
+    overflow: hidden;
+}
+
+.orden-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 4px;
+    box-sizing: border-box;
 }
 
 .orden-thumb-mas {
@@ -606,6 +615,20 @@ body.pagina-usuario { background-color: var(--color-fondo-alt); }
     margin-left: 6px;
 }
 
+.config-campo input.invalido {
+    border-color: #dc143c;
+    background-color: #fff5f7;
+}
+
+.config-campo-error {
+    font-size: 11px;
+    color: #dc143c;
+    margin-top: 4px;
+    display: none;
+}
+
+.config-campo-error.visible { display: block; }
+
 .config-campos-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -719,6 +742,11 @@ body.modo-oscuro .config-bloque-titulo {
 
 body.modo-oscuro .config-campo label { color: #555; }
 body.modo-oscuro .config-campo-nota { color: #555; }
+
+body.modo-oscuro .config-campo input.invalido {
+    border-color: #dc143c;
+    background-color: rgba(220, 20, 60, 0.08);
+}
 
 body.modo-oscuro .config-campo input,
 body.modo-oscuro .config-campo select {

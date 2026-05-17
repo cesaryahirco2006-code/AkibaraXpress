@@ -38,12 +38,12 @@ const Carrito = (() => {
     }
 
     /* ── Agregar producto ── */
-    function agregar(nombre, precio, categoria) {
+    function agregar(nombre, precio, categoria, imagen = '') {
         const existente = items.find(i => i.nombre === nombre);
         if (existente) {
             existente.cantidad += 1;
         } else {
-            items.push({ nombre, precio: parseFloat(precio) || 0, categoria: categoria || 'General', cantidad: 1 });
+            items.push({ nombre, precio: parseFloat(precio) || 0, categoria: categoria || 'General', cantidad: 1, imagen });
         }
         guardar();
         renderizar();
@@ -101,7 +101,9 @@ const Carrito = (() => {
 
             el.innerHTML = `
                 <div class="carrito-item-imagen">
-                    <i class="fa-regular fa-image"></i>
+                    ${item.imagen
+                        ? `<img src="${item.imagen}" alt="${item.nombre}">`
+                        : '<i class="fa-regular fa-image"></i>'}
                 </div>
                 <div class="carrito-item-info">
                     <span class="carrito-item-nombre" title="${item.nombre}">${item.nombre}</span>
@@ -182,8 +184,9 @@ const Carrito = (() => {
             const nombre    = card.querySelector('.producto-nombre')?.textContent.trim()   || 'Producto';
             const categoria = card.querySelector('.producto-categoria')?.textContent.trim() || 'General';
             const precioTxt = card.querySelector('.producto-precio')?.textContent.replace(/[^0-9.]/g, '') || '0';
+            const imagen    = card.querySelector('.producto-imagen img')?.src               || '';
 
-            agregar(nombre, parseFloat(precioTxt), categoria);
+            agregar(nombre, parseFloat(precioTxt), categoria, imagen);
         });
 
         /* Render inicial (carga el estado desde localStorage) */
