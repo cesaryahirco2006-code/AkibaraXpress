@@ -64,8 +64,13 @@ function crearCarrusel({ trackId, btnIzqId, btnDerId, itemSelector, gap, autopla
         return track.querySelector(itemSelector).getBoundingClientRect().width + gap;
     }
 
+    function reducirMovimiento() {
+        return document.body.classList.contains('sin-animaciones') ||
+               window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
     function irA(index, conAnimacion = true) {
-        track.style.transition = conAnimacion ? 'transform 0.5s ease' : 'none';
+        track.style.transition = (conAnimacion && !reducirMovimiento()) ? 'transform 0.5s ease' : 'none';
         track.style.transform  = `translateX(-${index * getItemWidth()}px)`;
         posIndex = index;
     }
@@ -76,19 +81,19 @@ function crearCarrusel({ trackId, btnIzqId, btnDerId, itemSelector, gap, autopla
     function mover(direccion) {
         if (animando) return;
         animando = true;
-        irA(posIndex + direccion, true);
+        const sinAnim = reducirMovimiento();
+        irA(posIndex + direccion, !sinAnim);
 
         setTimeout(() => {
-            // Salto invisible al clon opuesto para crear el efecto infinito
             if (posIndex >= total * 2) irA(total, false);
             if (posIndex < total)      irA(posIndex + total, false);
             animando = false;
-        }, 510); // Ligeramente mayor que la duración de la transición CSS
+        }, sinAnim ? 10 : 510);
     }
 
     btnIzq.addEventListener('click', () => mover(-1));
     btnDer.addEventListener('click', () => mover(1));
 
-    // Autoplay
-    setInterval(() => mover(1), autoplayMs);
+    // Autoplay — se pausa si el usuario prefiere reducir movimiento
+    setInterval(() => { if (!reducirMovimiento()) mover(1); }, autoplayMs);
 }

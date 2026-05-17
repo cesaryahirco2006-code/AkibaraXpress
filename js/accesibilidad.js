@@ -54,3 +54,51 @@ document.getElementById('btnCursorGrande').addEventListener('click', function ()
     aplicarCursorGrande(activo);
     localStorage.setItem(STORAGE_CURSOR, activo ? '1' : '0');
 });
+
+// ── Texto grande ───────────────────────────────────────────────
+const STORAGE_TEXTO = 'akibara-texto-grande';
+
+function aplicarTextoGrande(activar) {
+    document.body.classList.toggle('texto-grande', activar);
+    document.getElementById('btnTextoGrande').classList.toggle('activo', activar);
+}
+
+aplicarTextoGrande(localStorage.getItem(STORAGE_TEXTO) === '1');
+
+document.getElementById('btnTextoGrande').addEventListener('click', function () {
+    const activo = !document.body.classList.contains('texto-grande');
+    aplicarTextoGrande(activo);
+    localStorage.setItem(STORAGE_TEXTO, activo ? '1' : '0');
+});
+
+// ── Reducir movimiento ─────────────────────────────────────────
+const STORAGE_ANIM = 'akibara-sin-animaciones';
+
+function aplicarSinAnimaciones(activar) {
+    document.body.classList.toggle('sin-animaciones', activar);
+    document.getElementById('btnSinAnimaciones').classList.toggle('activo', activar);
+}
+
+aplicarSinAnimaciones(localStorage.getItem(STORAGE_ANIM) === '1');
+
+document.getElementById('btnSinAnimaciones').addEventListener('click', function () {
+    const activo = !document.body.classList.contains('sin-animaciones');
+    aplicarSinAnimaciones(activo);
+    localStorage.setItem(STORAGE_ANIM, activo ? '1' : '0');
+});
+
+// ── Alto contraste ─────────────────────────────────────────────
+const STORAGE_CONT = 'akibara-alto-contraste';
+
+function aplicarAltoContraste(activar) {
+    document.body.classList.toggle('alto-contraste', activar);
+    document.getElementById('btnAltoContraste').classList.toggle('activo', activar);
+}
+
+aplicarAltoContraste(localStorage.getItem(STORAGE_CONT) === '1');
+
+document.getElementById('btnAltoContraste').addEventListener('click', function () {
+    const activo = !document.body.classList.contains('alto-contraste');
+    aplicarAltoContraste(activo);
+    localStorage.setItem(STORAGE_CONT, activo ? '1' : '0');
+});

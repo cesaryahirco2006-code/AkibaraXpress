@@ -28,6 +28,11 @@
  * Se expone globalmente para que index.js y producto.js la usen.
  */
 function navegarConFade(url) {
+    if (document.body.classList.contains('sin-animaciones') ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.location.href = url;
+        return;
+    }
     document.body.classList.add('saliendo');
     setTimeout(() => { window.location.href = url; }, 260);
 }

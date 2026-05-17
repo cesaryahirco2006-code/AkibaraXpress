@@ -144,6 +144,102 @@ body.cursor-grande * {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M9 3L9 29L15 23L19 32L23 30L19 21L26 21Z' fill='%23000' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") 0 0, auto !important;
 }
 
+/* ============================================================
+   TEXTO GRANDE
+   ============================================================ */
+body.texto-grande .producto-nombre          { font-size: 15px; }
+body.texto-grande .producto-precio          { font-size: 22px; }
+body.texto-grande .producto-categoria,
+body.texto-grande .producto-vendedor        { font-size: 14px; }
+body.texto-grande .btn-ver,
+body.texto-grande .btn-comprar              { font-size: 14px; }
+body.texto-grande .nav-item > span          { font-size: 15px; }
+body.texto-grande .carrito-item-nombre      { font-size: 15px; }
+body.texto-grande .carrito-item-precio      { font-size: 17px; }
+body.texto-grande .carrito-total-precio     { font-size: 25px; }
+body.texto-grande .carrito-btn-pago,
+body.texto-grande .carrito-btn-vaciar       { font-size: 15px; }
+body.texto-grande .pd-nombre                { font-size: 26px; }
+body.texto-grande .pd-precio                { font-size: 22px; }
+body.texto-grande .pd-descripcion-texto     { font-size: 15px; }
+body.texto-grande .res-titulo               { font-size: 21px; }
+body.texto-grande .res-count                { font-size: 15px; }
+body.texto-grande .res-checkbox             { font-size: 15px; }
+body.texto-grande .res-orden                { font-size: 15px; }
+body.texto-grande .accesibilidad-opcion     { font-size: 17px; }
+
+/* ============================================================
+   REDUCIR MOVIMIENTO
+   Complementa la lógica en utils.js (carrusel) y transiciones.js
+   ============================================================ */
+body.sin-animaciones *,
+body.sin-animaciones *::before,
+body.sin-animaciones *::after {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1      !important;
+    transition-duration:       0.01ms !important;
+    transition-delay:          0ms    !important;
+    scroll-behavior:           auto   !important;
+}
+
+/* ============================================================
+   ALTO CONTRASTE
+   ============================================================ */
+body.alto-contraste {
+    --color-borde: #666;
+}
+
+/* Texto principal — fuerza negro puro */
+body.alto-contraste .producto-nombre,
+body.alto-contraste .pd-nombre,
+body.alto-contraste .pd-nombre-seccion,
+body.alto-contraste .carrito-item-nombre,
+body.alto-contraste .res-titulo             { color: #000; }
+
+/* Texto secundario — de gris claro a gris oscuro */
+body.alto-contraste .producto-categoria,
+body.alto-contraste .producto-vendedor,
+body.alto-contraste .carrito-item-categoria,
+body.alto-contraste .res-count,
+body.alto-contraste .res-breadcrumb li,
+body.alto-contraste .pd-fila-label         { color: #333; }
+
+/* Bordes más marcados */
+body.alto-contraste .producto-card         { border-color: #666; }
+body.alto-contraste .carrito-item          { border-color: #666; }
+body.alto-contraste .res-filtros           { border-color: #555; }
+body.alto-contraste .res-filtro-grupo      { border-top-color: #777; }
+body.alto-contraste .pd-panel             { border-color: #555; }
+
+/* Botones más definidos */
+body.alto-contraste .btn-ver              { border-width: 2px; font-weight: 700; }
+body.alto-contraste .accesibilidad-opcion { border-color: #666; color: #111; }
+
+/* Focus ring más visible */
+body.alto-contraste :focus-visible {
+    outline-width:  3px;
+    outline-color:  #000;
+    outline-offset: 3px;
+}
+
+/* ── Modo oscuro + alto contraste ── */
+body.modo-oscuro.alto-contraste .producto-nombre,
+body.modo-oscuro.alto-contraste .pd-nombre,
+body.modo-oscuro.alto-contraste .carrito-item-nombre,
+body.modo-oscuro.alto-contraste .res-titulo         { color: #fff; }
+
+body.modo-oscuro.alto-contraste .producto-categoria,
+body.modo-oscuro.alto-contraste .producto-vendedor,
+body.modo-oscuro.alto-contraste .carrito-item-categoria,
+body.modo-oscuro.alto-contraste .res-count          { color: #ccc; }
+
+body.modo-oscuro.alto-contraste .producto-card,
+body.modo-oscuro.alto-contraste .carrito-item        { border-color: #888; }
+
+body.modo-oscuro.alto-contraste :focus-visible       { outline-color: #fff; }
+
+body.modo-oscuro.alto-contraste .accesibilidad-opcion { border-color: #777; }
+
 
 body.modo-oscuro .accesibilidad-opcion {
     border-color: #3a3838;
