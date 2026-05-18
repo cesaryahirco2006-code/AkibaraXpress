@@ -47,7 +47,7 @@
 
     .Logo img { height: 46px; }
 
-    /* User-section — nombre + carrito, empujado al extremo derecho */
+    /* User-section — icono perfil + carrito, empujado al extremo derecho */
     .user-section {
         position: static;
         order: 2;
@@ -55,27 +55,15 @@
         height: 56px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
     }
 
-    /* Mostrar solo el nombre (sin "Hola,") como enlace al perfil */
-    .user-info {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 0;
-    }
+    /* En móvil ocultar el bloque de texto, el icono es suficiente */
+    .user-info  { display: none; }
+    .saludo     { display: none; }
 
-    .saludo { display: none; }
-
-    .nombre-cliente {
-        font-size: 13px;
-        font-weight: 600;
-        white-space: nowrap;
-        max-width: 90px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+    /* Área táctil cómoda en móvil */
+    .perfil-btn { font-size: 26px; }
 
     .separador { display: none; }
 

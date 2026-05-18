@@ -78,11 +78,23 @@ header {
     font-size: 14px;
     font-weight: bold;
     color: white;
-    cursor: pointer;
-    transition: color var(--trans-rapida);
 }
 
-.nombre-cliente:hover { color: var(--color-primario); }
+/* ── Botón de perfil (icono) ── */
+.perfil-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+    transition: color var(--trans-rapida);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.perfil-btn:hover  { color: var(--color-primario); }
+.perfil-btn.activo { color: var(--color-primario); }
 
 /* ── Separador vertical ── */
 .separador {
